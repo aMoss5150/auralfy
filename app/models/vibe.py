@@ -10,3 +10,10 @@ class Vibe(db.Model):
 
     users = db.relationship("User", back_populates="vibes")
     songs = db.relationship("Song", back_populates="vibes")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "user_id": self.user_id,
+        }

@@ -47,7 +47,6 @@ def seed_songs():
         name="A Tale of 2 Citiez",
         artist="J. Cole",
         album_name="2014 Forest Hills Drive",
-        vibe_id="",
         artist_spotify_id="6l3HvQ5sa6mXTsMTB19rO5",
         song_spotify_id="7lL3MvFWFFSD25pBz72Agj?si=7bb51af6779b4d29",
         danceability=0.559,
@@ -61,7 +60,6 @@ def seed_songs():
         name="ELEMENT.",
         artist="Kendrick Lamar",
         album_name="DAMN",
-        vibe_id="",
         artist_spotify_id="2YZyLoL8N0Wb9xBt1NhZWg",
         song_spotify_id="1EaKU4dMbesXXd3BrLCtYG?si=809c68a2e0834dd7",
         danceability=0.748,
@@ -75,7 +73,6 @@ def seed_songs():
         name="good kid, m.A.A.d. city",
         artist="Kendrick Lamar",
         album_name="m.A.A.d. city",
-        vibe_id="",
         artist_spotify_id="2YZyLoL8N0Wb9xBt1NhZWg",
         song_spotify_id="2cDCojn6uIBM6A5xTAbl3H?si=7bc53705be214534",
         danceability=0.487,
@@ -89,7 +86,6 @@ def seed_songs():
         name="untitled 07|2014 - 2016",
         artist="Kendrick Lamar",
         album_name="untitled unmastered",
-        vibe_id="",
         artist_spotify_id="2YZyLoL8N0Wb9xBt1NhZWg",
         song_spotify_id="40IQooNkPRVtn4zlE3ZFpA?si=d6ecdbb955b748de",
         danceability=0.567,
@@ -103,7 +99,6 @@ def seed_songs():
         name="Rich Kids",
         artist="Polyphia",
         album_name="New Levels New Devils",
-        vibe_id="",
         artist_spotify_id="4vGrte8FDu062Ntj0RsPiZ",
         song_spotify_id="4QDvf8oOrSAz1bt1tDiwAR?si=9a72356051184505",
         danceability=0.511,
@@ -117,7 +112,6 @@ def seed_songs():
         name="G.O.A.T.",
         artist="Polyphia",
         album_name="New Levels New Devils",
-        vibe_id="",
         artist_spotify_id="4vGrte8FDu062Ntj0RsPiZ",
         song_spotify_id="0YPuRrM2NwzdtuShUKkts6?si=fe89b30a37384c95",
         danceability=0.660,
@@ -131,7 +125,6 @@ def seed_songs():
         name="He Won't Go",
         artist="Adele",
         album_name="21",
-        vibe_id="",
         artist_spotify_id="4dpARuHxo51G3z768sgnrY",
         song_spotify_id="3uVsdnIglL7aTjm8X08J0M?si=12a2cdb1fdc54e6a",
         danceability=0.706,
@@ -145,7 +138,6 @@ def seed_songs():
         name="Right As Rain",
         artist="Adele",
         album_name="19",
-        vibe_id="",
         artist_spotify_id="4dpARuHxo51G3z768sgnrY",
         song_spotify_id="6oW04c2E7lebl09WHsBAWO?si=5c76d6271518496a",
         danceability=0.842,
@@ -159,7 +151,6 @@ def seed_songs():
         name="Teardrops",
         artist="Joss Stone",
         album_name="The Soul Sessions, Vol. 2",
-        vibe_id="",
         artist_spotify_id="7bvcQXJHkFiN1ppIN3q4fi",
         song_spotify_id="2qX751oMEJNL0UmwoFBcVb?si=c77f93f0aca340b0",
         danceability=0.651,
@@ -173,7 +164,6 @@ def seed_songs():
         name="I Got The...",
         artist="Joss Stone",
         album_name="The Soul Sessions, Vol. 2",
-        vibe_id="",
         artist_spotify_id="7bvcQXJHkFiN1ppIN3q4fi",
         song_spotify_id="2tToHpzNxe4GpYKWywaJyz?si=86b3988397e740c0",
         danceability=0.576,
@@ -187,7 +177,6 @@ def seed_songs():
         name="Spolied",
         artist="Joss Stone",
         album_name="Mind Body & Soul",
-        vibe_id="",
         artist_spotify_id="7bvcQXJHkFiN1ppIN3q4fi",
         song_spotify_id="08ydcS9NTm1a2csSppGsJT?si=7c948dc038464d90",
         danceability=0.569,
@@ -201,7 +190,6 @@ def seed_songs():
         name="Security",
         artist="Joss Stone",
         album_name="Mind Body & Soul",
-        vibe_id="",
         artist_spotify_id="7bvcQXJHkFiN1ppIN3q4fi",
         song_spotify_id="76lM91HmwrbURhCWVhzGvf?si=cefa60facec849b1",
         danceability=0.577,
@@ -215,7 +203,6 @@ def seed_songs():
         name="No Tellin",
         artist="Drake",
         album_name="If You're Reading This It's Too Late",
-        vibe_id="",
         artist_spotify_id="3TVXtAsR1Inumwj472S9r4",
         song_spotify_id="2durxb17bXcmQJHSt8JAdO?si=17c5b9fa8cf84e10",
         danceability=0.823,
@@ -229,7 +216,6 @@ def seed_songs():
         name="Used To",
         artist="Drake",
         album_name="If You're Reading This It's Too Late",
-        vibe_id="",
         artist_spotify_id="3TVXtAsR1Inumwj472S9r4",
         song_spotify_id="63p3Slj0shAFP0Q7dQetj5?si=2b65790bb4e74fb3",
         danceability=0.926,
@@ -243,7 +229,6 @@ def seed_songs():
         name="Intake",
         artist="Volumes",
         album_name="Via",
-        vibe_id="",
         artist_spotify_id="1DgmdsnwOexqTH8ohPCFAU",
         song_spotify_id="5Cw30VW6hKXdVaSyFjbxzt?si=fc5689bbdccd4409",
         danceability=0.546,
@@ -257,7 +242,6 @@ def seed_songs():
         name="Paid In Full",
         artist="Volumes",
         album_name="Via",
-        vibe_id="",
         artist_spotify_id="1DgmdsnwOexqTH8ohPCFAU",
         song_spotify_id="3GzRbYVu6D5BTFB4FrjWat?si=3587f167ef194319",
         danceability=0.327,
@@ -271,7 +255,6 @@ def seed_songs():
         name="I'm Charming",
         artist="The Black Dahlia Murder",
         album_name="Miasma",
-        vibe_id="",
         artist_spotify_id="4xTDPgk4jHCF0qui3dH6BS",
         song_spotify_id="0Fqyclz7oQP6cs3plyBetL?si=c3ab413b01bb4867",
         danceability=0.462,
@@ -285,7 +268,6 @@ def seed_songs():
         name="Deathmask Divine",
         artist="The Black Dahlia Murder",
         album_name="Nocturnal",
-        vibe_id="",
         artist_spotify_id="4xTDPgk4jHCF0qui3dH6BS",
         song_spotify_id="3oCTRjyXmT1MMn4nVQMKBm?si=164bdcac78d94029",
         danceability=0.471,
@@ -299,7 +281,6 @@ def seed_songs():
         name="Codex",
         artist="Veil Of Maya",
         album_name="[id]",
-        vibe_id="",
         artist_spotify_id="2i7CQcVBh2K6uOR3CH09M1",
         song_spotify_id="5QKuewRvIREh6ceUuYUoDi?si=f57aa1c31f3a4131",
         danceability=0.450,
@@ -313,7 +294,6 @@ def seed_songs():
         name="Namaste",
         artist="Veil Of Maya",
         album_name="[id]",
-        vibe_id="",
         artist_spotify_id="2i7CQcVBh2K6uOR3CH09M1",
         song_spotify_id="3V3hIOQmenaqmBMGBfhRTx?si=14afd411b4b34693",
         danceability=0.355,
@@ -327,7 +307,6 @@ def seed_songs():
         name="Unbreakable",
         artist="Veil Of Maya",
         album_name="[id]",
-        vibe_id="",
         artist_spotify_id="2i7CQcVBh2K6uOR3CH09M1",
         song_spotify_id="6WnkfT1WrkNN41r8eU6cwa?si=4abb910577ed44d9",
         danceability=0.350,
@@ -337,9 +316,29 @@ def seed_songs():
         valence=0.280,
         tempo=180.512,
     )
-    db.session.add(
-        a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x
-    )
+    db.session.add(a)
+    db.session.add(b)
+    db.session.add(c)
+    db.session.add(d)
+    db.session.add(e)
+    db.session.add(f)
+    db.session.add(g)
+    db.session.add(h)
+    db.session.add(j)
+    db.session.add(k)
+    db.session.add(l)
+    db.session.add(m)
+    db.session.add(n)
+    db.session.add(o)
+    db.session.add(p)
+    db.session.add(q)
+    db.session.add(r)
+    db.session.add(s)
+    db.session.add(t)
+    db.session.add(u)
+    db.session.add(v)
+    db.session.add(w)
+    db.session.add(x)
     db.session.commit()
 
 
@@ -352,5 +351,5 @@ def undo_songs():
     # dependent rows will also be deleted with cascade
     # restart identity is going to reset auto increment back to 1
     # else you will have user 1 with number 600
-    db.session.execute("TRUNCATE users RESTART IDENTITY CASCADE;")
+    db.session.execute("TRUNCATE songs RESTART IDENTITY CASCADE;")
     db.session.commit()

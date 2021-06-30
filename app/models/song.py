@@ -9,7 +9,7 @@ class Song(db.Model):
     artist = db.Column(db.String(255), nullable=False)
     album_name = db.Column(db.String(255))
     vibe_id = db.Column(db.Integer, db.ForeignKey("vibes.id"))
-    artist_spotify_id = db.Column(db.String(255), nullable=False, unique=True)
+    artist_spotify_id = db.Column(db.String(255), nullable=False)
     song_spotify_id = db.Column(db.String(255), nullable=False, unique=True)
     danceability = db.Column(db.Numeric(asdecimal=False), nullable=False)
     energy = db.Column(db.Numeric(asdecimal=False), nullable=False)
@@ -17,7 +17,8 @@ class Song(db.Model):
     mode = db.Column(db.Integer, nullable=False)
     valence = db.Column(db.Numeric(asdecimal=False), nullable=False)
     tempo = db.Column(db.Numeric(asdecimal=False), nullable=False)
-    vibe = db.relationship("Vibe", back_populates="songs")
+
+    vibes = db.relationship("Vibe", back_populates="songs")
 
     def to_dict(self):
         return {

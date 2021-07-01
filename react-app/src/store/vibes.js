@@ -2,6 +2,7 @@
 const GET_VIBES = "vibes/GET_VIBES"
 const CREATE_VIBE = 'vibes/CREATE_VIBE'
 const DELETE_VIBE = 'vibes/DELETE_VIBE'
+const ADD_SONG = 'vibes/ADD_SONG'
 
 // action creators
 const getVibes = (vibes) => ({
@@ -19,6 +20,11 @@ const deleteVibe = (id) => ({
     payload: id
 })
 
+const addSong = (songId, vibeId) => ({
+    type: ADD_SONG,
+    payload: { songId, vibeId }
+})
+
 // thunks
 
 export const getAllVibes = () => async (dispatch) => {
@@ -32,14 +38,14 @@ export const getAllVibes = () => async (dispatch) => {
 
 export const createAVibe = (name) => async (dispatch) => {
     let body = JSON.stringify(name)
-    let newVibe = await fetch('/api/vibes', {
+    let newVibe = await fetch('/api/vibes/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: body,
     })
-    newVibe = newVibe.json()
+    newVibe = await newVibe.json()
     if (newVibe.errors) {
         return
     }
@@ -48,7 +54,7 @@ export const createAVibe = (name) => async (dispatch) => {
 
 export const deleteAVibe = (id) => async (dispatch) => {
     let body = JSON.stringify(id)
-    let del = await fetch('/api/vibes', {
+    let del = await fetch('/api/vibes/', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -81,7 +87,8 @@ export default function reducer(state = initialState, action) {
 
         case CREATE_VIBE: {
             const newState = { ...state }
-            newState[action.payload['vibe'].id] = action.payload['vibe']
+            console.log(action.payload)
+            newState[action.payload["vibe"].id] = action.payload["vibe"]
             return newState
         }
 

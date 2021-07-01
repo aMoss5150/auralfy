@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+from flask_login import current_user
 from app.models import Vibe
 from app.models import db
 
@@ -19,7 +20,8 @@ def get_all_vibes():
 @vibe_routes.route("/", methods=["POST"])
 def create_vibe():
     vibe_name = request.json
-    new_vibe = Vibe(name=vibe_name)
+    print(request.json)
+    new_vibe = Vibe(name=vibe_name, user_id=current_user.id)
     db.session.add(new_vibe)
     db.session.commit()
     return {"vibe": new_vibe.to_dict()}
@@ -32,3 +34,15 @@ def delete_vibe():
     db.session.delete(vibe)
     db.session.commit()
     return {"id": id}
+
+
+@vibe_routes.route("/", methods=["PATCH"])
+def add_song_to_vibe():
+    songId = request.json["songId"]
+    vibeId = request.json["vibeId"]
+    vibe = Vibe.query.filter(
+        Vibe.id == vibeId and Vibe.user_id == current_user.id
+    ).first()
+    vibe.song_id = songId
+    db.session.commit()
+    return {"vibeId": vibeId, "songId": songId}

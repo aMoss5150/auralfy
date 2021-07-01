@@ -1,1 +1,20 @@
 /* TODO Add site wide styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    background: rgb(31, 30, 30);
+    color: white
+}
+
+a {
+    color: rgb(245, 233, 233);
+}
+
+a.visited {
+    color: aqua
+}

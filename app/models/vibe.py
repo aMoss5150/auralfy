@@ -1,4 +1,11 @@
+from sqlalchemy.ext.declarative import declarative_base
 from .db import db
+
+vibe_members = db.Table(
+    "vibe_members",
+    Base.metadata,
+    db.Column("vibe_id", ForeignKey("vibe.id"), primary_key=True),
+)
 
 
 class Vibe(db.Model):

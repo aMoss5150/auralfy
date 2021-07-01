@@ -1,9 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
+import songs from './songs';
+import vibes from './vibes'
 
 const rootReducer = combineReducers({
-    session // is equivalent to session:session
+    session, // is equivalent to session:session
+    songs,
+    vibes
 });
 
 let enhancer;

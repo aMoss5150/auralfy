@@ -8,7 +8,6 @@ vibe_routes = Blueprint("vibes", __name__)
 
 
 @vibe_routes.route("/")
-@login_required
 def get_all_vibes():
     vibes = Vibe.query.all()
     # dont forget to convert this to dict to make sure we

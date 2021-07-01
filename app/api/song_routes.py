@@ -8,7 +8,6 @@ song_routes = Blueprint("songs", __name__)
 
 
 @song_routes.route("/")
-@login_required
 def get_all_songs():
     songs = Song.query.all()
     # dont forget to convert this to dict to make sure we

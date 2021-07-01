@@ -29,9 +29,10 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_SONGS: {
             const newState = { ...state }
-            Object.values(action.payload).forEach((song) => {
+            action.payload['songs'].forEach((song) => {
                 newState[song.id] = song
             })
+            return newState
         }
         default:
             return state

@@ -5,22 +5,26 @@ import { getAllVibes } from "../store/vibes"
 
 function Home() {
     const dispatch = useDispatch()
-    let songs = useSelector(state => state.songs)
+    let songs = Object.values(useSelector(state => state.songs))
     let vibes = useSelector(state => state.vibes)
-
+    console.log(songs)
     useEffect(() => {
         dispatch(getAllSongs())
         dispatch(getAllVibes())
-    })
+    }, [])
 
     if (!songs) return null
     return (
         <div>
-            {Object.values(songs)?.map((song) => (
-                <li key={song.id}>
-                    song.name
-                </li>
-            ))}
+            {
+                songs.map((song) => (
+                    <div key={song.id}>
+                        {song.name}---
+                        {song.artist}
+                        <br />
+                    </div>
+                ))
+            }
         </div>
     )
 }

@@ -1,14 +1,17 @@
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.schema import Column, ForeignKey, Table
 from .db import db
 
+Base = declarative_base()
 
-class Song(db.Model):
+
+class Song(db.Model, Base):
     __tablename__ = "songs"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     artist = db.Column(db.String(255), nullable=False)
     album_name = db.Column(db.String(255))
-    vibe_id = db.Column(db.Integer, db.ForeignKey("vibes.id"))
     artist_spotify_id = db.Column(db.String(255), nullable=False)
     song_spotify_id = db.Column(db.String(255), nullable=False, unique=True)
     danceability = db.Column(db.Numeric(asdecimal=False), nullable=False)
@@ -18,7 +21,11 @@ class Song(db.Model):
     valence = db.Column(db.Numeric(asdecimal=False), nullable=False)
     tempo = db.Column(db.Numeric(asdecimal=False), nullable=False)
 
-    vibes = db.relationship("Vibe", back_populates="songs")
+    vibes = db.relationship(
+        "Vibe",
+        secondary="vibe_members",
+        back_populates="songs",
+    )
 
     def to_dict(self):
         return {
@@ -26,7 +33,6 @@ class Song(db.Model):
             "name": self.name,
             "artist": self.artist,
             "album_name": self.album_name,
-            "vibe_id": self.vibe_id,
             "artist_spotify_id": self.artist_spotify_id,
             "song_spotify_id": self.song_spotify_id,
             "danceability": self.danceability,

@@ -19,11 +19,11 @@ const deleteVibe = (id) => ({
     type: DELETE_VIBE,
     payload: id
 })
-
-const addSong = (songId, vibeId) => ({
-    type: ADD_SONG,
-    payload: { songId, vibeId }
-})
+// wont need if I just dispatch get all vibes at end of add
+// const addSong = (songId, vibeId) => ({
+//     type: ADD_SONG,
+//     payload: { songId, vibeId }
+// })
 
 // thunks
 
@@ -50,6 +50,22 @@ export const createAVibe = (name) => async (dispatch) => {
         return
     }
     dispatch(createVibe(newVibe))
+}
+
+export const addSongToVibe = (songId, vibeId) => async (dispatch) => {
+    let body = JSON.stringify({ songId, vibeId })
+    let newVibe = await fetch('/api/vibes/', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: body,
+    })
+    newVibe = await newVibe.json()
+    if (newVibe.errors) {
+        return
+    }
+    dispatch(getAllVibes())
 }
 
 export const deleteAVibe = (id) => async (dispatch) => {

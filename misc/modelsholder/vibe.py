@@ -1,14 +1,12 @@
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.schema import Column, ForeignKey, Table
 from .db import db
+from . import vibe_members
 
-vibe_members = db.Table(
-    "vibe_members",
-    Base.metadata,
-    db.Column("vibe_id", ForeignKey("vibe.id"), primary_key=True),
-)
+Base = declarative_base()
 
 
-class Vibe(db.Model):
+class Vibe(db.Model, Base):
     __tablename__ = "vibes"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +14,12 @@ class Vibe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     users = db.relationship("User", back_populates="vibes")
-    songs = db.relationship("Song", back_populates="vibes")
+    songs = db.relationship(
+        "Song",
+        secondary="vibe_members",
+        lazy="subquery",
+        back_populates="vibes",
+    )
 
     def to_dict(self):
         return {

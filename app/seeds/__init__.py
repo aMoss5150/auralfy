@@ -19,5 +19,5 @@ def seed():
 @seed_commands.command("undo")
 def undo():
     undo_users()
-    undo_songs
+    undo_songs()
     # Add other undo functions here

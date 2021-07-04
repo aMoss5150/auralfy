@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import songs from './songs';
 import vibes from './vibes'
+import relations from './relations'
 
 const rootReducer = combineReducers({
     session, // is equivalent to session:session
     songs,
-    vibes
+    vibes,
+    relations
 });
 
 let enhancer;

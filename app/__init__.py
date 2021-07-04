@@ -15,6 +15,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.song_routes import song_routes
 from .api.vibe_routes import vibe_routes
+from .api.relation_routes import relation_routes
 
 from .seeds import seed_commands
 
@@ -43,6 +44,7 @@ app.register_blueprint(user_routes, url_prefix="/api/users")
 app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(song_routes, url_prefix="/api/songs")
 app.register_blueprint(vibe_routes, url_prefix="/api/vibes")
+app.register_blueprint(relation_routes, url_prefix="/api/relations")
 db.init_app(app)
 Migrate(app, db)
 

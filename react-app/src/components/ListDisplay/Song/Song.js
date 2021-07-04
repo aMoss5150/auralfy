@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import { getAllSongs } from '../../../store/songs'
 // import { getAllVibes } from '../../../store/vibes'
+import './Song.css'
 
 
 function Song({ song }) {
@@ -16,9 +17,14 @@ function Song({ song }) {
     // if (!vibeId) return null
 
     return (
-        <div>
-            -----------------Song Component Test-
-            {song.name}
+        <div className="song__container">
+            <div className="songartist">
+                {song.name} -
+            </div>
+            <div className="songnamealbum">
+                "{song.artist}" - "{song?.album_name}"
+            </div>
+
         </div>
     )
 }

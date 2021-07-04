@@ -1,12 +1,17 @@
 import React from 'react'
 import MiniVisualizer from './MiniVisuallizer/MiniVisualizer'
 import Controls from './Controls/Controls'
+import "./Player.css"
 
-function Player() {
+function Player({ song }) {
     return (
-        <div>2.Player Component
-            <Controls />
-            <MiniVisualizer />
+        <div className="player__container">2.Player Component
+            <div className="player__parent">
+                <Controls />
+            </div>
+            <div className='minivis__parent'>
+                <MiniVisualizer />
+            </div>
             2. End Player Component
         </div>
     )

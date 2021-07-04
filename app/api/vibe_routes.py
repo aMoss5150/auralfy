@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import current_user
-from app.models import Vibe, VibeMembers
+from app.models import Vibe, VibeMember
 from app.models import db
 
 vibe_routes = Blueprint("vibes", __name__)

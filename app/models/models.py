@@ -51,7 +51,7 @@ class Song(db.Model, Base):
     valence = db.Column(db.Numeric(asdecimal=False), nullable=False)
     tempo = db.Column(db.Numeric(asdecimal=False), nullable=False)
 
-    vibes = db.relationship("VibeMembers", back_populates="song")
+    vibes = db.relationship("VibeMember", back_populates="song")
 
     def to_dict(self):
         return {
@@ -69,6 +69,9 @@ class Song(db.Model, Base):
             "tempo": self.tempo,
         }
 
+    def __repr__(self):
+        return f"{self.name}: {self.artist}"
+
 
 class Vibe(db.Model, Base):
     __tablename__ = "vibes"
@@ -78,7 +81,7 @@ class Vibe(db.Model, Base):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     users = db.relationship("User", back_populates="vibes")
-    songs = db.relationship("VibeMembers", back_populates="vibe")
+    songs = db.relationship("VibeMember", back_populates="vibe")
 
     def to_dict(self):
         return {
@@ -94,3 +97,6 @@ class VibeMember(db.Model):
     song_id = db.Column(db.Integer, ForeignKey("songs.id"), primary_key=True)
     song = db.relationship("Song", back_populates="vibes")
     vibe = db.relationship("Vibe", back_populates="songs")
+
+    def to_dict(self):
+        return {"members": [self.vibe_id, self.song_id]}

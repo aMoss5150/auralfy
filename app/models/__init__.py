@@ -1,2 +1,2 @@
 from .db import db
-from .models import Song, User, Vibe, VibeMembers
+from .models import Song, User, Vibe, VibeMember

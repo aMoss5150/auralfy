@@ -6,18 +6,18 @@ import './ListDisplay.css'
 
 
 
-function ListDisplay() {
+function ListDisplay({ targetVibe }) {
     const dispatch = useDispatch()
-    const vibes = Object.values(useSelector(state => state.vibes))
+    // const vibes = Object.values(useSelector(state => state.vibes))
 
-    useEffect(() => {
-        dispatch(getAllVibes())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(getAllVibes())
+    // }, [])
 
-    if (!vibes) return null
+    if (!targetVibe) return null
     return (
         <div className="listdisplay__container">
-            {vibes.map((vibe) => (
+            {targetVibe.map((vibe) => (
                 <List key={vibe.id} vibeId={vibe.id} vibeName={vibe.name} />
             ))}
         </div>

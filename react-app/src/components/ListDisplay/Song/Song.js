@@ -18,10 +18,10 @@ function Song({ song }) {
 
     return (
         <div className="song__container">
-            <div className="songartist">
+            <div className="songartist font-bold font-xl">
                 {song.name} -
             </div>
-            <div className="songnamealbum">
+            <div className="songnamealbum font-thin">
                 "{song.artist}" - "{song?.album_name}"
             </div>
 

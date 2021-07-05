@@ -16,7 +16,7 @@ function ListDisplay({ targetVibe }) {
 
     if (!targetVibe) return null
     return (
-        <div className="listdisplay__container">
+        <div className="listdisplay__container headers__colors2 centerer">
             {targetVibe.map((vibe) => (
                 <List key={vibe.id} vibeId={vibe.id} vibeName={vibe.name} />
             ))}

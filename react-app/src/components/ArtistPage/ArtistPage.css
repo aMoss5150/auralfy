@@ -7,14 +7,17 @@
     margin-left: 56px;
     flex-wrap: wrap;
     margin-bottom: 32px;
+    margin-left: 135px;
+    font-size: 20px;
 }
 
 .artist__parent {
-    border: 1px solid red;
+    /* border: 1px solid green; */
     margin: 40px;
     width: 250px;
     height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background: linear-gradient(90deg, rgb(11, 63, 21) 0%, rgb(19, 103, 11) 35%, rgb(22, 121, 50) 100%); */
 }

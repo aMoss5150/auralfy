@@ -103,7 +103,6 @@ export default function reducer(state = initialState, action) {
 
         case CREATE_VIBE: {
             const newState = { ...state }
-            console.log(action.payload)
             newState[action.payload["vibe"].id] = action.payload["vibe"]
             return newState
         }

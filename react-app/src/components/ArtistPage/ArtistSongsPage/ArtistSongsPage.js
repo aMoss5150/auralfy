@@ -15,11 +15,11 @@ function ArtistSongsPage() {
     if (!songs) return null
     return (
 
-        <div className="artistsongspage__container">
-            artistsongspage test
+        <div className="artistsongspage__container headers__colors2">
+            {artistIdCtxt}
             {songs.map((song) => (
-                console.log(song),
-                <li> {song.name}</li>
+
+                <li key={song.id}> {song.name}</li>
             ))
             }
         </div >

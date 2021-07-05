@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Particles from 'react-particles-js'
 
 import './ArtistPage.css'
 import { getAllSongs } from "../../store/songs"
@@ -23,7 +24,7 @@ function ArtistPage() {
                     {
                         currentArtist = song.artist
                         return (!set.has(song.artist) && song.artist && set.add(song.artist) &&
-                            <div className="artist__parent" onClick={() => setArtistIdCtxt(song.name)}>
+                            <div key={song.id} className="artist__parent" onClick={() => setArtistIdCtxt(song.artist)}>
                                 <ArtistPreview artist={song.artist} />
                             </div>
 

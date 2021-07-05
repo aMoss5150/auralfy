@@ -2,3 +2,11 @@
     cursor: pointer;
     list-style: none;
 }
+
+.headers__colors2 {
+    color: rgb(161, 184, 161);
+}
+
+.headers__colors3 {
+    color: rgb(218, 140, 244);
+}

@@ -5,7 +5,7 @@ import "./Player.css"
 
 function Player({ song }) {
     return (
-        <div className="player__container">2.Player Component
+        <div className="player__container headers__colors">2.Player Component
             <div className="player__parent">
                 <Controls />
             </div>

@@ -1,12 +1,13 @@
 .navbar {
     /* border: 1px solid lightcoral; */
     background-color: rgb(31, 30, 30);
-    /* background: linear-gradient(90deg, rgb(31, 30, 30) 0%, #333 35%, rgb(31, 30, 30) 100%); */
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(35, 45, 38) 65%, rgb(31, 30, 30) 100%);
     width: 100vw;
     height: 45px;
     position: fixed;
 }
 
 .nav__element {
-    color: lightcoral;
+    color: green;
+    /* margin-left: 10px; */
 }

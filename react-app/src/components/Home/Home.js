@@ -11,6 +11,8 @@ import { useVibeId } from '../../context/VibeContext'
 import { useArtistPage } from '../../context/ArtistPageContext'
 import { useArtistId } from '../../context/ArtistIdContext'
 
+
+
 import './Home.css'
 
 function Home() {
@@ -54,27 +56,27 @@ function Home() {
     if (!songs) return null
     return (
         <div className="homepage__container">
-            HOME COMPONENT
-            <div className="sidebar__parent">
-                My Vibes
-                <button onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
-                <button onClick={() => { return (setVibeIdCtxt(0), setArtistPageCtxt(false)) }}> View All Vibes</button>
-                <button onClick={() => setCreateOpen(true)}>Add a Vibe</button>
+
+            <div className="sidebar__parent headers__colors">
+                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
+                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> View All Vibes</button>
+                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => setCreateOpen(true)}>Add a Vibe</button>
                 {createOpen &&
                     <form action="POST" onSubmit={handleCreateVibe}>
                         <input type="text" value={vibeName} onChange={(e) => setVibeName(e.target.value)} />
+                        <button onClick={() => setCreateOpen(false)}>Close</button>
                     </form>}
                 <SidebarList vibes={vibes} />
             </div>
 
             <div className="listdisplay__parent">
                 {artistPageCtxt && <ArtistPage />}
-                {!artistPageCtxt && <ListDisplay targetVibe={!vibeIdCtxt ? vibes : targetVibe} />}
+                {!artistPageCtxt && <ListDisplay targetVibe={vibeIdCtxt === null ? vibes : targetVibe} />}
             </div>
             <div className='player__parent'>
                 <Player />
             </div>
-            ENDHOME COMPONENT
+
         </div >
     )
 }

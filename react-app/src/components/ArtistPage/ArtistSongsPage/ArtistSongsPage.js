@@ -11,7 +11,6 @@ function ArtistSongsPage() {
         song.artist === artistIdCtxt
 
     ))
-    console.log(artistIdCtxt, songs)
     if (!songs) return null
     return (
 

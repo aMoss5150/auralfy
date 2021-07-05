@@ -22,7 +22,7 @@ function List({ vibeId, vibeName }) {
             <div className="font-thin font-serif">
                 #{vibeName}
             </div>
-            {songsOnList.map((song) => (
+            {songsOnList && songsOnList.map((song) => (
                 <Song key={song.id} song={song} />
             ))}
             <Particles style={{ position: "absolute", color: "red", width: "100%", top: "45px" }}

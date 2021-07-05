@@ -31,6 +31,7 @@ function Home() {
             return vibe
         }
     })
+    console.log(vibeIdCtxt)
 
     function handleCreateVibe() {
         dispatch(createAVibe(vibeName))
@@ -59,7 +60,7 @@ function Home() {
 
             <div className="sidebar__parent headers__colors">
                 <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
-                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> View All Vibes</button>
+                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => { return (setVibeIdCtxt(0), setArtistPageCtxt(false)) }}> View All Vibes</button>
                 <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => setCreateOpen(true)}>Add a Vibe</button>
                 {createOpen &&
                     <form action="POST" onSubmit={handleCreateVibe}>
@@ -71,7 +72,7 @@ function Home() {
 
             <div className="listdisplay__parent">
                 {artistPageCtxt && <ArtistPage />}
-                {!artistPageCtxt && <ListDisplay targetVibe={vibeIdCtxt === null ? vibes : targetVibe} />}
+                {!artistPageCtxt && <ListDisplay targetVibe={!vibeIdCtxt ? vibes : targetVibe} />}
             </div>
             <div className='player__parent'>
                 <Player />

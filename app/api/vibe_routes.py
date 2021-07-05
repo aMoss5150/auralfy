@@ -29,11 +29,12 @@ def create_vibe():
 
 @vibe_routes.route("/", methods=["DELETE"])
 def delete_vibe():
+    print(request.json)
     id = request.json
     vibe = Vibe.query.filter(Vibe.id == id and Vibe.user_id == current_user.id).first()
     db.session.delete(vibe)
     db.session.commit()
-    return {"id": id}
+    return "success"
 
 
 @vibe_routes.route("/", methods=["PATCH"])

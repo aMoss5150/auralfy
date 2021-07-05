@@ -1,0 +1,20 @@
+.artistpage__container {
+    /* border: 1px solid lightcoral; */
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    margin-top: 44px;
+    margin-left: 56px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.artist__parent {
+    border: 1px solid red;
+    margin: 40px;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,9 @@
+.artistsongspage__container {
+    border: 1px solid blue;
+    margin: 40px;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

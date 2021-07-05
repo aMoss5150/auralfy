@@ -3,14 +3,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllSongs } from "../../store/songs"
 import { getAllRelations } from "../../store/relations"
 import { getAllVibes, createAVibe, deleteAVibe, addSongToVibe } from "../../store/vibes"
+import ArtistPage from '../ArtistPage/ArtistPage'
 import ListDisplay from '../ListDisplay/ListDisplay'
 import SidebarList from '../ListDisplay/SidebarList/SidebarList'
 import Player from '../Player/Player'
 import { useVibeId } from '../../context/VibeContext'
+import { useArtistPage } from '../../context/ArtistPageContext'
+import { useArtistId } from '../../context/ArtistIdContext'
+
 import './Home.css'
 
 function Home() {
     const { vibeIdCtxt, setVibeIdCtxt } = useVibeId()
+    const { artistPageCtxt, setArtistPageCtxt } = useArtistPage()
+    const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
+    const [createOpen, setCreateOpen] = useState(false)
+    const [vibeName, setVibeName] = useState('')
+    const [artistPage, setArtistPage] = useState(true)
     const dispatch = useDispatch()
     let songs = Object.values(useSelector(state => state.songs))
     let vibes = Object.values(useSelector(state => state.vibes))
@@ -21,8 +30,10 @@ function Home() {
         }
     })
 
-    function handleCreateVibe(newVibeName) {
-        dispatch(createAVibe('test'))
+    function handleCreateVibe() {
+        dispatch(createAVibe(vibeName))
+        setVibeName('')
+        setCreateOpen(false)
     }
 
     function handleDeleteVibe(vibeId) {
@@ -46,16 +57,25 @@ function Home() {
             HOME COMPONENT
             <div className="sidebar__parent">
                 My Vibes
+                <button onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
+                <button onClick={() => { return (setVibeIdCtxt(0), setArtistPageCtxt(false)) }}> View All Vibes</button>
+                <button onClick={() => setCreateOpen(true)}>Add a Vibe</button>
+                {createOpen &&
+                    <form action="POST" onSubmit={handleCreateVibe}>
+                        <input type="text" value={vibeName} onChange={(e) => setVibeName(e.target.value)} />
+                    </form>}
                 <SidebarList vibes={vibes} />
             </div>
+
             <div className="listdisplay__parent">
-                <ListDisplay targetVibe={!vibeIdCtxt ? vibes : targetVibe} />
+                {artistPageCtxt && <ArtistPage />}
+                {!artistPageCtxt && <ListDisplay targetVibe={!vibeIdCtxt ? vibes : targetVibe} />}
             </div>
             <div className='player__parent'>
                 <Player />
             </div>
             ENDHOME COMPONENT
-        </div>
+        </div >
     )
 }
 // <h1 className="text-xl font-bold">hello test</h1>

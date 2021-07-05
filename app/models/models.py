@@ -81,7 +81,9 @@ class Vibe(db.Model, Base):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     users = db.relationship("User", back_populates="vibes")
-    songs = db.relationship("VibeMember", back_populates="vibe")
+    songs = db.relationship(
+        "VibeMember", back_populates="vibe", cascade="all, delete-orphan"
+    )
 
     def to_dict(self):
         return {

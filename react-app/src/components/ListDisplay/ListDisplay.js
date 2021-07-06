@@ -24,10 +24,14 @@ function ListDisplay({ targetVibe }) {
             {targetVibe && targetVibe.map((vibe) => (
                 <List key={vibe.id} vibeId={vibe.id} vibeName={vibe.name} />
             ))}
-            {targetVibe.length === 0 && vibes.map((vibe) => (
-                <List key={vibe.id} vibeId={vibe.id} vibeName={vibe.name} />
-            ))}
+
         </ div>
     )
 }
+
+// {
+// targetVibe.length === 0 && vibes.map((vibe) => (
+//     <List key={vibe.id} vibeId={vibe.id} vibeName={vibe.name} />
+// ))
+// }
 export default ListDisplay

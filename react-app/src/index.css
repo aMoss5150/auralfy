@@ -7,7 +7,9 @@ html {
     width: 100vw;
     height: 100vh;
     /* padding: 10px; */
-    background: rgb(36, 43, 37);
+    /* background: rgb(36, 43, 37); */
+    /* background: rgb(66, 61, 66); */
+    background: rgb(36, 35, 35);
     /* color: white; */
     overflow-x: hidden;
 }
@@ -17,7 +19,7 @@ html {
 }
 
 .background__red {
-    background: rgb(66, 61, 66);
+    /* background: rgb(66, 61, 66); */
 }
 
 body {

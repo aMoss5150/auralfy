@@ -9,7 +9,7 @@ function List({ vibeId, vibeName }) {
     const songs = Object.values(useSelector(state => state.songs))
     const relations = useSelector(state => state.relations)[0]
     const relation = relations ? relations[vibeId] : null
-
+    console.log(relations);
     const songsOnList = songs?.filter((song) => {
         if (relation?.includes(song.id)) {
             return song
@@ -26,9 +26,9 @@ function List({ vibeId, vibeName }) {
                 <Song key={song.id} song={song} />
             ))}
 
-            <Particles style={{ position: "absolute", color: "red", width: "100%", top: "45px" }}
+            <Particles style={{ position: "absolute", width: "100%", top: "45px", height: "100%", left: "226px" }}
                 params={{
-                    "fps_limit": 12,
+                    "fps_limit": 16,
                     "particles": {
                         "collisions": {
                             "enable": false
@@ -37,7 +37,7 @@ function List({ vibeId, vibeName }) {
                             "value": "random"
                         },
                         "number": {
-                            "value": 250,
+                            "value": 312,
                             "density": {
                                 "enable": false
                             }
@@ -45,7 +45,7 @@ function List({ vibeId, vibeName }) {
                         "line_linked": {
                             "enable": true,
                             "distance": 900,
-                            "opacity": 0.2
+                            "opacity": 0.1
                         },
                         "move": {
                             "speed": 9
@@ -54,7 +54,7 @@ function List({ vibeId, vibeName }) {
                             "anim": {
                                 "enable": true,
                                 "opacity_min": 0.05,
-                                "speed": 4.9,
+                                "speed": 8.6,
                                 "sync": false
                             },
                             "value": 0.4

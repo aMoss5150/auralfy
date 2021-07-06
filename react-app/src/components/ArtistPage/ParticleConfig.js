@@ -16,7 +16,7 @@ const config = {
     // 'passthru' particles will disappear after hitting canvas boundaries and be added back into the scene elsewhere
     boundaryType: 'bounce',
     // Maximum velocity of particles
-    velocity: 1,
+    velocity: 0.9,
     // Toggles antialiasing -- must be set during construction, cannot be changed after initial render
     // Slight performance optimization to set false, although lines will appear more jagged
     antialias: false,
@@ -52,15 +52,15 @@ const config = {
         // Color of lines if colorMode: 'solid', must be hex color
         color: '#4dff4d',
         // Transparency of particles
-        transparency: 0.07,
+        transparency: 0.08,
         // 'square' or 'circle' shape of particles
         shape: 'circle',
         // The exact number of particles to render
-        count: 370,
+        count: 230,
         // The minimum particle size
-        minSize: 5,
+        minSize: 10,
         // The maximum particle size
-        maxSize: 28,
+        maxSize: 24,
         // true/false render particles
         visible: true
     },

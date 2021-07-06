@@ -16,6 +16,7 @@
 }
 
 .centerer__red {
-    border: 3px solid rgb(221, 176, 233);
+    /* border: 3px solid rgb(221, 176, 233); */
+    border: 3px solid rgb(83, 22, 13);
     font-size: 25px;
 }

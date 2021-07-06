@@ -21,10 +21,10 @@ const NavBar = () => {
           </li>
         </ul>
       }
-      <span className={`ml-6 ${open ? "hidden" : ""}`}>
+      <span className={`hidden ml-6 ${open ? "hidden" : ""}`}>
         <button onClick={() => setColorCtxt(false)} >green</button>
       </span>
-      <span className={`ml-6 ${open ? "hidden" : ""}`}>
+      <span className={`hidden ml-6 ${open ? "hidden" : ""}`}>
         <button onClick={() => setColorCtxt(true)} >red</button>
       </span>
     </nav>

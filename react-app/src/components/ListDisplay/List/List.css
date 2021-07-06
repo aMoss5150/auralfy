@@ -1,6 +1,7 @@
 .list__container {
     /* border: 1px solid lightcoral; */
     width: 100vw;
+    /* overflow-x: hidden; */
     /* font-size: 25px; */
     /* display: flex; */
     /* flex-direction: column; */

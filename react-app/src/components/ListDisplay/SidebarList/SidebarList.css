@@ -1,6 +1,10 @@
 .vibe__li {
     cursor: pointer;
     list-style: none;
+    /* border: 1px solid rgb(39, 35, 35); */
+    /* box-shadow: 1px 1px 3px 4px rgba(151, 238, 155, 0.5); */
+    padding: 10px;
+    margin: 10px;
 }
 
 .headers__colors2 {

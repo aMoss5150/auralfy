@@ -5,6 +5,7 @@
     width: 100vw;
     height: 45px;
     position: fixed;
+    z-index: 1;
 }
 
 .nav__element {

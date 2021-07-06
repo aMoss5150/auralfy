@@ -1,10 +1,25 @@
 .artistsongspage__container {
-    border: 1px solid blue;
+    border-top: 2px solid rgb(160, 214, 168);
+    /* border-right: 3px solid rgb(160, 214, 168); */
+    border-bottom: 2px solid rgb(160, 214, 168);
+    /* border-left: 1px solid rgb(23, 63, 29); */
     margin: 40px;
-    width: 250px;
-    height: 250px;
+    width: 76vw;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    list-style: none;
+    font-size: 25px;
+}
+
+.artist__name {
+    /* border-bottom: 2px solid rgb(185, 231, 192); */
+    font-size: 40px
+}
+
+.fromalbum {
+    font-size: 20px;
+    font-style: italic;
 }

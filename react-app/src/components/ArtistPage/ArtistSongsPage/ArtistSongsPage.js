@@ -14,11 +14,14 @@ function ArtistSongsPage() {
     if (!songs) return null
     return (
 
-        <div className="artistsongspage__container headers__colors2">
-            {artistIdCtxt}
+        <div className="artistsongspage__container headers__colors2 font-bold">
+            <div className="artist__name font-thin">
+                {artistIdCtxt}
+
+            </div>
             {songs.map((song) => (
 
-                <li key={song.id}> {song.name}</li>
+                <li key={song.id}> <span>{song.name}</span><span className="fromalbum font-thin"> from the album </span><span>{song?.album_name}</span> <span className="font-thin"><button className="fromalbum">-add to vibe</button></span></li>
             ))
             }
         </div >

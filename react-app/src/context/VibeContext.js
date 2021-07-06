@@ -4,7 +4,7 @@ export const VibeIdContext = createContext()
 
 export const VibeIdProvider = (props) => {
 
-    const [vibeIdCtxt, setVibeIdCtxt] = useState(0)
+    const [vibeIdCtxt, setVibeIdCtxt] = useState(null)
 
     return (
         <VibeIdContext.Provider value={{ vibeIdCtxt, setVibeIdCtxt }}>

@@ -1,11 +1,13 @@
 import React from 'react'
 import MiniVisualizer from './MiniVisuallizer/MiniVisualizer'
 import Controls from './Controls/Controls'
+import { useColor } from '../../context/ColorContext'
 import "./Player.css"
 
 function Player({ song }) {
+    const { colorCtxt } = useColor()
     return (
-        <div className="player__container headers__colors">2.Player Component
+        <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>2.Player Component
             <div className="player__parent">
                 <Controls />
             </div>

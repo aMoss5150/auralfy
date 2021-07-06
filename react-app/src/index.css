@@ -8,8 +8,16 @@ html {
     height: 100vh;
     /* padding: 10px; */
     background: rgb(36, 43, 37);
-    color: white;
+    /* color: white; */
     overflow-x: hidden;
+}
+
+.background__green {
+    background: rgb(36, 43, 37);
+}
+
+.background__red {
+    background: rgb(66, 61, 66);
 }
 
 body {

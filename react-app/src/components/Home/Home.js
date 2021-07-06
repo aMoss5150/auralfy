@@ -10,6 +10,7 @@ import Player from '../Player/Player'
 import { useVibeId } from '../../context/VibeContext'
 import { useArtistPage } from '../../context/ArtistPageContext'
 import { useArtistId } from '../../context/ArtistIdContext'
+import { useColor } from '../../context/ColorContext'
 
 
 
@@ -20,6 +21,7 @@ function Home() {
     const { artistPageCtxt, setArtistPageCtxt } = useArtistPage()
     const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
     const [createOpen, setCreateOpen] = useState(false)
+    const { colorCtxt } = useColor()
     const [vibeName, setVibeName] = useState('')
     const [artistPage, setArtistPage] = useState(true)
     const dispatch = useDispatch()
@@ -59,9 +61,9 @@ function Home() {
         <div className="homepage__container">
 
             <div className="sidebar__parent headers__colors">
-                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
-                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => { return (setVibeIdCtxt(0), setArtistPageCtxt(false)) }}> View All Vibes</button>
-                <button className='headers__colors bg-transparent text-white font-bold py-1 px-4 rounded' onClick={() => setCreateOpen(true)}>Add a Vibe</button>
+                <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
+                <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> View All Vibes</button>
+                <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => setCreateOpen(true)}>Add a Vibe</button>
                 {createOpen &&
                     <form action="POST" onSubmit={handleCreateVibe}>
                         <input type="text" value={vibeName} onChange={(e) => setVibeName(e.target.value)} />
@@ -72,7 +74,7 @@ function Home() {
 
             <div className="listdisplay__parent">
                 {artistPageCtxt && <ArtistPage />}
-                {!artistPageCtxt && <ListDisplay targetVibe={!vibeIdCtxt ? vibes : targetVibe} />}
+                {!artistPageCtxt && vibes && <ListDisplay targetVibe={vibeIdCtxt === null ? vibes : targetVibe} />}
             </div>
             <div className='player__parent'>
                 <Player />

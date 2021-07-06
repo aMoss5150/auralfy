@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Particles from 'react-particles-js'
+import ParticleField from 'react-particles-webgl';
+import field from './ParticleConfig'
 
 import './ArtistPage.css'
 import { getAllSongs } from "../../store/songs"
 import ArtistPreview from './ArtistPreview/ArtistPreview'
 import ArtistSongsPage from './ArtistSongsPage/ArtistSongsPage'
 import { useArtistId } from '../../context/ArtistIdContext'
+
+
+let Field = field
+
+
 
 function ArtistPage() {
     const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
@@ -32,6 +39,12 @@ function ArtistPage() {
                     }
                 })
             }
+            <Field />
+
+
+
+
+
         </div >
     )
 }

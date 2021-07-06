@@ -22,15 +22,19 @@ function List({ vibeId, vibeName }) {
             <div className="font-thin font-serif">
                 #{vibeName}
             </div>
-            {songsOnList && songsOnList.map((song) => (
+            {vibeId && songsOnList && songsOnList.map((song) => (
                 <Song key={song.id} song={song} />
             ))}
+
             <Particles style={{ position: "absolute", color: "red", width: "100%", top: "45px" }}
                 params={{
                     "fps_limit": 12,
                     "particles": {
                         "collisions": {
                             "enable": false
+                        },
+                        "color": {
+                            "value": "random"
                         },
                         "number": {
                             "value": 250,
@@ -59,17 +63,17 @@ function List({ vibeId, vibeName }) {
                     "polygon": {
                         "enable": true,
                         "scale": 0.5,
-                        "type": "inline",
+                        "type": "inside",
                         "move": {
                             "radius": 10
                         },
-                        "url": "https://www.rollingstone.com/wp-content/uploads/2019/10/Drake.jpg",
+                        "url": "../../../../public/drake.svg",
                     },
                     "inline": {
                         "arrangement": "equidistant"
                     },
                     "draw": {
-                        "enable": false,
+                        "enable": true,
                         "stroke": {
                             "color": "rgb(161, 184, 161);"
                         }
@@ -97,6 +101,8 @@ function List({ vibeId, vibeName }) {
                     }
                 }} />
 
+
+
         </div>
     )
 }
@@ -106,4 +112,9 @@ function List({ vibeId, vibeName }) {
 //         <Song song={song} />
 //     ))
 // }
+
+
+
+
+
 export default List

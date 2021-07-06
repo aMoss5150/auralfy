@@ -11,17 +11,22 @@ const NavBar = () => {
 
 
   return (
-    <nav className="navbar mr-6 nav__element headers__colors2">
-      <button onClick={() => setOpen(!open)}> {open ? '-' : '+'}</button>
+    <nav className={`navbar mr-6 nav__element ${colorCtxt === false ? "headers__colors2" : 'headers__colors4'}`}>
+      <button className='ml-2 mt-2' onClick={() => setOpen(!open)}> {open ? '-' : '+'}</button>
       {open &&
         <ul className="flex ">
 
-          <li className="mr-6 nav__element headers__colors2">
+          <li className={`mr-6 nav__element ${colorCtxt === false ? "headers__colors2" : 'headers__colors4'}`}>
             <LogoutButton />
           </li>
         </ul>
       }
-      <button onClick={(colorCtxt) => setColorCtxt(!colorCtxt)} >changeTheme</button>
+      <span className={`ml-6 ${open ? "hidden" : ""}`}>
+        <button onClick={() => setColorCtxt(false)} >green</button>
+      </span>
+      <span className={`ml-6 ${open ? "hidden" : ""}`}>
+        <button onClick={() => setColorCtxt(true)} >red</button>
+      </span>
     </nav>
   );
 }

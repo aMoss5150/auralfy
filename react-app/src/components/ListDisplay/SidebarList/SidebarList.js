@@ -17,7 +17,7 @@ function SidebarList({ vibes }) {
     return (
         <div>
             {vibes.map((vibe) => (
-                <li className='vibe__li headers__colors2  bg-transparent font-bold py-2 px-4 rounded' onClick={() => { return (setVibeIdCtxt(vibe.id), setArtistPageCtxt(false)) }} key={vibe.id}>
+                <li className={`vibe__li ${colorCtxt === false ? "headers__colors2" : "headers__colors3"}  bg-transparent font-bold py-2 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(vibe.id), setArtistPageCtxt(false)) }} key={vibe.id}>
                     #{vibe.name} <br />
                     <button className={`${colorCtxt === false ? 'headers__colors2' : 'headers__colors3'} bg-transparent font-bold py-1 px-14 rounded" onClick={() => dispatch(deleteAVibe(vibe.id))}`}>-del</button>
                 </li>

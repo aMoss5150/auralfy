@@ -26,7 +26,7 @@ function List({ vibeId, vibeName }) {
                 <Song key={song.id} song={song} />
             ))}
 
-            <Particles style={{ position: "absolute", width: "100%", top: "45px", height: "100%", left: "285px" }}
+            <Particles style={{ position: "absolute", width: "100%", top: "45px", height: "100%", left: "224px", cursorEvents: "none" }}
                 params={{
                     "fps_limit": 16,
                     "particles": {

@@ -19,7 +19,6 @@ source.connect(ctx.destination);
 // analyser.connect(ctx.destination)
 // const stream = stream_dest.stream;
 audio.crossOrigin = "anonymous"
-console.log(source);
 
 
 // const canvas = document.querySelector('.canvas__base');

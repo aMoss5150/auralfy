@@ -22,6 +22,7 @@ function ArtistPage() {
     const dispatch = useDispatch()
     let songs = Object.values(useSelector(state => state.songs))
     if (!songs) return null
+    console.log(artistIdCtxt)
     return (
         <div className="artistpage__container">
 

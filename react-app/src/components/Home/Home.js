@@ -7,6 +7,7 @@ import ArtistPage from '../ArtistPage/ArtistPage'
 import ListDisplay from '../ListDisplay/ListDisplay'
 import SidebarList from '../ListDisplay/SidebarList/SidebarList'
 import Player from '../Player/Player'
+import Canvas from '../Canvas/Canvas'
 import { useVibeId } from '../../context/VibeContext'
 import { useArtistPage } from '../../context/ArtistPageContext'
 import { useArtistId } from '../../context/ArtistIdContext'
@@ -33,7 +34,6 @@ function Home() {
             return vibe
         }
     })
-    console.log(vibeIdCtxt)
 
     function handleCreateVibe() {
         dispatch(createAVibe(vibeName))
@@ -59,7 +59,7 @@ function Home() {
     if (!songs) return null
     return (
         <div className="homepage__container">
-
+            <Canvas />
             <div className="sidebar__parent headers__colors">
                 <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
                 <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> View All Vibes</button>

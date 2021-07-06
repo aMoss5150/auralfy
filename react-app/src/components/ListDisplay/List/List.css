@@ -6,3 +6,11 @@
     /* flex-direction: column; */
     /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(19, 121, 9, 1) 35%, rgba(0, 212, 255, 1) 100%); */
 }
+
+.vibe__name__list {
+    position: relative;
+    right: 11px;
+    /* align-self: center; */
+    /* font-style: italic; */
+    /* font-size: large; */
+}

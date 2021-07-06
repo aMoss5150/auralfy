@@ -19,7 +19,7 @@ function List({ vibeId, vibeName }) {
     if (!songsOnList) return null
     return (
         <div className="list__container">
-            <div className="font-thin font-serif">
+            <div className="vibe__name__list font-thin font-serif">
                 #{vibeName}
             </div>
             {vibeId && songsOnList && songsOnList.map((song) => (

@@ -24,7 +24,6 @@ function ListDisplay({ targetVibe }) {
             {targetVibe && targetVibe.map((vibe) => (
                 <List key={vibe.id} vibeId={vibe.id} vibeName={vibe.name} />
             ))}
-
         </ div>
     )
 }

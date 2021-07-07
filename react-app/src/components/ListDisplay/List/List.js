@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useVibeId } from '../../../context/VibeContext'
 import Song from '../Song/Song'
 import Particles from 'react-particles-js'
 import "./List.css"
 
 function List({ vibeId, vibeName }) {
     const dispatch = useDispatch()
+    const { vibeIdCtxt } = useVibeId()
     const songs = Object.values(useSelector(state => state.songs))
     const relations = useSelector(state => state.relations)[0]
     const relation = relations ? relations[vibeId] : null
-    console.log(relations);
     const songsOnList = songs?.filter((song) => {
         if (relation?.includes(song.id)) {
             return song
         }
     })
+    const songsOnList2 = songs?.filter((song) => {
+        if (Object.values(relations).flat()?.includes(song.id)) {
+            return song
+        }
+    })
+    const songsSet = songsOnList ? new Set(songsOnList2) : null
+
+
+    console.log(vibeId);
     if (!vibeId) return null
     if (!songsOnList) return null
     return (
         <div className="list__container">
             <div className="vibe__name__list font-thin font-serif">
-                #{vibeName}
+                #{vibeIdCtxt ? vibeName : "all vibe songs"}
             </div>
-            {vibeId && songsOnList && songsOnList.map((song) => (
-                <Song key={song.id} song={song} />
+            {!vibeIdCtxt && Array.from(songsSet).map((song) => (
+                <Song key={song.id} song={song} title={false} />
+
+            ))}
+            {vibeIdCtxt && vibeId && songsOnList && songsOnList.map((song) => (
+                <Song key={song.id} song={song} title={true} />
             ))}
 
-            <Particles style={{ position: "absolute", width: "100%", top: "45px", height: "100%", left: "224px", cursorEvents: "none" }}
+
+            {vibeIdCtxt && <Particles style={{ position: "absolute", width: "100%", top: "45px", height: "100%", left: "224px", cursorEvents: "none" }}
                 params={{
                     "fps_limit": 16,
                     "particles": {
@@ -99,7 +114,7 @@ function List({ vibeId, vibeName }) {
                             blur: 5
                         },
                     }
-                }} />
+                }} />}
 
 
 

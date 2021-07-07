@@ -35,16 +35,16 @@ const config = {
         // 'rainbow' or 'solid' color of lines
         colorMode: 'solid',
         // Color of lines if colorMode: 'solid', must be hex color
-        color: '#351CCB',
+        color: '#4dff4d',
         // Transparency of lines
-        transparency: 0,
+        transparency: 0.1,
         // true/false limit the maximum number of line connections per particle
-        limitConnections: true,
-        maxConnections: 100,
+        limitConnections: false,
+        maxConnections: 8,
         // Minimum distance needed to draw line between to particles
-        minDistance: 100,
+        minDistance: 200,
         // true/false render lines
-        visible: true,
+        visible: false,
     },
     particles: {
         // 'rainbow' or 'solid' color of particles
@@ -52,7 +52,7 @@ const config = {
         // Color of lines if colorMode: 'solid', must be hex color
         color: '#4dff4d',
         // Transparency of particles
-        transparency: 0.08,
+        transparency: 0.1,
         // 'square' or 'circle' shape of particles
         shape: 'circle',
         // The exact number of particles to render
@@ -70,22 +70,22 @@ const config = {
      *
      * https://threejs.org/docs/#examples/controls/OrbitControls
      */
-    cameraControls: {
-        //     // Enable or disable all camera interaction (click, drag, touch etc)
-        enabled: false,
-        //     // Enable or disable smooth dampening of camera movement
-        //     enableDamping: true,
-        //     dampingFactor: 0.2,
-        //     // Enable or disable zooming in/out of camera
-        //     enableZoom: true,
-        //     // Enable or disable constant rotation of camera around scene
-        // autoRotate: true,
-        //     // Rotation speed -- higher is faster
-        //     autoRotateSpeed: 0.3,
-        //     // If true, camera position will be reset whenever any option changes (including this one)
-        //     // Useful when turning off autoRotate, the camera will return to FOV where scene fits to canvas
-        //     resetCameraFlag: false
-    }
+    // cameraControls: {
+    //     //     // Enable or disable all camera interaction (click, drag, touch etc)
+    //     enabled: false,
+    //     //     // Enable or disable smooth dampening of camera movement
+    //     //     enableDamping: true,
+    //     //     dampingFactor: 0.2,
+    //     //     // Enable or disable zooming in/out of camera
+    //     //     enableZoom: true,
+    //     //     // Enable or disable constant rotation of camera around scene
+    //     // autoRotate: true,
+    //     //     // Rotation speed -- higher is faster
+    //     //     autoRotateSpeed: 0.3,
+    //     //     // If true, camera position will be reset whenever any option changes (including this one)
+    //     //     // Useful when turning off autoRotate, the camera will return to FOV where scene fits to canvas
+    //     //     resetCameraFlag: false
+    // }
 };
 
 export default () => (

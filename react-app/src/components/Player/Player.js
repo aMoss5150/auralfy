@@ -8,26 +8,31 @@ import "./Player.css"
 {/* <Controls /> */ }
 
 let url = "https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP"
+// audio element creation in order to pass to the context
 const audio = new Audio(url);
-// audio.loop = true
-// const audio = (() => <audio autoPlay src={url}></audio>)()
+// context is created to act as an audio graph
 const ctx = new AudioContext();
+// a source is create by passing audio into the context
 const track = ctx.createMediaElementSource(audio)
+// analyser node is create for visualization
 const analyser = ctx.createAnalyser();
+// source and analyser are connected together before redirection to ST OUT
 track.connect(analyser)
 analyser.connect(ctx.destination)
+// allow for insecure requests
 audio.crossOrigin = "anonymous"
+
 // let bufferLength = analyser.frequencyBinCount;
 // let dataArray = new Uint8Array(bufferLength);
 // const stream = stream_dest.stream;
-
 // const out = ctx.destination
 // const stream_dest = ctx.createMediaStreamDestination();
 // const source = ctx.createMediaElementSource(audio);
 // analyser.connect(ctx.destination);
-// 
-// analyser.getByteTimeDomainData(dataArray);
 
+// analyser.getByteTimeDomainData(dataArray);
+// this is dealing with the frequency data rather than time domain data
+//analyser.getByteFrequencyData(dataArray)
 
 // const canvas = document.querySelector('.canvas__base');
 // const canvasCtx = canvas.getContext('2d');
@@ -45,29 +50,41 @@ function Player({ song }) {
 
     useEffect(() => {
         if (PLAY) {
-            // audio.play()
-            ctx.resume()
-            analyser.fftSize = 2048;
+            audio.play()
+            // ctx.resume()
+            analyser.fftSize = 1024;
             var bufferLength = analyser.fftSize;
-            var dataArray = new Uint8Array(bufferLength);
-            let ana = analyser.getByteFrequencyData(dataArray)
+            // bufferLength
+            // the data array is created as a holder
+            var dataArray = new Uint8Array(analyser.frequencyBinCount);
+            // getByte is invoked to fill the data array
+            analyser.getByteFrequencyData(dataArray)
+            setDATA(dataArray)
+            // data is now container about frequency data, this will be used
+            // by the canvas to draw
             console.log(dataArray)
+            // console.log(ana)
+            console.log(DATA)
+            // let ana = analyser.getByteTimeDomainData(dataArray);
 
 
         } if (PAUSE) {
             // audio.pause()
             console.log("audio pause")
         } if (STOP) {
-            // audio.pause()
+            audio.pause()
             // audio.currentTime = 0
             console.log("audio stop")
         }
-
+        // audio.play()
     }, [PLAY, STOP, PAUSE])
+    useEffect(() => {
+
+    }, [DATA])
 
     useEffect(() => {
 
-        audio.play()
+        // audio.play()
 
     }, [])
     return (
@@ -80,6 +97,7 @@ function Player({ song }) {
                         onClick={() => {
                             return (
                                 // console.log('playing'),
+                                // ctx.resume,
                                 setPLAY(true),
                                 setSTOP(false)
                             )
@@ -100,7 +118,7 @@ function Player({ song }) {
                 <MiniVisualizer />
             </div>
             2. End Player Component
-        </div>
+        </div >
     )
 }
 

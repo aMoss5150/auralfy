@@ -32,14 +32,17 @@ function Home() {
         }
     })
 
-    function handleCreateVibe() {
+    function handleCreateVibe(e) {
+        e.preventDefault()
         dispatch(createAVibe(vibeName))
         setVibeName('')
         setCreateOpen(false)
+
     }
 
     function handleDeleteVibe(vibeId) {
         dispatch(deleteAVibe(12))
+
     }
 
     function handleAddSong(songId, vibeId) {
@@ -62,9 +65,10 @@ function Home() {
                 <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> View All Vibes</button>
                 <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => setCreateOpen(true)}>Add a Vibe</button>
                 {createOpen &&
-                    <form action="POST" onSubmit={handleCreateVibe}>
+                    <form action="" onSubmit={(e) => handleCreateVibe(e)}>
                         <input type="text" value={vibeName} onChange={(e) => setVibeName(e.target.value)} />
-                        <button onClick={() => setCreateOpen(false)}>Close</button>
+                        <button type="submit" >Create</button>
+                        <button type="" onClick={() => setCreateOpen(false)}>X</button>
                     </form>}
                 <SidebarList vibes={vibes} />
             </div>

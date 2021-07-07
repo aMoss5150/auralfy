@@ -14,12 +14,22 @@ function SidebarList({ vibes }) {
     const { artistPageCtxt, setArtistPageCtxt } = useArtistPage()
     const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
     let check = null
+
+    function handleDeleteVibe(vibeId) {
+        dispatch(deleteAVibe(vibeId))
+        if (vibeId === vibeIdCtxt) {
+            setVibeIdCtxt(null)
+        }
+    }
+
     return (
         <div>
             {vibes.map((vibe) => (
-                <li className={`vibe__li ${colorCtxt === false ? "headers__colors2" : "headers__colors3"}  bg-transparent font-bold py-2 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(vibe.id), setArtistPageCtxt(false)) }} key={vibe.id}>
-                    #{vibe.name} <br />
-                    <button className={`${colorCtxt === false ? 'headers__colors2' : 'headers__colors3'} bg-transparent font-bold py-1 px-14 rounded" onClick={() => dispatch(deleteAVibe(vibe.id))}`}>-del</button>
+                <li className={`vibe__li ${colorCtxt === false ? "headers__colors2" : "headers__colors3"}  bg-transparent font-bold py-2 px-4 rounded`} key={vibe.id}>
+                    <div onClick={() => { return (setVibeIdCtxt(vibe.id), setArtistPageCtxt(false)) }} >
+                        #{vibe.name} <br />
+                    </div>
+                    <button className={`${colorCtxt === false ? 'headers__colors2' : 'headers__colors3'} bg-transparent font-bold py-1 px-14 rounded`} onClick={() => handleDeleteVibe(vibe.id)}>-del</button>
                 </li>
             ))
             }

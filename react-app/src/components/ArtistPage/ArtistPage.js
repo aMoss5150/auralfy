@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Particles from 'react-particles-js'
 import ParticleField from 'react-particles-webgl';
-import field from './ParticleConfig'
+import Field from './ParticleConfig'
 
 import './ArtistPage.css'
 import { getAllSongs } from "../../store/songs"
@@ -11,7 +11,7 @@ import ArtistSongsPage from './ArtistSongsPage/ArtistSongsPage'
 import { useArtistId } from '../../context/ArtistIdContext'
 
 
-let Field = field
+
 
 
 

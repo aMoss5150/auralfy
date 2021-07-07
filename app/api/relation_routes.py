@@ -22,6 +22,18 @@ def get_all_relations():
     return {"songs": songs, "relations": members_list}
 
 
+@relation_routes.route("/", methods=["POST"])
+def delete_a_relation():
+    vibeId = request.json["vibeId"]
+    songId = request.json["songId"]
+    # gives me all songs with a relation
+    member = VibeMember.query.filter(
+        VibeMember.vibe_id == vibeId and VibeMember.song_id == songId
+    ).first()
+    db.session.delete(member)
+    return "success"
+
+
 # example logic
 # songs = (
 #         db.session.query(Song)

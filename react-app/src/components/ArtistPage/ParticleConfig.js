@@ -89,7 +89,7 @@ const config = {
 };
 
 export default () => (
-    <div style={{ position: "absolute", width: "100%", top: "45px", height: "100%", left: "225px", pointerEvents: "none" }}>
+    <div style={{ position: "absolute", width: "100%", top: "45px", height: "140%", left: "225px", pointerEvents: "none" }}>
         <ParticleField config={config} />
     </div>
 );

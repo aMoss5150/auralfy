@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useVibeId } from '../../../context/VibeContext'
+import { deleteARelation } from '../../../store/relations'
 // import { getAllSongs } from '../../../store/songs'
 // import { getAllVibes } from '../../../store/vibes'
 import './Song.css'
@@ -7,7 +9,13 @@ import './Song.css'
 
 function Song({ song }) {
     const dispatch = useDispatch()
+    const { vibeIdCtxt } = useVibeId()
     const songs = useSelector(state => state.songs)
+
+
+    const handleRemoveSong = (songId) => {
+        dispatch(deleteARelation(vibeIdCtxt, songId))
+    }
 
     useEffect(() => {
         // dispatch()
@@ -24,6 +32,9 @@ function Song({ song }) {
             <div className="songnamealbum font-thin">
                 "{song.artist}" - "{song?.album_name}"
             </div>
+            <button className={`removesong font-medium ${!vibeIdCtxt ? "hidden" : ""}`} onClick={() => handleRemoveSong(song.id)}>
+                -del
+            </button>
 
         </div>
     )

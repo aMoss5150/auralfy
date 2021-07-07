@@ -20,3 +20,8 @@
     border: 3px solid rgb(83, 22, 13);
     font-size: 25px;
 }
+
+#particles {
+    pointer-events: none;
+    z-index: -1;
+}

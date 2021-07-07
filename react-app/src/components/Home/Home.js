@@ -12,17 +12,14 @@ import { useVibeId } from '../../context/VibeContext'
 import { useArtistPage } from '../../context/ArtistPageContext'
 import { useArtistId } from '../../context/ArtistIdContext'
 import { useColor } from '../../context/ColorContext'
-
-
-
 import './Home.css'
 
 function Home() {
     const { vibeIdCtxt, setVibeIdCtxt } = useVibeId()
     const { artistPageCtxt, setArtistPageCtxt } = useArtistPage()
     const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
-    const [createOpen, setCreateOpen] = useState(false)
     const { colorCtxt } = useColor()
+    const [createOpen, setCreateOpen] = useState(false)
     const [vibeName, setVibeName] = useState('')
     const [artistPage, setArtistPage] = useState(true)
     const dispatch = useDispatch()
@@ -49,17 +46,17 @@ function Home() {
         dispatch(addSongToVibe(3, 2))
     }
 
-
     useEffect(() => {
         dispatch(getAllSongs())
         dispatch(getAllVibes())
         dispatch(getAllRelations())
     }, [])
 
+
     if (!songs) return null
     return (
         <div className="homepage__container">
-            <Canvas />
+            {/* <Canvas /> */}
             <div className="sidebar__parent headers__colors">
                 <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
                 <button className={`${colorCtxt === false ? "headers__colors" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> View All Vibes</button>
@@ -83,6 +80,7 @@ function Home() {
         </div >
     )
 }
+
 // <h1 className="text-xl font-bold">hello test</h1>
 // <button onClick={() => handleCreateVibe()}>create a vibe</button>
 // <button onClick={() => handleDeleteVibe()}>delete a vibe</button>

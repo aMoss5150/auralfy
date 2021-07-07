@@ -16,6 +16,7 @@ function Canvas() {
             onClick={e => {
                 const canvas = canvasRef.current
                 const ctx = canvas.getContext('2d')
+                alert(e.clientX)
                 // draw(ctx, { x: e.clientX, y: e.clientY })
             }}
         >

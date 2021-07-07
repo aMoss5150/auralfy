@@ -8,14 +8,15 @@ import "./Player.css"
 {/* <Controls /> */ }
 
 let url = "https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP"
-// const audio = new Audio(url);
+const audio = new Audio(url);
 // audio.loop = true
-const audio = <audio autoPlay src={url}></audio>
+// const audio = (() => <audio autoPlay src={url}></audio>)()
 const ctx = new AudioContext();
 const track = ctx.createMediaElementSource(audio)
 const analyser = ctx.createAnalyser();
+track.connect(analyser)
 analyser.connect(ctx.destination)
-// audio.crossOrigin = "anonymous"
+audio.crossOrigin = "anonymous"
 // let bufferLength = analyser.frequencyBinCount;
 // let dataArray = new Uint8Array(bufferLength);
 // const stream = stream_dest.stream;
@@ -47,11 +48,9 @@ function Player({ song }) {
             // audio.play()
             ctx.resume()
             analyser.fftSize = 2048;
-
             var bufferLength = analyser.fftSize;
-            console.log(bufferLength);
             var dataArray = new Uint8Array(bufferLength);
-            console.log(analyser.getByteFrequencyData(dataArray))
+            let ana = analyser.getByteFrequencyData(dataArray)
             console.log(dataArray)
 
 
@@ -68,9 +67,9 @@ function Player({ song }) {
 
     useEffect(() => {
 
-        // audio.play()
+        audio.play()
 
-    })
+    }, [])
     return (
         <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>2.Player Component
 

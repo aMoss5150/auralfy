@@ -40,8 +40,8 @@ audio.crossOrigin = "anonymous"
 // canvasCtx.fillRect(10, 10, 100, 100);
 function Player({ song }) {
     const { colorCtxt } = useColor()
-    const [PLAY, setPLAY] = useState(true)
-    const [STOP, setSTOP] = useState(true)
+    const [PLAY, setPLAY] = useState(false)
+    const [STOP, setSTOP] = useState(false)
     const [PAUSE, setPAUSE] = useState(false)
     const [LOADING, setLOADING] = useState(true)
     const [URL, setURL] = useState("https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP")
@@ -78,13 +78,11 @@ function Player({ song }) {
         }
         // audio.play()
     }, [PLAY, STOP, PAUSE])
-    useEffect(() => {
 
-    }, [DATA])
 
     useEffect(() => {
 
-        // audio.play()
+        audio.play()
 
     }, [])
     return (

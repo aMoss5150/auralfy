@@ -31,7 +31,7 @@ export const getAllRelations = () => async (dispatch) => {
         }
     })
 
-    dispatch(getRelations(relationObj))
+    await dispatch(getRelations(relationObj))
 }
 
 export const deleteARelation = (vibeId, songId) => async (dispatch) => {

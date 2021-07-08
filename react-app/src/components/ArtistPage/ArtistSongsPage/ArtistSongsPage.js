@@ -52,6 +52,9 @@ function ArtistSongsPage() {
                 </li>
             ))
             }
+            {!openAdder &&
+                <span className="close__btn" onClick={() => { return (setArtistIdCtxt(null)) }}>close</span>
+            }
         </div >
     )
 }

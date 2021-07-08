@@ -27,10 +27,13 @@ def delete_a_relation():
     vibeId = request.json["vibeId"]
     songId = request.json["songId"]
     # gives me all songs with a relation
+    print(vibeId, songId)
     member = VibeMember.query.filter(
-        VibeMember.vibe_id == vibeId and VibeMember.song_id == songId
+        VibeMember.vibe_id == vibeId, VibeMember.song_id == songId
     ).first()
+    print(member)
     length = VibeMember.query.filter(VibeMember.vibe_id == vibeId).count()
+    print(length)
     if length == 1:
         vibe = Vibe.query.filter(Vibe.id == vibeId).first()
         db.session.delete(member)

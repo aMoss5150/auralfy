@@ -17,15 +17,16 @@ function Song({ song }) {
     const songs = useSelector(state => state.songs)
 
 
-    const handleRemoveSong = (songId) => {
-        console.log(vibeIdCtxt, songId);
-        dispatch(deleteARelation(vibeIdCtxt, songId))
+    const handleRemoveSong = async (e, songId) => {
+        e.stopPropagation()
+        await dispatch(deleteARelation(vibeIdCtxt, songId))
+        // .then(() => dispatch(getAllRelations()))
         setChangeCtxt(!changeCtxt)
     }
 
-    useEffect(() => {
-        dispatch(getAllRelations())
-    }, [changeCtxt])
+    // useEffect(() => {
+    //     dispatch(getAllRelations())
+    // }, [])
 
     if (!song) return null
     // if (!vibeId) return null
@@ -38,7 +39,7 @@ function Song({ song }) {
             <div className="songnamealbum font-thin">
                 "{song.artist}" - "{song?.album_name}"
             </div>
-            <button className={`removesong font-medium ${!vibeIdCtxt ? "hidden" : ""}`} onClick={() => handleRemoveSong(song.id)}>
+            <button className={`removesong font-medium ${!vibeIdCtxt ? "hidden" : ""}`} onClick={(e) => { return (handleRemoveSong(e, song.id), setChangeCtxt(!changeCtxt)) }}>
                 -del
             </button>
 

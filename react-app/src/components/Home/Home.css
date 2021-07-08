@@ -18,7 +18,7 @@
     align-items: center;
     margin-top: 44px;
     position: fixed;
-    overflow-x: scroll;
+    /* overflow-y: scroll; */
     /* left: 0px; */
 }
 

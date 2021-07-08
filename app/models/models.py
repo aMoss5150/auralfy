@@ -51,7 +51,9 @@ class Song(db.Model, Base):
     valence = db.Column(db.Numeric(asdecimal=False), nullable=False)
     tempo = db.Column(db.Numeric(asdecimal=False), nullable=False)
 
-    vibes = db.relationship("VibeMember", back_populates="song")
+    vibes = db.relationship(
+        "VibeMember", back_populates="song", cascade="all, delete-orphan"
+    )
 
     def to_dict(self):
         return {

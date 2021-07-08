@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request, jsonify
 from app.models import db, Song, Vibe, VibeMember
 
 relation_routes = Blueprint("relations", __name__)
@@ -22,7 +22,7 @@ def get_all_relations():
     return {"songs": songs, "relations": members_list}
 
 
-@relation_routes.route("/", methods=["POST"])
+@relation_routes.route("/", methods=["DELETE"])
 def delete_a_relation():
     vibeId = request.json["vibeId"]
     songId = request.json["songId"]
@@ -30,8 +30,35 @@ def delete_a_relation():
     member = VibeMember.query.filter(
         VibeMember.vibe_id == vibeId and VibeMember.song_id == songId
     ).first()
+    length = VibeMember.query.filter(VibeMember.vibe_id == vibeId).count()
+    if length == 1:
+        vibe = Vibe.query.filter(Vibe.id == vibeId).first()
+        db.session.delete(member)
+        db.session.delete(vibe)
+        db.session.commit()
+        return jsonify("success")
+
     db.session.delete(member)
-    return "success"
+    db.session.commit()
+    return jsonify("success")
+
+
+@relation_routes.route("/", methods=["POST"])
+def create_a_relation():
+    songId = request.json["songId"]
+    vibeId = request.json["vibeId"]
+    # gives me all songs with a relation
+
+    # length = VibeMember.query.filter(
+    #     VibeMember.vibe_id == vibeId and VibeMember.song_id == songId
+    # ).count()
+    # if length == 1:
+    #     return jsonify("already in vibe")
+
+    new_member = VibeMember(song_id=songId, vibe_id=vibeId)
+    db.session.add(new_member)
+    db.session.commit()
+    return jsonify("success")
 
 
 # example logic

@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useVibeId } from '../../../context/VibeContext'
-import { deleteARelation } from '../../../store/relations'
+import { deleteARelation, getAllRelations } from '../../../store/relations'
+import { useChange } from '../../../context/ChangeContext'
+
 // import { getAllSongs } from '../../../store/songs'
 // import { getAllVibes } from '../../../store/vibes'
 import './Song.css'
 
 
 function Song({ song }) {
+    const [changed, setChanged] = useState(false)
+    const { changeCtxt, setChangeCtxt } = useChange()
     const dispatch = useDispatch()
     const { vibeIdCtxt } = useVibeId()
     const songs = useSelector(state => state.songs)
 
 
     const handleRemoveSong = (songId) => {
+        console.log(vibeIdCtxt, songId);
         dispatch(deleteARelation(vibeIdCtxt, songId))
+        setChangeCtxt(!changeCtxt)
     }
 
     useEffect(() => {
-        // dispatch()
-    }, [])
+        dispatch(getAllRelations())
+    }, [changeCtxt])
 
     if (!song) return null
     // if (!vibeId) return null

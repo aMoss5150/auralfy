@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllVibes } from '../../store/vibes'
+import { getAllRelations } from '../../store/relations'
 import { useColor } from '../../context/ColorContext'
+import { useChange } from '../../context/ChangeContext'
 import List from '../ListDisplay/List/List'
 import Particles from 'react-particles-js'
 import './ListDisplay.css'
@@ -11,13 +13,13 @@ import './ListDisplay.css'
 function ListDisplay({ targetVibe }) {
     const dispatch = useDispatch()
     const { colorCtxt } = useColor()
+    const { changeCtxt } = useChange()
     const vibes = Object.values(useSelector(state => state.vibes))
-    console.log(vibes)
 
-    // useEffect(() => {
-    //     dispatch(getAllVibes())
-    // }, [])
-
+    useEffect(async () => {
+        dispatch(getAllVibes())
+        dispatch(getAllRelations())
+    }, [changeCtxt])
     if (!targetVibe) return null
     if (!vibes) return null
     return (

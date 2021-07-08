@@ -1,6 +1,6 @@
 // actions
 const GET_RELATIONS = "relations/GET_RELATIONS"
-const DEL_RELATION = "relations/DEL_RELATION"
+
 
 // action creators
 const getRelations = (relations) => ({
@@ -35,20 +35,35 @@ export const getAllRelations = () => async (dispatch) => {
 }
 
 export const deleteARelation = (vibeId, songId) => async (dispatch) => {
-    let body = JSON.stringify({ vibeId, songId })
-    let del = await fetch('/api/vibes/', {
+    let body = JSON.stringify({ "vibeId": vibeId, "songId": songId })
+    let del = await fetch('/api/relations/', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
         },
         body: body,
     })
-    del = del.json()
+    del = await del.json()
     if (del.errors) {
         return
     }
+    // await dispatch(getAllRelations())
+}
 
-    dispatch(getAllRelations())
+export const createARelation = (vibeId, songId) => async (dispatch) => {
+    let body = JSON.stringify({ "vibeId": vibeId, "songId": songId })
+    let post = await fetch('/api/relations/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: body,
+    })
+    post = await post.json()
+    if (post.errors) {
+        return
+    }
+    // await dispatch(getAllRelations())
 }
 
 // initial state
@@ -60,7 +75,7 @@ let initialState = []
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_RELATIONS: {
-            const newState = [...state, action.payload]
+            const newState = [action.payload]
             return newState
         }
         default:

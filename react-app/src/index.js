@@ -7,6 +7,7 @@ import { VibeIdProvider } from './context/VibeContext'
 import { ArtistPageProvider } from './context/ArtistPageContext'
 import { ArtistIdProvider } from './context/ArtistIdContext'
 import { ColorProvider } from './context/ColorContext'
+import { ChangeProvider } from './context/ChangeContext'
 import configureStore from './store'
 
 const store = configureStore()
@@ -15,13 +16,15 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ColorProvider>
-        <ArtistPageProvider>
-          <ArtistIdProvider>
-            <VibeIdProvider>
-              <App />
-            </VibeIdProvider>
-          </ArtistIdProvider>
-        </ArtistPageProvider>
+        <ChangeProvider>
+          <ArtistPageProvider>
+            <ArtistIdProvider>
+              <VibeIdProvider>
+                <App />
+              </VibeIdProvider>
+            </ArtistIdProvider>
+          </ArtistPageProvider>
+        </ChangeProvider>
       </ColorProvider>
     </Provider>
   </React.StrictMode>,

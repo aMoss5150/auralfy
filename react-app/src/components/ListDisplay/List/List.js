@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useVibeId } from '../../../context/VibeContext'
 import Song from '../Song/Song'
+import { getAllRelations } from '../../../store/relations'
 import Particles from 'react-particles-js'
 import "./List.css"
 
@@ -23,8 +24,10 @@ function List({ vibeId, vibeName }) {
     })
     const songsSet = songsOnList ? new Set(songsOnList2) : null
 
+    useEffect(() => {
+        dispatch(getAllRelations())
+    }, [])
 
-    console.log(vibeId);
     if (!vibeId) return null
     if (!songsOnList) return null
     return (

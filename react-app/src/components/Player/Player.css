@@ -2,8 +2,21 @@
     /* box-shadow: 1px 1px 1px 2px rgba(101, 167, 104, 0.1); */
     /* border: 1px solid lightcoral */
     /* display: flex; */
+    /* position: fixed; */
 }
 
 .controls__parent {}
 
 .minivis__parent {}
+
+.play__button {
+    position: fixed;
+    bottom: 10px;
+    left: 48vw
+}
+
+.stop__button {
+    position: fixed;
+    bottom: 10px;
+    left: 52vw
+}

@@ -324,6 +324,7 @@ def seed_songs():
     db.session.add(f)
     db.session.add(g)
     db.session.add(h)
+    db.session.add(i)
     db.session.add(j)
     db.session.add(k)
     db.session.add(l)

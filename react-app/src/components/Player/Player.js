@@ -7,20 +7,21 @@ import Sound from 'react-hifi'
 import "./Player.css"
 {/* <Controls /> */ }
 
-let url = "https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP"
-// audio element creation in order to pass to the context
-const audio = new Audio(url);
-// context is created to act as an audio graph
-const ctx = new AudioContext();
-// a source is create by passing audio into the context
-const track = ctx.createMediaElementSource(audio)
-// analyser node is create for visualization
-const analyser = ctx.createAnalyser();
-// source and analyser are connected together before redirection to ST OUT
-track.connect(analyser)
-analyser.connect(ctx.destination)
-// allow for insecure requests
-audio.crossOrigin = "anonymous"
+// // let url = "https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP"
+// let url = "https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"
+// // audio element creation in order to pass to the context
+// const audio = new Audio(url);
+// audio.crossOrigin = "anonymous"
+// // context is created to act as an audio graph
+// const ctx = new AudioContext();
+// // a source is create by passing audio into the context
+// const track = ctx.createMediaElementSource(audio)
+// // analyser node is create for visualization
+// const analyser = ctx.createAnalyser();
+// // source and analyser are connected together before redirection to ST OUT
+// track.connect(analyser)
+// analyser.connect(ctx.destination)
+// // allow for insecure requests
 
 // let bufferLength = analyser.frequencyBinCount;
 // let dataArray = new Uint8Array(bufferLength);
@@ -40,6 +41,7 @@ audio.crossOrigin = "anonymous"
 // canvasCtx.fillRect(10, 10, 100, 100);
 function Player({ song }) {
     const { colorCtxt } = useColor()
+    const [playerLoaded, setPlayerLoaded] = useState(false)
     const [PLAY, setPLAY] = useState(false)
     const [STOP, setSTOP] = useState(false)
     const [PAUSE, setPAUSE] = useState(false)
@@ -51,19 +53,19 @@ function Player({ song }) {
     useEffect(() => {
         if (PLAY) {
             audio.play()
-            // ctx.resume()
-            analyser.fftSize = 1024;
-            var bufferLength = analyser.fftSize;
-            // bufferLength
-            // the data array is created as a holder
-            var dataArray = new Uint8Array(analyser.frequencyBinCount);
-            // getByte is invoked to fill the data array
-            analyser.getByteFrequencyData(dataArray)
-            setDATA(dataArray)
-            // data is now container about frequency data, this will be used
-            // by the canvas to draw
-            console.log(dataArray)
-            console.log(DATA)
+            // // ctx.resume()
+            // analyser.fftSize = 1024;
+            // var bufferLength = analyser.fftSize;
+            // // bufferLength
+            // // the data array is created as a holder
+            // var dataArray = new Uint8Array(analyser.frequencyBinCount);
+            // // getByte is invoked to fill the data array
+            // analyser.getByteFrequencyData(dataArray)
+            // setDATA(dataArray)
+            // // data is now container about frequency data, this will be used
+            // // by the canvas to draw
+            // console.log(dataArray)
+            // console.log(DATA)
             // console.log(ana)
 
             // let ana = analyser.getByteTimeDomainData(dataArray);
@@ -82,10 +84,35 @@ function Player({ song }) {
 
 
     useEffect(() => {
+        let ctx
+        if (playerLoaded) {
+            // let url = "https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP"
+            let url = "https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"
+            // audio element creation in order to pass to the context
+            const audio = new Audio(url);
+            audio.crossOrigin = "anonymous"
+            // context is created to act as an audio graph
+            ctx = new AudioContext();
+            // a source is create by passing audio into the context
+            const track = ctx.createMediaElementSource(audio)
+            // analyser node is create for visualization
+            const analyser = ctx.createAnalyser();
+            // source and analyser are connected together before redirection to ST OUT
+            track.connect(analyser)
+            analyser.connect(ctx.destination)
+            // allow for insecure requests
+        }
+        if (!playerLoaded) {
+            ctx.destroy()
+        }
+    }, [playerLoaded])
 
-        // audio.play()
 
+    useEffect(() => {
+        setPlayerLoaded(true)
+        return () => setPlayerLoaded(false)
     }, [])
+    if (!playerLoaded) return null
     return (
         <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>2.Player Component
 

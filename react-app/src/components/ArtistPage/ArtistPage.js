@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Particles from 'react-particles-js'
 import ParticleField from 'react-particles-webgl';
-import Field from './ParticleConfig'
+import Field, { config } from './ParticleConfig'
+// import { THREE } from 'three'
+
 
 import './ArtistPage.css'
 import { getAllSongs } from "../../store/songs"
@@ -21,8 +23,12 @@ function ArtistPage() {
     let currentArtist
     const dispatch = useDispatch()
     let songs = Object.values(useSelector(state => state.songs))
+    // useEffect(() => {
+    //     return () => ParticleField.destroy()
+    // }, [])
     if (!songs) return null
     console.log(artistIdCtxt)
+
     return (
         <div className="artistpage__container">
 
@@ -40,11 +46,10 @@ function ArtistPage() {
                     }
                 })
             }
+
+
+
             <Field />
-
-
-
-
 
         </div >
     )

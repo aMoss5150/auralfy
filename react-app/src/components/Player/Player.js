@@ -63,8 +63,9 @@ function Player({ song }) {
             // data is now container about frequency data, this will be used
             // by the canvas to draw
             console.log(dataArray)
-            // console.log(ana)
             console.log(DATA)
+            // console.log(ana)
+
             // let ana = analyser.getByteTimeDomainData(dataArray);
 
 
@@ -82,7 +83,7 @@ function Player({ song }) {
 
     useEffect(() => {
 
-        audio.play()
+        // audio.play()
 
     }, [])
     return (
@@ -98,6 +99,7 @@ function Player({ song }) {
                                 // ctx.resume,
                                 setPLAY(true),
                                 setSTOP(false)
+
                             )
                         }}
                     > PLAY</button>
@@ -110,6 +112,14 @@ function Player({ song }) {
                             )
                         }}
                     > STOP</button>
+                    <button onClick={() => {
+                        var dataArray = new Uint8Array(analyser.frequencyBinCount)
+                        analyser.getByteFrequencyData(dataArray)
+                        setDATA(dataArray)
+                        return (
+                            console.log(DATA)
+                        )
+                    }}>check</button>
                 </div>
             </div>
             <div className='minivis__parent'>

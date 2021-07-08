@@ -6,7 +6,7 @@ import ParticleField from 'react-particles-webgl';
  *
  * Any option passed in via props will overwrite the default config
  */
-const config = {
+export const config = {
     // Display reference cube, useful for orienting the field
     showCube: false,
     // '2D' or '3D' particle field

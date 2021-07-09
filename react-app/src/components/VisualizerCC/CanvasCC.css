@@ -1,8 +1,37 @@
 .visualizer__skin {
-    position: fixed;
-    bottom: "540px";
+    /* display: flex; */
+    /* position: fixed; */
+    /* bottom: "540px"; */
     pointer-events: none;
     /* z-index: -1; */
     /* width: "100px"; */
     /* height: "1000px"; */
+}
+
+.toggle__play {
+    position: fixed;
+    bottom: 80px;
+    left: 50vw;
+    pointer-events: all;
+    margin: 0 auto;
+    z-index: 6;
+    opacity: 1;
+    /* color: red; */
+}
+
+.stop__button {
+    position: fixed;
+    bottom: 140px;
+    left: 50vw;
+    pointer-events: all;
+    margin: 0 auto;
+    z-index: 6;
+    opacity: 1;
+    /* color: red */
+}
+
+.canvas__skin {
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
 }

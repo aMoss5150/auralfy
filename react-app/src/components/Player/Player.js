@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import MiniVisualizer from './MiniVisualizer/MiniVisualizer'
 import Controls from './Controls/Controls'
 import Canvas from '../Canvas/Canvas'
-import Visualizer from '../VisualizerCC/index'
+
 import { useColor } from '../../context/ColorContext'
 import Sound, {
     Osciloscope, BasicControls
@@ -10,21 +10,24 @@ import Sound, {
 import "./Player.css"
 {/* <Controls /> */ }
 
-// let url = "https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP"
-let url = "https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"
-// audio element creation in order to pass to the context
-const audio = new Audio(url);
-audio.crossOrigin = "anonymous"
-// context is created to act as an audio graph
-const ctx = new AudioContext();
-// a source is create by passing audio into the context
-const track = ctx.createMediaElementSource(audio)
-// analyser node is create for visualization
-const analyser = ctx.createAnalyser();
-// source and analyser are connected together before redirection to ST OUT
-track.connect(analyser)
-analyser.connect(ctx.destination)
-// allow for insecure requests
+// // let url = "https://sampler-dev.s3.us-west-1.amazonaws.com/2xoho3yDpD9wHkMPBBk7cwWP"
+// // Joss I got the
+// let url = "https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"
+// // drake no tellin
+// // let url = "https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"
+// // audio element creation in order to pass to the context
+// const audio = new Audio(url);
+// audio.crossOrigin = "anonymous"
+// // context is created to act as an audio graph
+// const ctx = new AudioContext();
+// // a source is create by passing audio into the context
+// const track = ctx.createMediaElementSource(audio)
+// // analyser node is create for visualization
+// const analyser = ctx.createAnalyser();
+// // source and analyser are connected together before redirection to ST OUT
+// track.connect(analyser)
+// analyser.connect(ctx.destination)
+// // allow for insecure requests
 
 
 function Player({ song }) {
@@ -43,33 +46,33 @@ function Player({ song }) {
     const canvasElement = useRef();
     let cCtx;
 
-    const handleDataViz = (DATA) => {
-        if (!cCtx) {
-            cCtx = canvasElement.current.getContext('2d');
-        }
+    // const handleDataViz = (DATA) => {
+    //     if (!cCtx) {
+    //         cCtx = canvasElement.current.getContext('2d');
+    //     }
 
-        cCtx.fillStyle = 'white';
-        cCtx.fillRect(0, 0, canvasElement.current.width, canvasElement.current.height);
+    //     cCtx.fillStyle = 'white';
+    //     cCtx.fillRect(0, 0, canvasElement.current.width, canvasElement.current.height);
 
-        cCtx.lineWidth = 2;
-        cCtx.strokeStyle = 'blue';
+    //     cCtx.lineWidth = 2;
+    //     cCtx.strokeStyle = 'blue';
 
-        cCtx.beginPath();
+    //     cCtx.beginPath();
 
-        const [x, y] = DATA.pop();
-        cCtx.moveTo(x, y);
+    //     const [x, y] = DATA.pop();
+    //     cCtx.moveTo(x, y);
 
-        DATA.forEach(([x, y]) => cCtx.lineTo(x, y));
+    //     DATA.forEach(([x, y]) => cCtx.lineTo(x, y));
 
-        cCtx.lineTo(canvasElement.current.width, canvasElement.current.height / 2);
-        cCtx.stroke();
-    };
+    //     cCtx.lineTo(canvasElement.current.width, canvasElement.current.height / 2);
+    //     cCtx.stroke();
+    // };
 
 
     return (
         <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>2.Player Component
 
-            <Visualizer songFile={URL} style={{ width: '100%', height: '500px', position: "fixed", bottom: "400px" }} />
+
 
             <div className="player__parent">
                 {/* <div className="controls__parent">

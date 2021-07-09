@@ -32,6 +32,15 @@
     /* left: 1px; */
 }
 
+.backvis__parent {
+    position: fixed;
+    height: "300px;";
+    /* z-index: 0; */
+    pointer-events: none;
+    bottom: 50px;
+    width: 100%;
+}
+
 .player__parent {
     /* color: green; */
     grid-area: player;
@@ -41,7 +50,7 @@
     width: 100vw;
     /* background-color: rgb(31, 30, 30); */
     background-color: rgb(24, 26, 24);
-    z-index: 0;
+    z-index: 1;
     /* box-shadow: 1px 1px 2px 5px; */
     /* background: linear-gradient(90deg, rgb(10, 15, 9) 0%, rgb(26, 21, 21) 35%, rgb(13, 20, 12) 100%); */
 }

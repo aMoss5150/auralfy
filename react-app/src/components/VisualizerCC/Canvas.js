@@ -28,7 +28,14 @@ class Canvas extends Component {
         this.analyser.connect(this.context.destination);
         this.frequency_array = new Uint8Array(this.analyser.frequencyBinCount);
         this.rafId = requestAnimationFrame(this.tick);
-        this.audio.play()
+        console.log(this.context);
+        // this.audio.play()
+    }
+    componentWillUnmount() {
+        console.log("player unmounting")
+        return window.audioContext.destroy()
+        // this.context.destroy()
+        // this.audio = null
     }
 
     tick = () => {
@@ -83,11 +90,11 @@ class Canvas extends Component {
 
     drawBar(x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) {
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        gradient.addColorStop(0, "rgba(0, 156, 126, 1)");
-        gradient.addColorStop(1, "rgba(0, 83, 51, 1)");
+        gradient.addColorStop(0, "rgba(161, 184, 166, 1)");
+        gradient.addColorStop(1, "rgba(161, 198, 167, 1)");
         ctx.fillStyle = gradient;
 
-        const lineColor = "rgb(" + frequency / 2 + ", " + 156 + ", " + 175 + ")";
+        const lineColor = "rgb(" + frequency / 2 + ", " + 184 + ", " + 161 + ")";
         ctx.strokeStyle = lineColor;
         ctx.lineWidth = bar_width;
         ctx.beginPath();
@@ -96,8 +103,18 @@ class Canvas extends Component {
         ctx.stroke();
     }
 
-    togglePlay() {
-
+    togglePlay(stop) {
+        if (stop) {
+            console.log("stop ran");
+            console.log(this.context);
+            this.audio.pause();
+            // this.render()
+            this.forceUpdate();
+            this.audio.load()
+            // this.audio.play()
+            // this.audio.position = 0;
+            return
+        }
         if (this.audio.paused) {
             this.audio.play();
             this.rafId = requestAnimationFrame(this.tick);
@@ -108,9 +125,11 @@ class Canvas extends Component {
     }
 
     render() {
+        if (!this.audio) return null
         return (<>
-            <canvas className="visualizer__skin" ref={this.canvas} />
-            <button onClick={() => this.togglePlay()}>Play/Pause</button>
+            <button className="toggle__play headers__colors2" onClick={() => this.togglePlay()}>Play/Pause</button>
+            <button className="stop__button headers__colors2" onClick={() => this.togglePlay("stop")}>Stop</button>
+            <canvas className="canvas__skin" ref={this.canvas} />
         </>);
     }
 }

@@ -12,17 +12,22 @@ import { useVibeId } from '../../context/VibeContext'
 import { useArtistPage } from '../../context/ArtistPageContext'
 import { useArtistId } from '../../context/ArtistIdContext'
 import { useColor } from '../../context/ColorContext'
+import { usePlay } from '../../context/PlayContext'
+import Visualizer from '../VisualizerCC/index'
 import './Home.css'
 
 function Home() {
     const { vibeIdCtxt, setVibeIdCtxt } = useVibeId()
     const { artistPageCtxt, setArtistPageCtxt } = useArtistPage()
     const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
+    const { playCtxt, setPlayCtxt } = usePlay()
     const { colorCtxt } = useColor()
     const [createOpen, setCreateOpen] = useState(false)
     const [vibeName, setVibeName] = useState('')
     const [artistPage, setArtistPage] = useState(true)
+    const [homeLoaded, setHomeLoaded] = useState(false)
     const dispatch = useDispatch()
+    const [URL, setURL] = useState("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3")
     let songs = Object.values(useSelector(state => state.songs))
     let vibes = Object.values(useSelector(state => state.vibes))
 
@@ -50,12 +55,20 @@ function Home() {
     }
 
     useEffect(() => {
+        setHomeLoaded(false)
+        setHomeLoaded(true)
+    }, [playCtxt])
+
+    useEffect(() => {
         dispatch(getAllSongs())
         dispatch(getAllVibes())
         dispatch(getAllRelations())
+        setHomeLoaded(true)
+        return () => setHomeLoaded(false)
     }, [])
 
 
+    if (!homeLoaded) return null
     if (!songs) return null
     return (
         <div className="homepage__container">
@@ -77,6 +90,11 @@ function Home() {
                 {artistPageCtxt && <ArtistPage />}
                 {!artistPageCtxt && vibes && <ListDisplay targetVibe={vibeIdCtxt === null ? vibes : targetVibe} />}
             </div>
+            <div className="backvis__parent">
+                {homeLoaded && <Visualizer songFile={playCtxt} />
+                }
+            </div>
+
             <div className='player__parent'>
                 <Player />
             </div>

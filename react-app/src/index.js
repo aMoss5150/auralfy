@@ -7,6 +7,7 @@ import { VibeIdProvider } from './context/VibeContext'
 import { ArtistPageProvider } from './context/ArtistPageContext'
 import { ArtistIdProvider } from './context/ArtistIdContext'
 import { ColorProvider } from './context/ColorContext'
+import { PlayProvider } from './context/PlayContext'
 import { ChangeProvider } from './context/ChangeContext'
 import configureStore from './store'
 
@@ -16,15 +17,17 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ColorProvider>
-        <ChangeProvider>
-          <ArtistPageProvider>
-            <ArtistIdProvider>
-              <VibeIdProvider>
-                <App />
-              </VibeIdProvider>
-            </ArtistIdProvider>
-          </ArtistPageProvider>
-        </ChangeProvider>
+        <PlayProvider>
+          <ChangeProvider>
+            <ArtistPageProvider>
+              <ArtistIdProvider>
+                <VibeIdProvider>
+                  <App />
+                </VibeIdProvider>
+              </ArtistIdProvider>
+            </ArtistPageProvider>
+          </ChangeProvider>
+        </PlayProvider>
       </ColorProvider>
     </Provider>
   </React.StrictMode>,

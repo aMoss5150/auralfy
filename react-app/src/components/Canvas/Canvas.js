@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import Sound, { pluginFactory, plugins } from 'react-hifi';
 
 import "./Canvas.css"
-console.log(Sound)
 
 
 function Canvas() {

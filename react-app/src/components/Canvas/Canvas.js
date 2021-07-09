@@ -12,7 +12,7 @@ function Canvas() {
             className="canvas__base"
             ref={canvasRef}
             width={window.innerWidth / 2}
-            height={window.innerHeight / 4}
+            height={window.innerHeight / 2}
             onClick={e => {
                 const canvas = canvasRef.current
                 const ctx = canvas.getContext('2d')

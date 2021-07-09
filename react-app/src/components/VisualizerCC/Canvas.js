@@ -14,7 +14,7 @@ center_y = height / 2;
 
 class Canvas extends Component {
     constructor({ songFile }) {
-        super(songFile);
+        super({ songFile });
         this.audio = new Audio(songFile)
         this.audio.crossOrigin = "anonymous";
         this.canvas = React.createRef()
@@ -97,14 +97,16 @@ class Canvas extends Component {
     }
 
     togglePlay() {
+
         if (this.audio.paused) {
             this.audio.play();
             this.rafId = requestAnimationFrame(this.tick);
         } else {
-            this.audio.paused();
+            this.audio.pause();
             cancelAnimationFrame(this.rafId);
         }
     }
+
     render() {
         return (<>
             <canvas className="visualizer__skin" ref={this.canvas} />

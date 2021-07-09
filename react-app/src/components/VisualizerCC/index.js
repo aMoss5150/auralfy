@@ -4,9 +4,7 @@ import "./CanvasCC.css"
 
 const Visualizer = ({ songFile }) => {
     return <div className="visualizer__skin">
-        <header className="App-header">
-            <Canvas songFile={songFile} />
-        </header>
+        <Canvas songFile={songFile} />
     </div>
 }
 

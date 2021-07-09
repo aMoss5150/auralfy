@@ -68,28 +68,11 @@ function Player({ song }) {
 
     return (
         <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>2.Player Component
-            <Sound
-                url={URL}
-                playStatus={STATUS}
-                position={POSITION}
-                onFinishedPlaying={() => setSTATUS("STOPPED")}
-                onLoad={() => setLOADING(false)}
-                onLoading={() => setLOADING(true)}
-                onPlaying={data => setDATA(data)}
-            />
 
-            <Osciloscope
-                onVisualisationData={() => handleDataViz(DATA)}
-                height={canvasElement.current && canvasElement.current.height}
-                width={canvasElement.current && canvasElement.current.width}
-            />
+            <Visualizer songFile={URL} style={{ width: '100%', height: '500px', position: "fixed", bottom: "400px" }} />
 
-            {/* <Visualizer songFile={URL} style={{ width: '100%', height: '100px', poition: "fixed", bottom: "100px" }} /> */}
-            <div>
-                <canvas style={{ width: '100%', height: '100px' }} ref={canvasElement} />
-            </div>
             <div className="player__parent">
-                <div className="controls__parent">
+                {/* <div className="controls__parent">
                     controls
                     <button className="play__button controls__parent"
                         onClick={() => setSTATUS('PLAYING')}
@@ -105,11 +88,9 @@ function Player({ song }) {
                             console.log(DATA)
                         )
                     }}>check</button>
-                </div>
+                </div> */}
             </div>
-            <div className='minivis__parent'>
-                <MiniVisualizer />
-            </div>
+
             2. End Player Component
         </div >
     )
@@ -122,6 +103,27 @@ function Player({ song }) {
     duration={DURATION}
     position={POSITION}
     onTimeChange={e => setPOSITION(e.target.value)}
-/> */}
+/>  */}
+//  <Sound
+//             url={URL}
+//             playStatus={STATUS}
+//             position={POSITION}
+//             onFinishedPlaying={() => setSTATUS("STOPPED")}
+//             onLoad={() => setLOADING(false)}
+//             onLoading={() => setLOADING(true)}
+//             onPlaying={data => setDATA(data)}
+//         />
+
+//         <Osciloscope
+//             onVisualisationData={() => handleDataViz(DATA)}
+//             height={canvasElement.current && canvasElement.current.height}
+//             width={canvasElement.current && canvasElement.current.width}
+//         />
+
+
+//   <div>
+{/* <canvas style={{ width: '100%', height: '100px' }} ref={canvasElement} /> */ }
+// </div >
+
 
 export default Player

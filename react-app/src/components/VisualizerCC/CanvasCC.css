@@ -1,4 +1,8 @@
 .visualizer__skin {
-    width: "100px";
-    height: "100px";
+    position: fixed;
+    bottom: "540px";
+    pointer-events: none;
+    /* z-index: -1; */
+    /* width: "100px"; */
+    /* height: "1000px"; */
 }

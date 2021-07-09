@@ -3,6 +3,8 @@
     /* border: 1px solid lightcoral */
     /* display: flex; */
     /* position: fixed; */
+    height: 70px;
+    z-index: 6;
 }
 
 .controls__parent {}
@@ -12,7 +14,7 @@
 .play__button {
     position: fixed;
     bottom: 10px;
-    left: 48vw
+    left: 48vw;
 }
 
 .stop__button {

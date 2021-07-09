@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import MiniVisualizer from './MiniVisualizer/MiniVisualizer'
 import Controls from './Controls/Controls'
 import Canvas from '../Canvas/Canvas'
-import Visualizer from '../VisualizerCC/index'
 import { useColor } from '../../context/ColorContext'
 import Sound, {
     Osciloscope, BasicControls
@@ -84,7 +83,7 @@ function Player({ song }) {
                 width={canvasElement.current && canvasElement.current.width}
             />
 
-            <Visualizer songFile={URL} style={{ width: '100%', height: '100px', poition: "fixed", bottom: "100px" }} />
+
             <div>
                 <canvas style={{ width: '100%', height: '100px' }} ref={canvasElement} />
             </div>

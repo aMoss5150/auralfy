@@ -50,6 +50,8 @@ class Song(db.Model, Base):
     mode = db.Column(db.Integer, nullable=False)
     valence = db.Column(db.Numeric(asdecimal=False), nullable=False)
     tempo = db.Column(db.Numeric(asdecimal=False), nullable=False)
+    link = db.Column(db.String(500), nullable=False)
+    image = db.Column(db.String(500), nullable=False)
 
     vibes = db.relationship("VibeMember")
 
@@ -67,6 +69,8 @@ class Song(db.Model, Base):
             "mode": self.mode,
             "valence": self.valence,
             "tempo": self.tempo,
+            "link": self.link,
+            "image": self.image,
         }
 
     def __repr__(self):

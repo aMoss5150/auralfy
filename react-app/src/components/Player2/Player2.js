@@ -1,13 +1,15 @@
 import React, { useState, useRef } from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Sound } from 'sound';
-import { Osciloscope } from 'plugins';
-import {
-    BasicControls,
-    barChartConfig
-} from 'player';
 
-const Player2 = () => {
+import Sound, {
+    Osciloscope,
+    Volume,
+    Equalizer
+} from 'react-hifi'
+
+import { usePlay } from '../../context/PlayContext'
+
+export default function Player2() {
+    const { playCtxt } = usePlay()
     const [state, setState] = useState({
         status: Sound.status.PAUSED,
         loading: false,
@@ -22,11 +24,11 @@ const Player2 = () => {
             ctx = canvasElement.current.getContext('2d');
         }
 
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'rgba(36, 43, 37, 0.7)';
         ctx.fillRect(0, 0, canvasElement.current.width, canvasElement.current.height);
 
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = 'green';
+        ctx.lineWidth = 1.3;
+        ctx.strokeStyle = 'rgba(161, 184, 161, 0.6)';
 
         ctx.beginPath();
 
@@ -35,14 +37,14 @@ const Player2 = () => {
 
         data.forEach(([x, y]) => ctx.lineTo(x, y));
 
-        ctx.lineTo(canvasElement.current.width, canvasElement.current.height / 2);
+        ctx.lineTo(canvasElement.current.width, canvasElement.current.height / 4);
         ctx.stroke();
     };
 
     return (
         <div>
             <Sound
-                url="demo.mp3"
+                url={playCtxt}
                 playStatus={state.status}
                 position={state.position}
                 onFinishedPlaying={() => setState({ ...state, status: Sound.status.STOPPED })}
@@ -55,19 +57,24 @@ const Player2 = () => {
                     height={canvasElement.current && canvasElement.current.height}
                     width={canvasElement.current && canvasElement.current.width}
                 />
+                {/* <Equalizer /> */}
+                <Volume value={80} />
+                <button onClick={() => setState({ ...state, status: Sound.status.PLAYING })}>PLAY</button>
+                {/* <button onCLick={() => setState({ ...state, status: Sound.status.PAUSED })}> PAUSE</button> */}
+                {/* <button onClick={() => setState({ ...state, status: Sound.status.STOPPED })}> STOP</button> */}
             </Sound>
-            <BasicControls
-                onPlay={() => setState({ ...state, status: Sound.status.PLAYING })}
-                onPause={() => setState({ ...state, status: Sound.status.PAUSED })}
-                onStop={() => setState({ ...state, status: Sound.status.STOPPED })}
-                duration={state.duration}
-                position={state.position}
-                onTimeChange={evt => setState({ ...state, position: Number(evt.target.value) })}
-            />
             <div>
-                <canvas style={{ position: "fixed", width: '100%', height: '200px', bottom: "0" }} ref={canvasElement} />
+                <canvas style={{ position: "fixed", left: "224px", width: '100%', height: '94px', bottom: "94px", cursorEvents: "none", zIndex: "-1", borderRadius: "500px" }} ref={canvasElement} />
             </div>
         </div>
     );
 };
+            // <BasicControls
+            //     onPlay={() => setState({ ...state, status: Sound.status.PLAYING })}
+            //     onPause={() => setState({ ...state, status: Sound.status.PAUSED })}
+            //     onStop={() => setState({ ...state, status: Sound.status.STOPPED })}
+            //     duration={state.duration}
+            //     position={state.position}
+            //     onTimeChange={evt => setState({ ...state, position: Number(evt.target.value) })}
+            // />
 

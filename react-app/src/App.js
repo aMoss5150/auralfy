@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import Splash from "./components/Splash/Splash";
 import Home from "./components/Home/Home";
 import { authenticate } from "./store/session";
 
@@ -40,23 +41,40 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+
       <Switch>
+
+
+        <Route path="/splash" exact={true}>
+          <Splash />
+        </Route>
+
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
+
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
+
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
+
         <ProtectedRoute path="/" exact>
+          <NavBar />
           <Home />
         </ProtectedRoute>
+
+        <Route >
+          return <h1>404</h1>
+        </Route>
+
+
       </Switch>
     </BrowserRouter>
   );

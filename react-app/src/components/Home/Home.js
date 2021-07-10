@@ -7,6 +7,7 @@ import ArtistPage from '../ArtistPage/ArtistPage'
 import ListDisplay from '../ListDisplay/ListDisplay'
 import SidebarList from '../ListDisplay/SidebarList/SidebarList'
 import Player from '../Player/Player'
+import Player2 from '../Player2/Player2'
 import Canvas from '../Canvas/Canvas'
 import { useVibeId } from '../../context/VibeContext'
 import { useArtistPage } from '../../context/ArtistPageContext'
@@ -90,12 +91,13 @@ function Home() {
                 {artistPageCtxt && <ArtistPage />}
                 {!artistPageCtxt && vibes && <ListDisplay targetVibe={vibeIdCtxt === null ? vibes : targetVibe} />}
             </div>
-            <div className="backvis__parent">
+            {/* <div className="backvis__parent">
                 {homeLoaded && <Visualizer songFile={playCtxt} />
                 }
-            </div>
+            </div> */}
 
             <div className='player__parent'>
+                <Player2 />
                 <Player />
             </div>
 

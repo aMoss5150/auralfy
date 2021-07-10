@@ -15,6 +15,8 @@ def seed_songs():
         mode=0,
         valence=0.197,
         tempo=82.433,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/04+-+Stairway+to+Heaven+(Remaster).mp3",
+        image="https://i.etsystatic.com/21354332/d/il/759307/2452143545/il_340x270.2452143545_fwzb.jpg?version=0",
     )
     b = Song(
         name="Immigrant Song Remaster",
@@ -28,6 +30,8 @@ def seed_songs():
         mode=1,
         valence=0.619,
         tempo=112.937,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+Immigrant+Song+(Remaster).mp3",
+        image="https://i.etsystatic.com/21354332/d/il/759307/2452143545/il_340x270.2452143545_fwzb.jpg?version=0",
     )
 
     c = Song(
@@ -42,6 +46,8 @@ def seed_songs():
         mode=0,
         valence=0.304,
         tempo=128.084,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/08+-+G.O.M.D.+%5BExplicit%5D.mp3",
+        image="https://i.etsystatic.com/23978443/r/il/d7b361/2433663686/il_570xN.2433663686_qr6x.jpg",
     )
     d = Song(
         name="A Tale of 2 Citiez",
@@ -55,6 +61,8 @@ def seed_songs():
         mode=1,
         valence=0.362,
         tempo=189.861,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/05+-+A+Tale+of+2+Citiez+%5BExplicit%5D.mp3",
+        image="https://i.etsystatic.com/23978443/r/il/d7b361/2433663686/il_570xN.2433663686_qr6x.jpg",
     )
     e = Song(
         name="ELEMENT.",
@@ -68,6 +76,8 @@ def seed_songs():
         mode=0,
         valence=0.483,
         tempo=189.891,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/04+-+ELEMENT.+%5BExplicit%5D.mp3",
+        image="https://i.pinimg.com/564x/8d/da/b7/8ddab7bb013cd4d801c0b241880a63fd.jpg",
     )
     f = Song(
         name="good kid, m.A.A.d. city",
@@ -81,6 +91,8 @@ def seed_songs():
         mode=1,
         valence=0.217,
         tempo=91.048,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/08+-+m.A.A.d+city+%5Bfeat.+MC+Eiht%5D+%5BExplicit%5D.mp3",
+        image="https://i.pinimg.com/564x/8d/da/b7/8ddab7bb013cd4d801c0b241880a63fd.jpg",
     )
     g = Song(
         name="untitled 07|2014 - 2016",
@@ -94,6 +106,8 @@ def seed_songs():
         mode=0,
         valence=0.324,
         tempo=126.982,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/07+-+untitled+07+_+2014+-+2016+%5BExplicit%5D.mp3",
+        image="https://i.pinimg.com/564x/8d/da/b7/8ddab7bb013cd4d801c0b241880a63fd.jpg",
     )
     h = Song(
         name="Rich Kids",
@@ -107,6 +121,8 @@ def seed_songs():
         mode=0,
         valence=0.398,
         tempo=174.982,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/09+-+Rich+Kids+(feat.+Yvette+Young).mp3",
+        image="https://www.spirit-of-metal.com/les%20goupes/P/Polyphia/pics/1015702_logo.jpg",
     )
     i = Song(
         name="G.O.A.T.",
@@ -120,6 +136,8 @@ def seed_songs():
         mode=0,
         valence=0.359,
         tempo=107.028,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/10+-+G.O.A.T..mp3",
+        image="https://www.spirit-of-metal.com/les%20goupes/P/Polyphia/pics/1015702_logo.jpg",
     )
     j = Song(
         name="He Won't Go",
@@ -133,6 +151,8 @@ def seed_songs():
         mode=0,
         valence=0.728,
         tempo=159.908,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+He+Won't+Go.mp3",
+        image="https://iconape.com/wp-content/files/qc/293294/svg/293294.svg",
     )
     k = Song(
         name="Right As Rain",
@@ -146,6 +166,8 @@ def seed_songs():
         mode=1,
         valence=0.918,
         tempo=137.200,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/08+-+Right+As+Rain.mp3",
+        image="https://iconape.com/wp-content/files/qc/293294/svg/293294.svg",
     )
     l = Song(
         name="Teardrops",
@@ -159,6 +181,8 @@ def seed_songs():
         mode=0,
         valence=0.687,
         tempo=135.953,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Teardrops.mp3",
+        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
     )
     m = Song(
         name="I Got The...",
@@ -172,9 +196,11 @@ def seed_songs():
         mode=1,
         valence=0.640,
         tempo=85.648,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3",
+        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
     )
     n = Song(
-        name="Spolied",
+        name="Spoiled",
         artist="Joss Stone",
         album_name="Mind Body & Soul",
         artist_spotify_id="7bvcQXJHkFiN1ppIN3q4fi",
@@ -185,6 +211,8 @@ def seed_songs():
         mode=1,
         valence=0.292,
         tempo=110.120,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Spoiled.mp3",
+        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
     )
     o = Song(
         name="Security",
@@ -198,6 +226,8 @@ def seed_songs():
         mode=0,
         valence=0.550,
         tempo=135.955,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/07+-+Security.mp3",
+        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
     )
     p = Song(
         name="No Tellin",
@@ -211,6 +241,8 @@ def seed_songs():
         mode=0,
         valence=0.618,
         tempo=95.026,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/05+-+No+Tellin'+%5BExplicit%5D.mp3",
+        image="https://www.pngkey.com/png/detail/987-9878166_drake-sticker-drake-outline-drawing.png",
     )
     q = Song(
         name="Used To",
@@ -224,6 +256,8 @@ def seed_songs():
         mode=0,
         valence=0.304,
         tempo=96.025,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/11+-+Used+To+%5Bfeat.+Lil+Wayne%5D+%5BExplicit%5D.mp3",
+        image="https://www.pngkey.com/png/detail/987-9878166_drake-sticker-drake-outline-drawing.png",
     )
     r = Song(
         name="Intake",
@@ -237,6 +271,8 @@ def seed_songs():
         mode=0,
         valence=0.424,
         tempo=120.008,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/08+-+Intake+%5BExplicit%5D.mp3",
+        image="https://www.logolynx.com/images/logolynx/13/138a3195942de07da132561eef6e1c0a.jpeg",
     )
     s = Song(
         name="Paid In Full",
@@ -250,6 +286,8 @@ def seed_songs():
         mode=0,
         valence=0.0818,
         tempo=109.850,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+Paid+In+Full.mp3",
+        image="https://www.logolynx.com/images/logolynx/13/138a3195942de07da132561eef6e1c0a.jpeg",
     )
     t = Song(
         name="I'm Charming",
@@ -263,6 +301,8 @@ def seed_songs():
         mode=0,
         valence=0.0392,
         tempo=95.314,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/02+-+I'm+Charming.mp3",
+        image="https://i.pinimg.com/236x/5a/73/46/5a73461f0fcaeb58bbed9f36a348a92a--the-black-dahlia-murder-music-posters.jpg",
     )
     u = Song(
         name="Deathmask Divine",
@@ -276,6 +316,8 @@ def seed_songs():
         mode=1,
         valence=0.0672,
         tempo=113.996,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Deathmask+Divine.mp3",
+        image="https://i.pinimg.com/236x/5a/73/46/5a73461f0fcaeb58bbed9f36a348a92a--the-black-dahlia-murder-music-posters.jpg",
     )
     v = Song(
         name="Codex",
@@ -289,6 +331,8 @@ def seed_songs():
         mode=1,
         valence=0.278,
         tempo=94.973,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/11+-+Codex.mp3",
+        image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Veil_Of_Maya.svg/339px-Veil_Of_Maya.svg.png",
     )
     w = Song(
         name="Namaste",
@@ -302,6 +346,8 @@ def seed_songs():
         mode=0,
         valence=0.315,
         tempo=78.624,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/09+-+Namaste.mp3",
+        image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Veil_Of_Maya.svg/339px-Veil_Of_Maya.svg.png",
     )
     x = Song(
         name="Unbreakable",
@@ -315,6 +361,8 @@ def seed_songs():
         mode=1,
         valence=0.280,
         tempo=180.512,
+        link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/02+-+Unbreakable.mp3",
+        image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Veil_Of_Maya.svg/339px-Veil_Of_Maya.svg.png",
     )
     db.session.add(a)
     db.session.add(b)

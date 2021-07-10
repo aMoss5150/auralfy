@@ -31,13 +31,12 @@ class Canvas extends Component {
         console.log(this.context);
         // this.audio.play()
     }
-    componentWillUnmount() {
-        console.log("player unmounting")
-        return window.audioContext.destroy()
-        // this.context.destroy()
-        // this.audio = null
-    }
 
+    componentWillUnmount() {
+        cancelAnimationFrame(this.rafId);
+        this.analyser.disconnect();
+        this.source.disconnect();
+    }
     tick = () => {
         this.animationLooper(this.canvas.current);
         this.analyser.getByteTimeDomainData(this.frequency_array);
@@ -45,6 +44,7 @@ class Canvas extends Component {
     }
 
     animationLooper(canvas) {
+        if (!canvas) return null
         canvas.width = width;
         canvas.height = height;
 
@@ -109,7 +109,7 @@ class Canvas extends Component {
             console.log(this.context);
             this.audio.pause();
             // this.render()
-            this.forceUpdate();
+            // this.forceUpdate();//
             this.audio.load()
             // this.audio.play()
             // this.audio.position = 0;

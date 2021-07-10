@@ -70,7 +70,7 @@ function Player({ song }) {
 
 
     return (
-        <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>2.Player Component
+        <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>
 
 
 
@@ -94,7 +94,7 @@ function Player({ song }) {
                 </div> */}
             </div>
 
-            2. End Player Component
+
         </div >
     )
 }

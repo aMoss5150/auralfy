@@ -1,0 +1,43 @@
+.splashmaster {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.splashtop {
+    position: fixed;
+    background: rgb(31, 30, 30);
+    top: 0px;
+    width: 100vw;
+    height: 87px;
+}
+
+.splashleft {
+    position: fixed;
+    background: rgb(31, 30, 30);
+    left: 0px;
+    height: 8000px;
+    width: 120px;
+}
+
+.splashright {
+    position: fixed;
+    background: rgb(31, 30, 30);
+    right: 0px;
+    height: 8000px;
+    width: 120px;
+}
+
+.splashbottom {
+    position: fixed;
+    background: rgb(31, 30, 30);
+    bottom: 0px;
+    width: 100vw;
+    height: 87px;
+}
+
+.pointer {
+    cursor: pointer;
+}

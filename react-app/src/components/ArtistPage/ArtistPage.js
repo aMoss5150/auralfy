@@ -39,7 +39,7 @@ function ArtistPage() {
                         currentArtist = song.artist
                         return (!set.has(song.artist) && song.artist && set.add(song.artist) &&
                             <div key={song.id} className="artist__parent" onClick={() => setArtistIdCtxt(song.artist)}>
-                                <ArtistPreview artist={song.artist} />
+                                <ArtistPreview song={song} />
                             </div>
 
                         )

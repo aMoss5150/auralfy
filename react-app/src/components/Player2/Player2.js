@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import Sound, {
     Osciloscope,
@@ -6,10 +6,12 @@ import Sound, {
     Equalizer
 } from 'react-hifi'
 
+import './Player2.css'
 import { usePlay } from '../../context/PlayContext'
 
 export default function Player2() {
-    const { playCtxt } = usePlay()
+    const { playCtxt, status, setStatus } = usePlay()
+    const [STOPPED, setSTOPPED] = useState(false)
     const [state, setState] = useState({
         status: Sound.status.PAUSED,
         loading: false,
@@ -23,8 +25,9 @@ export default function Player2() {
         if (!ctx) {
             ctx = canvasElement.current.getContext('2d');
         }
-
+        if (!canvasElement.current) return null
         ctx.fillStyle = 'rgba(36, 43, 37, 0.7)';
+
         ctx.fillRect(0, 0, canvasElement.current.width, canvasElement.current.height);
 
         ctx.lineWidth = 1.3;
@@ -41,11 +44,13 @@ export default function Player2() {
         ctx.stroke();
     };
 
+    if (!playCtxt) return null
+    // if (STOPPED) return null
     return (
-        <div>
+        <div className="headers__colors2">
             <Sound
-                url={playCtxt}
-                playStatus={state.status}
+                url={playCtxt.link}
+                playStatus={status}
                 position={state.position}
                 onFinishedPlaying={() => setState({ ...state, status: Sound.status.STOPPED })}
                 onLoad={() => setState({ ...state, loading: false })}
@@ -57,14 +62,30 @@ export default function Player2() {
                     height={canvasElement.current && canvasElement.current.height}
                     width={canvasElement.current && canvasElement.current.width}
                 />
-                {/* <Equalizer /> */}
                 <Volume value={80} />
-                <button onClick={() => setState({ ...state, status: Sound.status.PLAYING })}>PLAY</button>
-                {/* <button onCLick={() => setState({ ...state, status: Sound.status.PAUSED })}> PAUSE</button> */}
-                {/* <button onClick={() => setState({ ...state, status: Sound.status.STOPPED })}> STOP</button> */}
+                {/* <button onClick={() => setState({ ...state, position: 0 })}>RESTART</button> */}
+                {/* <span>{playCtxt?.name}</span> */}
+                {/* <button onClick={() => setSTOPPED(true)}> STOP</button> */}
             </Sound>
+            <div className="player2controls">
+                <button onClick={() => setStatus("PLAYING")}>PLAY</button>
+                <button onClick={(e) => setStatus("PAUSED")}> PAUSE</button>
+                <button onClick={(e) => setStatus("STOPPED")}> STOP</button>
+            </div>
+            <div className="player2details">
+                <span>{playCtxt.name}</span>
+                <span
+                    className="font-thin">
+                    &nbsp;from the album&nbsp;
+                </span> <span>
+                    {playCtxt.album_name}
+                </span>
+                <span
+                    className="font-thin">
+                    &nbsp;by&nbsp;
+                </span><span>{playCtxt.artist}</span></div>
             <div>
-                <canvas style={{ position: "fixed", left: "224px", width: '100%', height: '94px', bottom: "94px", cursorEvents: "none", zIndex: "-1", borderRadius: "500px" }} ref={canvasElement} />
+                <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: "0.6", position: "fixed", left: "224px", width: '100%', height: '134px', bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />
             </div>
         </div>
     );

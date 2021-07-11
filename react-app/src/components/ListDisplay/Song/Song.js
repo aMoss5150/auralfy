@@ -44,7 +44,7 @@ function Song({ song }) {
             <button className={`removesong font-medium ${!vibeIdCtxt ? "hidden" : ""}`} onClick={(e) => { return (handleRemoveSong(e, song.id), setChangeCtxt(!changeCtxt)) }}>
                 -del
             </button>
-            <button onClick={() => { return (setPlayCtxt(song.link), console.log(playCtxt)) }}>
+            <button onClick={() => { return (setPlayCtxt(song), console.log(playCtxt)) }}>
                 -add to Player
             </button>
 

@@ -16,6 +16,8 @@ function ArtistSongsPage() {
 
     ))
 
+    let song1 = songs[0]
+
     const handleAddSongToVibe = (songId, vibeId) => {
         dispatch(createARelation(songId, vibeId))
     }
@@ -23,12 +25,13 @@ function ArtistSongsPage() {
     return (
 
         <div className="artistsongspage__container headers__colors2 font-bold">
+            <img src={song1?.image} alt="" style={{ height: "250px" }} />
             <div className="artist__name font-thin">
                 {artistIdCtxt}
             </div>
             {openAdder && songToAdd && vibes.map((vibe) => (
                 <div key={vibe.id} className="fromalbum font-thin adder" onClick={() => handleAddSongToVibe(vibe.id, songToAdd.id)}>
-                    add <span className="font-bold">{songToAdd.name}</span> to <span className="f">{vibe.name}</span>
+                    add <span className="font-bold">{songToAdd.name}</span> to #<span className="f">{vibe.name}</span>
                 </div>
             ))}
             {openAdder &&
@@ -56,6 +59,8 @@ function ArtistSongsPage() {
                 <span className="close__btn" onClick={() => { return (setArtistIdCtxt(null)) }}>close</span>
             }
         </div >
+
+
     )
 }
 

@@ -1,0 +1,23 @@
+.player2details {
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    width: 100vw;
+}
+
+.player2controls {
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    width: 100vw;
+}
+
+.osccanvas {
+    opacity: 0.6;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+.osccanvas0 {
+    opacity: 0
+}

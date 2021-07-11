@@ -97,7 +97,7 @@ function Home() {
             </div> */}
 
             <div className='player__parent'>
-                <Player2 />
+                {/* <Player2 /> */}
                 <Player />
             </div>
 

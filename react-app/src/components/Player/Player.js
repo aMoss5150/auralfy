@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import MiniVisualizer from './MiniVisualizer/MiniVisualizer'
 import Controls from './Controls/Controls'
 import Canvas from '../Canvas/Canvas'
+import Player2 from '../Player2/Player2'
 
 import { useColor } from '../../context/ColorContext'
 import Sound, {
@@ -71,62 +72,15 @@ function Player({ song }) {
 
     return (
         <div className={`player__container ${colorCtxt === false ? "headers__colors" : "headers__colors4"}`}>
-
-
-
             <div className="player__parent">
-                {/* <div className="controls__parent">
-                    controls
-                    <button className="play__button controls__parent"
-                        onClick={() => setSTATUS('PLAYING')}
-                    > PLAY</button>
-                    <button className="stop__button controls__parent"
-                        onClick={() => setSTATUS('STOPPED')}
-                    > STOP</button>
-                    <button onClick={() => {
-                        // var dataArray = new Uint8Array(analyser.frequencyBinCount)
-                        // analyser.getByteFrequencyData(dataArray)
-                        // setDATA(dataArray)
-                        return (
-                            console.log(DATA)
-                        )
-                    }}>check</button>
-                </div> */}
+                <Player2 />
             </div>
 
 
         </div >
     )
+
+
+
 }
-
-{/* <BasicControls
-    onPlay={() => setSTATUS('PLAYING')}
-    onPause={() => setSTATUS('PAUSED')}
-    onStop={() => setSTATUS('STOPPED')}
-    duration={DURATION}
-    position={POSITION}
-    onTimeChange={e => setPOSITION(e.target.value)}
-/>  */}
-//  <Sound
-//             url={URL}
-//             playStatus={STATUS}
-//             position={POSITION}
-//             onFinishedPlaying={() => setSTATUS("STOPPED")}
-//             onLoad={() => setLOADING(false)}
-//             onLoading={() => setLOADING(true)}
-//             onPlaying={data => setDATA(data)}
-//         />
-
-//         <Osciloscope
-//             onVisualisationData={() => handleDataViz(DATA)}
-//             height={canvasElement.current && canvasElement.current.height}
-//             width={canvasElement.current && canvasElement.current.width}
-//         />
-
-
-//   <div>
-{/* <canvas style={{ width: '100%', height: '100px' }} ref={canvasElement} /> */ }
-// </div >
-
-
 export default Player

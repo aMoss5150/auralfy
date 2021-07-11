@@ -39,37 +39,41 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form className="signupform__parent" onSubmit={onSignUp}>
+      <label>User Name</label>
       <div>
-        <label>User Name</label>
         <input
+          className="forminput"
           type="text"
           name="username"
           onChange={updateUsername}
           value={username}
         ></input>
       </div>
+      <label>Email</label>
       <div>
-        <label>Email</label>
         <input
+          className="forminput"
           type="text"
           name="email"
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
+      <label>Password</label>
       <div>
-        <label>Password</label>
         <input
+          className="forminput"
           type="password"
           name="password"
           onChange={updatePassword}
           value={password}
         ></input>
       </div>
+      <label>Repeat Password</label>
       <div>
-        <label>Repeat Password</label>
         <input
+          className="forminput"
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}

@@ -182,7 +182,7 @@ def seed_songs():
         valence=0.687,
         tempo=135.953,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Teardrops.mp3",
-        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
+        image="https://3.bp.blogspot.com/-0An7bemQgWM/W1Cdx033hnI/AAAAAAACY1M/7VbCePZWoVo8MQi2pju35TelKsv0rhaYgCLcBGAs/s640/joss%2Bstone%2B027_fumando.jpg",
     )
     m = Song(
         name="I Got The...",
@@ -197,7 +197,7 @@ def seed_songs():
         valence=0.640,
         tempo=85.648,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3",
-        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
+        image="https://3.bp.blogspot.com/-0An7bemQgWM/W1Cdx033hnI/AAAAAAACY1M/7VbCePZWoVo8MQi2pju35TelKsv0rhaYgCLcBGAs/s640/joss%2Bstone%2B027_fumando.jpg",
     )
     n = Song(
         name="Spoiled",
@@ -212,7 +212,7 @@ def seed_songs():
         valence=0.292,
         tempo=110.120,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Spoiled.mp3",
-        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
+        image="https://3.bp.blogspot.com/-0An7bemQgWM/W1Cdx033hnI/AAAAAAACY1M/7VbCePZWoVo8MQi2pju35TelKsv0rhaYgCLcBGAs/s640/joss%2Bstone%2B027_fumando.jpg",
     )
     o = Song(
         name="Security",
@@ -227,7 +227,7 @@ def seed_songs():
         valence=0.550,
         tempo=135.955,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/07+-+Security.mp3",
-        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
+        image="https://3.bp.blogspot.com/-0An7bemQgWM/W1Cdx033hnI/AAAAAAACY1M/7VbCePZWoVo8MQi2pju35TelKsv0rhaYgCLcBGAs/s640/joss%2Bstone%2B027_fumando.jpg",
     )
     p = Song(
         name="No Tellin",

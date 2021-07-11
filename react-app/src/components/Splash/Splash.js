@@ -24,13 +24,14 @@ function Splash() {
     }
     return (
         <div className="splashmaster fromalbum font-thin headers__colors2">
-            {loginOpen && <div className='login__parent'><LoginForm /></div>}
-            {signupOpen && <div className='signup__parent'><SignUpForm /></div>}
             <div className="welcometext font-bold"> Welcome to Auralfy</div>
-            <span onClick={() => { return (setLoginOpen(false), setSignupOpen(true)) }}>SIGNUP</span>
-            <span onClick={() => { return (setLoginOpen(true), setSignupOpen(false)) }}>LOGIN</span>
-            <span onClick={() => demoLogin()}>DEMO USER</span>
-            <span onClick={() => { return (setLoginOpen(false), setSignupOpen(false)) }}>X</span>
+            <span className={`pointer ${loginOpen || signupOpen ? "hidden" : ""}`} onClick={() => { return (setLoginOpen(false), setSignupOpen(true)) }}>SIGNUP</span>
+            <span className={`pointer ${loginOpen || signupOpen ? "hidden" : ""}`} onClick={() => { return (setLoginOpen(true), setSignupOpen(false)) }}>LOGIN</span>
+            <span className={`pointer ${loginOpen || signupOpen ? "hidden" : ""}`} onClick={() => demoLogin()}>DEMO USER</span>
+            {loginOpen && <div className='pointer login__parent'><LoginForm /></div>}
+            {signupOpen && <div className='pointer signup__parent'><SignUpForm /></div>}
+            {loginOpen && <span onClick={() => { return (setLoginOpen(false), setSignupOpen(false)) }}>X</span>}
+            {signupOpen && <span className="pointer" onClick={() => { return (setLoginOpen(false), setSignupOpen(false)) }}>X</span>}
 
             <div className='splashtop'></div>
             <div className='splashtop'></div>

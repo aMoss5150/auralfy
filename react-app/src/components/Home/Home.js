@@ -75,8 +75,8 @@ function Home() {
         <div className="homepage__container">
             {/* <Canvas /> */}
             <div className="sidebar__parent headers__colors">
-                <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists Page</button>
-                <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> View All Vibes</button>
+                <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists</button>
+                <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> All My Songs</button>
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => setCreateOpen(true)}>Add a Vibe</button>
                 {createOpen &&
                     <form action="" onSubmit={(e) => handleCreateVibe(e)}>

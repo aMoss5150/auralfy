@@ -30,7 +30,7 @@ function ArtistSongsPage() {
                 {artistIdCtxt}
             </div>
             {openAdder && songToAdd && vibes.map((vibe) => (
-                <div key={vibe.id} className="fromalbum font-thin adder" onClick={() => handleAddSongToVibe(vibe.id, songToAdd.id)}>
+                <div key={vibe.id} className="artistsong fromalbum font-thin adder" onClick={() => handleAddSongToVibe(vibe.id, songToAdd.id)}>
                     add <span className="font-bold">{songToAdd.name}</span> to #<span className="f">{vibe.name}</span>
                 </div>
             ))}
@@ -38,8 +38,9 @@ function ArtistSongsPage() {
                 <i onClick={() => { return (setOpenAdder(false), setSongToAdd(null)) }} className="fas fa-window-close"></i>
             }
             {!openAdder && songs.map((song) => (
-                <li key={song.id}>
-                    <i class="icons fas fa-chevron-circle-down" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
+                <li key={song.id} className="artistsong">
+                    <i class="icons fas fa-plus-circle" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
+                    {/* <i class="fas fa-chevron-circle-down"></i> */}
                     <span>{song.name}</span>
                     <span
                         className="fromalbum font-thin">

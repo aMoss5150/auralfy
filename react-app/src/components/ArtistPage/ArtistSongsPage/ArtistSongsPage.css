@@ -27,3 +27,7 @@
 .adder {
     cursor: pointer;
 }
+
+.artistsong:hover {
+    color: rgba(94, 122, 94, 0.827);
+}

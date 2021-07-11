@@ -12,7 +12,8 @@ const NavBar = () => {
 
   return (
     <nav className={`navbar mr-6 nav__element ${colorCtxt === false ? "headers__colors2" : 'headers__colors4'}`}>
-      <button className='ml-2 mt-2' onClick={() => setOpen(!open)}> {open ? '-' : '+'}</button>
+      {/* <button className='ml-2 mt-2' onClick={() => setOpen(!open)}> {open ? '-' : '+'}</button> */}
+      <i class="icons fas fa-sign-out-alt" onClick={() => setOpen(!open)}></i>
       {open &&
         <ul className="flex ">
 

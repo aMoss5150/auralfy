@@ -1,16 +1,18 @@
-.player2details {
-    display: flex;
-    justify-content: center;
-    margin: auto 0;
-    width: 100vw;
-    font-size: 21px;
-}
-
 .player2controls {
     display: flex;
     justify-content: center;
-    margin: auto 0;
+    /* margin: auto 0;   */
     width: 100vw;
+}
+
+.player2details {
+    display: flex;
+    justify-content: center;
+    /* margin: auto 0; */
+    width: 100vw;
+    font-size: 19px;
+    font-style: italic;
+    margin-bottom: 1px;
 }
 
 .osccanvas {
@@ -20,6 +22,8 @@
 }
 
 .osccanvas0 {
+    transition-property: opacity;
+    transition-duration: 1s;
     opacity: 0
 }
 

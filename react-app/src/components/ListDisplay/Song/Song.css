@@ -6,6 +6,10 @@
     /* align-items: center; */
 }
 
+.song__container:hover {
+    color: rgba(94, 122, 94, 0.827);
+}
+
 .removesong {
     cursor: pointer;
 }

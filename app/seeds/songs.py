@@ -182,7 +182,7 @@ def seed_songs():
         valence=0.687,
         tempo=135.953,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Teardrops.mp3",
-        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
+        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
     )
     m = Song(
         name="I Got The...",
@@ -197,7 +197,7 @@ def seed_songs():
         valence=0.640,
         tempo=85.648,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3",
-        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
+        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
     )
     n = Song(
         name="Spoiled",
@@ -212,7 +212,7 @@ def seed_songs():
         valence=0.292,
         tempo=110.120,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Spoiled.mp3",
-        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
+        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
     )
     o = Song(
         name="Security",
@@ -227,7 +227,7 @@ def seed_songs():
         valence=0.550,
         tempo=135.955,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/07+-+Security.mp3",
-        image="https://i.pinimg.com/originals/76/dd/71/76dd7149f5a20385211712c9672eb198.jpg",
+        image="https://i.pinimg.com/originals/43/30/9b/43309b825dcab39798782265a36e126f.jpg",
     )
     p = Song(
         name="No Tellin",
@@ -291,7 +291,7 @@ def seed_songs():
     )
     t = Song(
         name="I'm Charming",
-        artist="The Black Dahlia Murder",
+        artist="TBDM",
         album_name="Miasma",
         artist_spotify_id="4xTDPgk4jHCF0qui3dH6BS",
         song_spotify_id="0Fqyclz7oQP6cs3plyBetL?si=c3ab413b01bb4867",
@@ -302,11 +302,11 @@ def seed_songs():
         valence=0.0392,
         tempo=95.314,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/02+-+I'm+Charming.mp3",
-        image="https://i.pinimg.com/236x/5a/73/46/5a73461f0fcaeb58bbed9f36a348a92a--the-black-dahlia-murder-music-posters.jpg",
+        image="https://lh3.googleusercontent.com/proxy/SDzQfBDm3-OT0YmPp1Kd3nInck7Fv3uesWuxKI1gqKFcw22INEVCLm497icmHE1I354BMyZ9X_faskAYcKBPW_vVYlHZfnYQyZtYkd9iH6qZ",
     )
     u = Song(
         name="Deathmask Divine",
-        artist="The Black Dahlia Murder",
+        artist="TBDM",
         album_name="Nocturnal",
         artist_spotify_id="4xTDPgk4jHCF0qui3dH6BS",
         song_spotify_id="3oCTRjyXmT1MMn4nVQMKBm?si=164bdcac78d94029",
@@ -317,7 +317,7 @@ def seed_songs():
         valence=0.0672,
         tempo=113.996,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Deathmask+Divine.mp3",
-        image="https://i.pinimg.com/236x/5a/73/46/5a73461f0fcaeb58bbed9f36a348a92a--the-black-dahlia-murder-music-posters.jpg",
+        image="https://lh3.googleusercontent.com/proxy/SDzQfBDm3-OT0YmPp1Kd3nInck7Fv3uesWuxKI1gqKFcw22INEVCLm497icmHE1I354BMyZ9X_faskAYcKBPW_vVYlHZfnYQyZtYkd9iH6qZ",
     )
     v = Song(
         name="Codex",

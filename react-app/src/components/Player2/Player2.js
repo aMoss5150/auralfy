@@ -12,6 +12,8 @@ import { usePlay } from '../../context/PlayContext'
 export default function Player2() {
     const { playCtxt, status, setStatus } = usePlay()
     const [STOPPED, setSTOPPED] = useState(false)
+    const [size, setSize] = useState("134px")
+
     const [state, setState] = useState({
         status: Sound.status.PAUSED,
         loading: false,
@@ -33,6 +35,7 @@ export default function Player2() {
         ctx.lineWidth = 1.3;
         ctx.strokeStyle = 'rgba(161, 184, 161, 0.6)';
 
+
         ctx.beginPath();
 
         const [x, y] = data.pop();
@@ -40,9 +43,19 @@ export default function Player2() {
 
         data.forEach(([x, y]) => ctx.lineTo(x, y));
 
-        ctx.lineTo(canvasElement.current.width, canvasElement.current.height / 4);
+        ctx.lineTo(canvasElement.current.width, canvasElement.current.height);
         ctx.stroke();
     };
+
+    const handleChangeSize = () => {
+        if (size === "134px") {
+            setSize("100vh")
+        } else {
+            setSize('134px')
+        }
+    }
+
+
 
     if (!playCtxt) return null
     // if (STOPPED) return null
@@ -74,6 +87,7 @@ export default function Player2() {
                 <i onClick={(e) => setStatus("PAUSED")} className={`${status === "PLAYING" ? "" : "hidden"} icons fas fa-pause`}></i>
                 <i onClick={(e) => setStatus("STOPPED")} className={`icons fas fa-stop`}></i>
                 <i onClick={() => setState({ ...state, position: state.position += 5 })} className="icons fas fa-step-forward"></i>
+                <button className="fromalbum font-thin" onClick={() => handleChangeSize()}>{size === "134px" ? "XL" : "SM"}</button>
             </div>
             <div className="player2details">
                 <span>{playCtxt.name}</span>
@@ -89,7 +103,7 @@ export default function Player2() {
                 </span><span>{playCtxt.artist}</span></div>
 
             <div>
-                <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: "0.6", position: "fixed", left: "224px", width: '100%', height: '134px', bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />
+                <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: size === "134px" ? "0.6" : "1", position: "fixed", left: "224px", width: '100%', height: size, bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />
             </div>
         </div >
     );

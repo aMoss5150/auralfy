@@ -35,10 +35,11 @@ function ArtistSongsPage() {
                 </div>
             ))}
             {openAdder &&
-                <span className="close__btn" onClick={() => { return (setOpenAdder(false), setSongToAdd(null)) }}>close</span>
+                <i onClick={() => { return (setOpenAdder(false), setSongToAdd(null)) }} className="fas fa-window-close"></i>
             }
             {!openAdder && songs.map((song) => (
                 <li key={song.id}>
+                    <i class="icons fas fa-chevron-circle-down" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
                     <span>{song.name}</span>
                     <span
                         className="fromalbum font-thin">
@@ -47,16 +48,17 @@ function ArtistSongsPage() {
                         {song?.album_name}
                     </span>
                     <span className="font-thin">
-                        <button onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}
-                            className="fromalbum font-thin">
-                            &nbsp;-add to my vibes
-                        </button>
+                        {/* <button onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }} */}
+                        {/* className="fromalbum font-thin"> */}
+                        {/* &nbsp;-add to my vibes */}
+                        {/* </button> */}
                     </span>
                 </li>
             ))
             }
             {!openAdder &&
-                <span className="close__btn" onClick={() => { return (setArtistIdCtxt(null)) }}>close</span>
+                <i onClick={() => { return (setArtistIdCtxt(null)) }} className="icons fas fa-window-close"></i>
+
             }
         </div >
 

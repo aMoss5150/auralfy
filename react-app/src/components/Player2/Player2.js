@@ -3,11 +3,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import Sound, {
     Osciloscope,
     Volume,
-    Equalizer
 } from 'react-hifi'
 
 import './Player2.css'
 import { usePlay } from '../../context/PlayContext'
+
 
 export default function Player2() {
     const { playCtxt, status, setStatus } = usePlay()
@@ -67,10 +67,13 @@ export default function Player2() {
                 {/* <span>{playCtxt?.name}</span> */}
                 {/* <button onClick={() => setSTOPPED(true)}> STOP</button> */}
             </Sound>
-            <div className="player2controls">
-                <button onClick={() => setStatus("PLAYING")}>PLAY</button>
-                <button onClick={(e) => setStatus("PAUSED")}> PAUSE</button>
-                <button onClick={(e) => setStatus("STOPPED")}> STOP</button>
+            <div className="player2controls fromalbum">
+                {/* <button onClick={() => setStatus("PLAYING")}>PLAY</button> */}
+                <i onClick={() => state.position - 5 > 0 && setState({ ...state, position: state.position -= 5 })} className="icons fas fa-step-backward"></i>
+                <i onClick={() => setStatus("PLAYING")} className={`${status === "PAUSED" || status === "STOPPED" ? "" : "hidden"} icons fas fa-play`}></i>
+                <i onClick={(e) => setStatus("PAUSED")} className={`${status === "PLAYING" ? "" : "hidden"} icons fas fa-pause`}></i>
+                <i onClick={(e) => setStatus("STOPPED")} className={`icons fas fa-stop`}></i>
+                <i onClick={() => setState({ ...state, position: state.position += 5 })} className="icons fas fa-step-forward"></i>
             </div>
             <div className="player2details">
                 <span>{playCtxt.name}</span>
@@ -84,10 +87,11 @@ export default function Player2() {
                     className="font-thin">
                     &nbsp;by&nbsp;
                 </span><span>{playCtxt.artist}</span></div>
+
             <div>
                 <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: "0.6", position: "fixed", left: "224px", width: '100%', height: '134px', bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />
             </div>
-        </div>
+        </div >
     );
 };
             // <BasicControls

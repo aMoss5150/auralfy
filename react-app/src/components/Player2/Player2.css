@@ -3,6 +3,7 @@
     justify-content: center;
     margin: auto 0;
     width: 100vw;
+    font-size: 21px;
 }
 
 .player2controls {
@@ -20,4 +21,9 @@
 
 .osccanvas0 {
     opacity: 0
+}
+
+.icons {
+    margin: 10px;
+    cursor: pointer;
 }

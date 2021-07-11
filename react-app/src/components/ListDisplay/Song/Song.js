@@ -35,18 +35,22 @@ function Song({ song }) {
 
     return (
         <div className="song__container">
+            <i class="icons fas fa-compact-disc" onClick={() => { return (setPlayCtxt(song), console.log(playCtxt)) }}></i>
+            <i class="icons fas fa-trash" onClick={(e) => { return (handleRemoveSong(e, song.id), setChangeCtxt(!changeCtxt)) }}></i>
             <div className="songartist font-bold font-xl">
                 {song.name} -
             </div>
             <div className="songnamealbum font-thin">
                 "{song.artist}" - "{song?.album_name}"
             </div>
-            <button className={`removesong font-medium ${!vibeIdCtxt ? "hidden" : ""}`} onClick={(e) => { return (handleRemoveSong(e, song.id), setChangeCtxt(!changeCtxt)) }}>
-                -del
-            </button>
-            <button onClick={() => { return (setPlayCtxt(song), console.log(playCtxt)) }}>
-                -add to Player
-            </button>
+            {/* <i class="fas fa-minus-circle"></i> */}
+            {/* <button className={`removesong font-medium ${!vibeIdCtxt ? "hidden" : ""}`} onClick={(e) => { return (handleRemoveSong(e, song.id), setChangeCtxt(!changeCtxt)) }}> */}
+            {/* -del */}
+            {/* </button> */}
+
+            {/* <button onClick={() => { return (setPlayCtxt(song), console.log(playCtxt)) }}> */}
+            {/* -add to Player */}
+            {/* </button> */}
 
         </div>
     )

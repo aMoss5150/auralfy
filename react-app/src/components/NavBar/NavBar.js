@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useColor } from '../../context/ColorContext'
+import logo1 from '../../images/auralfy-logo.png'
 import "./NavBar.css"
 
 const NavBar = () => {
@@ -9,19 +10,19 @@ const NavBar = () => {
   const [open, setOpen] = useState(false)
 
 
-
   return (
     <nav className={`navbar mr-6 nav__element ${colorCtxt === false ? "headers__colors2" : 'headers__colors4'}`}>
-      {/* <button className='ml-2 mt-2' onClick={() => setOpen(!open)}> {open ? '-' : '+'}</button> */}
       <i class="icons fas fa-sign-out-alt" onClick={() => setOpen(!open)}></i>
+      {/* <button className='ml-2 mt-2' onClick={() => setOpen(!open)}> {open ? '-' : '+'}</button> */}
       {open &&
         <ul className="flex ">
 
-          <li className={`mr-6 nav__element ${colorCtxt === false ? "headers__colors2" : 'headers__colors4'}`}>
+          <li className={`ml-2 mt-1 nav__element ${colorCtxt === false ? "headers__colors2" : 'headers__colors4'}`}>
             <LogoutButton />
           </li>
         </ul>
       }
+      <span className='m-2 ml-12 fromalbum font-thin logo__span'>Auralfy</span>
       <span className={`hidden ml-6 ${open ? "hidden" : ""}`}>
         <button onClick={() => setColorCtxt(false)} >green</button>
       </span>

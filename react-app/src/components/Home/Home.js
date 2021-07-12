@@ -43,12 +43,10 @@ function Home() {
         dispatch(createAVibe(vibeName))
         setVibeName('')
         setCreateOpen(false)
-
     }
 
     function handleDeleteVibe(vibeId) {
         dispatch(deleteAVibe(12))
-
     }
 
     function handleAddSong(songId, vibeId) {
@@ -74,16 +72,22 @@ function Home() {
     return (
         <div className="homepage__container">
             {/* <Canvas /> */}
-            <div className="sidebar__parent headers__colors">
+            <div className="sidebar__parent headers__colors2">
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists</button>
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> All My Songs</button>
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => setCreateOpen(true)}>Add a Vibe</button>
                 {createOpen &&
-                    <form action="" onSubmit={(e) => handleCreateVibe(e)}>
-                        <input type="text" value={vibeName} onChange={(e) => setVibeName(e.target.value)} />
-                        <button type="submit" >Create</button>
-                        <button type="" onClick={() => setCreateOpen(false)}>X</button>
-                    </form>}
+                    <div className="vibeadder">
+                        <form action="" onSubmit={(e) => handleCreateVibe(e)}>
+                            <input className="vibeadderfield" type="text" value={vibeName} onChange={(e) => setVibeName(e.target.value)} />
+                        </form>
+                        <div className="addvibebuttons">
+                            <button type="submit" ><i className="icons fas fa-plus-square"></i></button>
+
+                            <i className="icons fas fa-minus-square" onClick={() => setCreateOpen(false)}></i>
+                        </div>
+                    </div>
+                }
                 <SidebarList vibes={vibes} />
             </div>
 

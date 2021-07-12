@@ -44,3 +44,10 @@
     height: 10px;
     /* background: red; */
 }
+
+.githublinks {
+    position: fixed;
+    bottom: 40px;
+    left: 9px;
+    font-size: 13px;
+}

@@ -88,8 +88,8 @@ export default function Player2() {
                 <i onClick={(e) => setStatus("STOPPED")} className={`icons fas fa-stop`}></i>
                 <i onClick={() => setState({ ...state, position: state.position += 5 })} className="icons fas fa-step-forward"></i>
                 <button className="fromalbum font-thin" onClick={() => handleChangeSize()}>{size === "134px" ? "XL" : "SM"}</button>
-                <i onClick={() => state.position - 10 > 0 && setState({ ...state, volume: state.volume -= 10 })} className="volicons fas fa-minus"></i>
-                <i onClick={() => state.position + 10 > 0 && setState({ ...state, volume: state.volume += 10 })} className="volicons fas fa-plus"></i>
+                <i onClick={() => state.volume - 10 >= 0 && setState({ ...state, volume: state.volume -= 10 })} className="volicons fas fa-minus"></i>
+                <i onClick={() => state.volume + 10 <= 100 && setState({ ...state, volume: state.volume += 10 })} className="volicons fas fa-plus"></i>
 
 
 
@@ -132,6 +132,7 @@ export default function Player2() {
             <div>
                 <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: size === "134px" ? "0.6" : "1", position: "fixed", left: "224px", width: '100%', height: size, bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />
             </div>
+            <span className="pointer githublinks"><a href="https://github.com/aMoss5150/auralfy/wiki">Go to Github Link</a></span>
         </div >
     );
 };

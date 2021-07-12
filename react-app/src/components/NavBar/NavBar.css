@@ -17,3 +17,9 @@
 .logo__1 {
     width: 50px;
 }
+
+.mainlogo {
+    border-radius: 250px;
+    height: 115px;
+    margin-top: 10px;
+}

@@ -302,7 +302,7 @@ def seed_songs():
         valence=0.0392,
         tempo=95.314,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/02+-+I'm+Charming.mp3",
-        image="https://lh3.googleusercontent.com/proxy/SDzQfBDm3-OT0YmPp1Kd3nInck7Fv3uesWuxKI1gqKFcw22INEVCLm497icmHE1I354BMyZ9X_faskAYcKBPW_vVYlHZfnYQyZtYkd9iH6qZ",
+        image="https://musicart.xboxlive.com/7/b9310400-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080",
     )
     u = Song(
         name="Deathmask Divine",
@@ -317,7 +317,7 @@ def seed_songs():
         valence=0.0672,
         tempo=113.996,
         link="https://song-storage-5150.s3.amazonaws.com/auralfy-music/06+-+Deathmask+Divine.mp3",
-        image="https://lh3.googleusercontent.com/proxy/SDzQfBDm3-OT0YmPp1Kd3nInck7Fv3uesWuxKI1gqKFcw22INEVCLm497icmHE1I354BMyZ9X_faskAYcKBPW_vVYlHZfnYQyZtYkd9iH6qZ",
+        image="https://musicart.xboxlive.com/7/b9310400-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080",
     )
     v = Song(
         name="Codex",

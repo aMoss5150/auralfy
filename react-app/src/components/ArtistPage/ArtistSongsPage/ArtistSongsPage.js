@@ -39,7 +39,7 @@ function ArtistSongsPage() {
             }
             {!openAdder && songs.map((song) => (
                 <li key={song.id} className="artistsong">
-                    <i class="icons fas fa-plus-circle" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
+                    <i className="icons fas fa-plus-circle" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
                     {/* <i class="fas fa-chevron-circle-down"></i> */}
                     <span>{song.name}</span>
                     <span

@@ -27,7 +27,6 @@ function ArtistPage() {
     //     return () => ParticleField.destroy()
     // }, [])
     if (!songs) return null
-    console.log(artistIdCtxt)
 
     return (
         <div className="artistpage__container">

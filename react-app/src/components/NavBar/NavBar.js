@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useColor } from '../../context/ColorContext'
-import logo1 from '../../images/auralfy-logo.png'
+import logo1 from '../../images/auralfy-light.jpg'
 import "./NavBar.css"
 
 const NavBar = () => {
@@ -12,7 +12,7 @@ const NavBar = () => {
 
   return (
     <nav className={`navbar mr-6 nav__element ${colorCtxt === false ? "headers__colors2" : 'headers__colors4'}`}>
-      <i class="icons fas fa-sign-out-alt" onClick={() => setOpen(!open)}></i>
+      <i className="icons fas fa-sign-out-alt" onClick={() => setOpen(!open)}></i>
       {/* <button className='ml-2 mt-2' onClick={() => setOpen(!open)}> {open ? '-' : '+'}</button> */}
       {open &&
         <ul className="flex ">
@@ -23,6 +23,7 @@ const NavBar = () => {
         </ul>
       }
       <span className='m-2 ml-12 fromalbum font-thin logo__span'>Auralfy</span>
+      {/* <img src={logo1} className="mainlogo" alt="" /> */}
       <span className={`hidden ml-6 ${open ? "hidden" : ""}`}>
         <button onClick={() => setColorCtxt(false)} >green</button>
       </span>

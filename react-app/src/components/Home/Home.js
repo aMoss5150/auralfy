@@ -15,6 +15,8 @@ import { useArtistId } from '../../context/ArtistIdContext'
 import { useColor } from '../../context/ColorContext'
 import { usePlay } from '../../context/PlayContext'
 import Visualizer from '../VisualizerCC/index'
+import logo1 from '../../images/auralfy-light.jpg'
+
 import './Home.css'
 
 function Home() {
@@ -73,6 +75,7 @@ function Home() {
         <div className="homepage__container">
             {/* <Canvas /> */}
             <div className="sidebar__parent headers__colors2">
+                {/* <img src={logo1} className="mainlogo" alt="" /> */}
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists</button>
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> All My Songs</button>
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => setCreateOpen(true)}>Add a Vibe</button>
@@ -84,7 +87,7 @@ function Home() {
                         <div className="addvibebuttons">
                             <button type="submit" ><i className="icons fas fa-plus-square"></i></button>
 
-                            <i className="icons fas fa-minus-square" onClick={() => setCreateOpen(false)}></i>
+                            <i className="icons fas fa-window-close" onClick={() => setCreateOpen(false)}></i>
                         </div>
                     </div>
                 }

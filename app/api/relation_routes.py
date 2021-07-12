@@ -52,15 +52,15 @@ def create_a_relation():
     vibeId = request.json["vibeId"]
     # gives me all songs with a relation
 
-    # length = VibeMember.query.filter(
-    #     VibeMember.vibe_id == vibeId and VibeMember.song_id == songId
-    # ).count()
+    length = VibeMember.query.filter(
+        VibeMember.vibe_id == vibeId, VibeMember.song_id == songId
+    ).count()
     # if length == 1:
     #     return jsonify("already in vibe")
-
-    new_member = VibeMember(song_id=songId, vibe_id=vibeId)
-    db.session.add(new_member)
-    db.session.commit()
+    if length != 1:
+        new_member = VibeMember(song_id=songId, vibe_id=vibeId)
+        db.session.add(new_member)
+        db.session.commit()
     return jsonify("success")
 
 

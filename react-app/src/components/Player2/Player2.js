@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-
 import Sound, {
     Osciloscope,
     Volume,
 } from 'react-hifi'
-
+import Slider from 'react-rangeslider'
 import './Player2.css'
 import { usePlay } from '../../context/PlayContext'
 
@@ -18,6 +17,7 @@ export default function Player2() {
         status: Sound.status.PAUSED,
         loading: false,
         position: 0,
+        volume: 100
     });
 
     const canvasElement = useRef();
@@ -70,12 +70,12 @@ export default function Player2() {
                 onLoading={() => setState({ ...state, loading: true })}
                 onPlaying={data => setState({ ...state, ...data })}
             >
+                <Volume value={state.volume} />
                 <Osciloscope
                     onVisualisationData={handleDataViz}
                     height={canvasElement.current && canvasElement.current.height}
                     width={canvasElement.current && canvasElement.current.width}
                 />
-                <Volume value={80} />
                 {/* <button onClick={() => setState({ ...state, position: 0 })}>RESTART</button> */}
                 {/* <span>{playCtxt?.name}</span> */}
                 {/* <button onClick={() => setSTOPPED(true)}> STOP</button> */}
@@ -88,6 +88,33 @@ export default function Player2() {
                 <i onClick={(e) => setStatus("STOPPED")} className={`icons fas fa-stop`}></i>
                 <i onClick={() => setState({ ...state, position: state.position += 5 })} className="icons fas fa-step-forward"></i>
                 <button className="fromalbum font-thin" onClick={() => handleChangeSize()}>{size === "134px" ? "XL" : "SM"}</button>
+                <i onClick={() => state.position - 10 > 0 && setState({ ...state, volume: state.volume -= 10 })} className="volicons fas fa-minus"></i>
+                <i onClick={() => state.position + 10 > 0 && setState({ ...state, volume: state.volume += 10 })} className="volicons fas fa-plus"></i>
+
+
+
+                {/* <Slider className="volslider"
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={state.volume}
+                    orientation="horizontal"
+                /> */}
+                {/* <Slider
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={Number}
+                    orientation={String}
+                    reverse={Boolean}
+                    tooltip={Boolean}
+                    labels={Object}
+                    handleLabel={String}
+                    format={Function}
+                    onChangeStart={Function}
+                    onChange={Function}
+                    onChangeComplete={Function} /> */}
+
             </div>
             <div className="player2details">
                 <span>{playCtxt.name}</span>

@@ -35,7 +35,7 @@ function Song({ song }) {
 
     return (
         <div className="song__container">
-            <i class="icons fas fa-compact-disc" onClick={() => { return (setPlayCtxt(song), console.log(playCtxt)) }}></i>
+            <i class="icons fas fa-compact-disc" onClick={() => setPlayCtxt(song)}></i>
             {vibeIdCtxt && <i className="icons fas fa-minus-square" onClick={(e) => { return (handleRemoveSong(e, song.id), setChangeCtxt(!changeCtxt)) }}></i>}
             {/* <i class="fas fa-trash"></i> */}
             {/* <i class="fas fa-minus-circle"></i> */}

@@ -28,7 +28,6 @@ class Canvas extends Component {
         this.analyser.connect(this.context.destination);
         this.frequency_array = new Uint8Array(this.analyser.frequencyBinCount);
         this.rafId = requestAnimationFrame(this.tick);
-        console.log(this.context);
         // this.audio.play()
     }
 
@@ -105,8 +104,6 @@ class Canvas extends Component {
 
     togglePlay(stop) {
         if (stop) {
-            console.log("stop ran");
-            console.log(this.context);
             this.audio.pause();
             // this.render()
             // this.forceUpdate();//

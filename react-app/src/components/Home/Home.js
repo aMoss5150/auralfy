@@ -85,7 +85,7 @@ function Home() {
                             <input className="vibeadderfield" type="text" value={vibeName} onChange={(e) => setVibeName(e.target.value)} />
                         </form>
                         <div className="addvibebuttons">
-                            <button type="submit" ><i className="icons fas fa-plus-square"></i></button>
+                            {/* <button type="submit" ><i className="icons fas fa-plus-square"></i></button> */}
 
                             <i className="icons fas fa-window-close" onClick={() => setCreateOpen(false)}></i>
                         </div>

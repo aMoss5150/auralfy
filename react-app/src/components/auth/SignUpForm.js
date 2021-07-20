@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -10,6 +10,8 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState("")
+  const [match, setMatch] = useState(true)
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -33,6 +35,15 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+
+  // password matcher
+  useEffect(() => {
+    if (password !== repeatPassword) {
+      setMatch(false)
+    } else setMatch(true);
+  }, [password, repeatPassword])
+
 
   if (user) {
     return <Redirect to="/" />;
@@ -70,6 +81,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
+
       <label>Repeat Password</label>
       <div>
         <input
@@ -80,6 +92,9 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
         ></input>
+      </div>
+      <div className="text-center font-bold">
+        {match ? "" : "passwords do not match"}
       </div>
       <button type="submit">Sign Up</button>
     </form>

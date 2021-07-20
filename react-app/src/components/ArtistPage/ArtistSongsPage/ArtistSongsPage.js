@@ -25,7 +25,7 @@ function ArtistSongsPage() {
     return (
 
         <div className="artistsongspage__container headers__colors2 font-bold">
-            <img src={song1?.image} alt="" style={{ height: "250px" }} />
+            <img src={song1?.image} alt="" style={{ height: "250px", borderRadius: "1px" }} />
             <div className="artist__name font-thin">
                 {artistIdCtxt}
             </div>

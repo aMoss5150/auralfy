@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
@@ -14,9 +14,10 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    // if (data.errors) {
-    //   setErrors(data.errors);
-    // }
+    // console.log("on login", data);
+    if (data.errors) {
+      setErrors(data.errors);
+    }
   };
 
   const updateEmail = (e) => {
@@ -31,15 +32,15 @@ const LoginForm = () => {
     return <Redirect to="/" />;
   }
 
+  // //add error handling here
+  // useEffect(() => {
+
+  // }, [])
+
   return (
     <form className='loginform__parent' onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
       <label className="font-bold" htmlFor="email">Email</label>
-      <div >
+      <div>
         <input
           className="forminput"
           name="email"
@@ -60,8 +61,14 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
       </div>
+      <div className="text-center">
+        {errors && errors.map((error) => (
+          <div>{error}</div>
+        ))}
+      </div>
       <button type="submit">Login</button>
     </form>
+
   );
 };
 

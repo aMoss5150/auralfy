@@ -46,15 +46,6 @@ function Home() {
         setVibeName('')
         setCreateOpen(false)
     }
-
-    function handleDeleteVibe(vibeId) {
-        dispatch(deleteAVibe(12))
-    }
-
-    function handleAddSong(songId, vibeId) {
-        dispatch(addSongToVibe(3, 2))
-    }
-
     useEffect(() => {
         setHomeLoaded(false)
         setHomeLoaded(true)

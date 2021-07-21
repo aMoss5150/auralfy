@@ -11,6 +11,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Splash from "./components/Splash/Splash";
 import Home from "./components/Home/Home";
+import FullVis from './components/FullVis/FullVis'
 import { authenticate } from "./store/session";
 
 
@@ -51,6 +52,10 @@ function App() {
 
         <Route path="/login" exact={true}>
           <LoginForm />
+        </Route>
+
+        <Route path="/fullvis">
+          <FullVis />
         </Route>
 
         <Route path="/sign-up" exact={true}>

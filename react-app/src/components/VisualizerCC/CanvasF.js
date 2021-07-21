@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { usePlay } from '../../context/PlayContext'
 
 
@@ -10,26 +11,36 @@ const bar_width = 1;
 radius = 0;
 center_x = width / 2;
 center_y = height / 2;
+let rafId
+let context
+let source
+let analyser
+let frequency_array
 
 export default function CanvasF() {
+    const songs = useSelector(state => state.songs)
+    const song = songs ? songs[1] : null
+    const link = song?.link
     const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
     const [state, setState] = useState({
-        audio: new Audio(playCtxt).crossOrigin = "anonymous",
+        audio: new Audio(playCtxt.link),
         canvas: React.createRef(),
         loading: false,
         position: 0,
         volume: 100,
-        context: new (window.AudioContext || window.webkitAudioContext)(),
-        source: state.context.createMediaElementSource(state.audio),
-        analyser: state.context.createAnalyser(),
     });
-    state.source.connect(state.analyser);
-    state.analyser.connect(state.context.destination);
-    let frequency_array = new Uint8Array(state.analyser.frequencyBinCount);
+
     // let rafId = requestAnimationFrame(tick);
+    useEffect(() => {
+        context = new (window.AudioContext || window.webkitAudioContext)()
+        source = context.createMediaElementSource(state.audio)
+        analyser = context.createAnalyser()
+        source.connect(analyser);
+        analyser.connect(context.destination);
+        frequency_array = new Uint8Array(analyser.frequencyBinCount);
+    }, [])
 
-
-    const animationLooper = (canvas = state.canvas) => {
+    const animationLooper = (canvas) => {
         if (!canvas) return null
         canvas.width = width;
         canvas.height = height;
@@ -39,6 +50,7 @@ export default function CanvasF() {
             const rads = Math.PI * 2 / bars * 2;
 
             // Math is magical
+            // console.log(frequency_array, analyser);
             bar_height = frequency_array[i] * 2;
             const x = center_x + Math.cos(rads * i) * (radius);
             const y = center_y + Math.sin(rads * i) * (radius);
@@ -66,8 +78,12 @@ export default function CanvasF() {
     }
 
     const tick = () => {
-        animationLooper(canvas.current);
-        state.analyser.getByteTimeDomainData(frequency_array);
+        // state.audio.autoplay = true
+        // state.audio.play()
+        // context.resume()
+
+        animationLooper(state.canvas.current);
+        analyser.getByteTimeDomainData(frequency_array);
         rafId = requestAnimationFrame(tick);
     }
 
@@ -89,6 +105,7 @@ export default function CanvasF() {
     // }, [])
     return (
         <div>
+            <button onClick={tick}>start</button>
             <canvas className="canvas__skin" ref={state.canvas} />
         </div>
     )

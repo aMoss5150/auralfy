@@ -4,7 +4,7 @@ export const PlayContext = createContext()
 
 export const PlayProvider = (props) => {
 
-    const [playCtxt, setPlayCtxt] = useState(1)
+    const [playCtxt, setPlayCtxt] = useState()
     const [status, setStatus] = useState("PAUSED")
     // const [playCtxt, setPlayCtxt] = useState("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3")
 

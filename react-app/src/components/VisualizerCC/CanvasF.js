@@ -23,7 +23,7 @@ export default function CanvasF() {
     const link = song?.link
     const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
     const [state, setState] = useState({
-        audio: new Audio(playCtxt.link),
+        audio: new Audio("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"),
         canvas: React.createRef(),
         loading: false,
         position: 0,
@@ -38,6 +38,7 @@ export default function CanvasF() {
         source.connect(analyser);
         analyser.connect(context.destination);
         frequency_array = new Uint8Array(analyser.frequencyBinCount);
+        state.audio.crossOrigin = "anonymous"
     }, [])
 
     const animationLooper = (canvas) => {
@@ -78,8 +79,9 @@ export default function CanvasF() {
     }
 
     const tick = () => {
-        // state.audio.autoplay = true
-        // state.audio.play()
+
+        state.audio.volume = 1
+        state.audio.play()
         // context.resume()
 
         animationLooper(state.canvas.current);

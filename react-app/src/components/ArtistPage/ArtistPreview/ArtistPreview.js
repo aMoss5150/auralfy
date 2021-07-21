@@ -1,6 +1,8 @@
 import React from 'react'
 import { useColor } from '../../../context/ColorContext'
 
+
+// *this component is the small artist card displayed in the artistPage
 function ArtistPreview({ song }) {
     const { colorCtxt } = useColor()
     return (

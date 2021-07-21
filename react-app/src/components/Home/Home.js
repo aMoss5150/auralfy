@@ -7,19 +7,19 @@ import ArtistPage from '../ArtistPage/ArtistPage'
 import ListDisplay from '../ListDisplay/ListDisplay'
 import SidebarList from '../ListDisplay/SidebarList/SidebarList'
 import Player from '../Player/Player'
-import Player2 from '../Player2/Player2'
-import Canvas from '../Canvas/Canvas'
 import { useVibeId } from '../../context/VibeContext'
 import { useArtistPage } from '../../context/ArtistPageContext'
 import { useArtistId } from '../../context/ArtistIdContext'
 import { useColor } from '../../context/ColorContext'
 import { usePlay } from '../../context/PlayContext'
-import Visualizer from '../VisualizerCC/index'
 import logo1 from '../../images/auralfy-light.jpg'
 
 import './Home.css'
 
 function Home() {
+    const dispatch = useDispatch()
+    let songs = Object.values(useSelector(state => state.songs))
+    let vibes = Object.values(useSelector(state => state.vibes))
     const { vibeIdCtxt, setVibeIdCtxt } = useVibeId()
     const { artistPageCtxt, setArtistPageCtxt } = useArtistPage()
     const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
@@ -27,12 +27,7 @@ function Home() {
     const { colorCtxt } = useColor()
     const [createOpen, setCreateOpen] = useState(false)
     const [vibeName, setVibeName] = useState('')
-    const [artistPage, setArtistPage] = useState(true)
     const [homeLoaded, setHomeLoaded] = useState(false)
-    const dispatch = useDispatch()
-    const [URL, setURL] = useState("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3")
-    let songs = Object.values(useSelector(state => state.songs))
-    let vibes = Object.values(useSelector(state => state.vibes))
 
     let targetVibe = vibes?.filter((vibe) => {
         if (vibe.id === vibeIdCtxt) {
@@ -59,14 +54,12 @@ function Home() {
         return () => setHomeLoaded(false)
     }, [])
 
-
     if (!homeLoaded) return null
     if (!songs) return null
     return (
         <div className="homepage__container">
             {/* <Canvas /> */}
             <div className="sidebar__parent headers__colors2">
-                {/* <img src={logo1} className="mainlogo" alt="" /> */}
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setArtistPageCtxt(true), setArtistIdCtxt(null)) }}>Artists</button>
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => { return (setVibeIdCtxt(null), setArtistPageCtxt(false)) }}> All My Songs</button>
                 <button className={`${colorCtxt === false ? "headers__colors2" : "headers__colors4"} bg-transparent font-bold py-1 px-4 rounded`} onClick={() => setCreateOpen(true)}>Add a Vibe</button>

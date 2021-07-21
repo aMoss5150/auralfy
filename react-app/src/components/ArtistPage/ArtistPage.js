@@ -1,36 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Particles from 'react-particles-js'
-import ParticleField from 'react-particles-webgl';
-import Field, { config } from './ParticleConfig'
-// import { THREE } from 'three'
-
+import Field from './ParticleConfig'
 
 import './ArtistPage.css'
-import { getAllSongs } from "../../store/songs"
 import ArtistPreview from './ArtistPreview/ArtistPreview'
 import ArtistSongsPage from './ArtistSongsPage/ArtistSongsPage'
 import { useArtistId } from '../../context/ArtistIdContext'
 
-
-
-
-
-
+// *Field is the preconfigured packaged particle field built from 3 JS
+// *this is the main page for navigating to all artist specific pages
 function ArtistPage() {
-    const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
-    let set = new Set()
-    let currentArtist
     const dispatch = useDispatch()
     let songs = Object.values(useSelector(state => state.songs))
-    // useEffect(() => {
-    //     return () => ParticleField.destroy()
-    // }, [])
+    const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
+
+    // *usage of a set to create the summation of all songs you have access to
+    let set = new Set()
+
+    // *declared
+    let currentArtist
     if (!songs) return null
 
     return (
         <div className="artistpage__container">
-
             {artistIdCtxt !== null && <ArtistSongsPage />}
             {
                 artistIdCtxt === null && songs.map((song) => {
@@ -45,11 +37,7 @@ function ArtistPage() {
                     }
                 })
             }
-
-
-
             <Field />
-
         </div >
     )
 }

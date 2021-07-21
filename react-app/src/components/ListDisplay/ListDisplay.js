@@ -14,17 +14,13 @@ function ListDisplay({ targetVibe }) {
     const dispatch = useDispatch()
     const { colorCtxt } = useColor()
     const { changeCtxt } = useChange()
-    const [loading, setLoading] = useState(true)
     const vibes = Object.values(useSelector(state => state.vibes))
 
     useEffect(async () => {
-        setLoading(true)
         await dispatch(getAllRelations())
         await dispatch(getAllVibes())
-        setLoading(false)
     }, [changeCtxt])
 
-    if (loading) return null
     if (!targetVibe) return null
     if (!vibes) return null
     return (

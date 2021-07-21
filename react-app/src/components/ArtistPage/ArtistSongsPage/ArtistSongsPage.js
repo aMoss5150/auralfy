@@ -4,26 +4,32 @@ import './ArtistSongsPage.css'
 import { useArtistId } from '../../../context/ArtistIdContext'
 import { createARelation } from '../../../store/relations'
 
-function ArtistSongsPage() {
+export default function ArtistSongsPage() {
     const dispatch = useDispatch()
+    // *access reducers
     let songs = Object.values(useSelector(state => state.songs))
-    const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
-    const [songToAdd, setSongToAdd] = useState(null)
     const vibes = Object.values(useSelector(state => state.vibes))
+
+    // *context
+    const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
+
+    // *state
+    const [songToAdd, setSongToAdd] = useState(null)
     const [openAdder, setOpenAdder] = useState(false)
+
+    // *matching artist to their songs based on context
+    // *and the selected artist
     songs = songs?.filter((song) => (
         song.artist === artistIdCtxt
-
     ))
 
+    // *using this to isolate and grab a song
     let song1 = songs[0]
-
     const handleAddSongToVibe = (songId, vibeId) => {
         dispatch(createARelation(songId, vibeId))
     }
     if (!songs) return null
     return (
-
         <div className="artistsongspage__container headers__colors2 font-bold">
             <img src={song1?.image} alt="" style={{ height: "250px", borderRadius: "1px" }} />
             <div className="artist__name font-thin">
@@ -39,32 +45,25 @@ function ArtistSongsPage() {
             }
             {!openAdder && songs.map((song) => (
                 <li key={song.id} className="artistsong">
-                    <i className="icons fas fa-plus-circle" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
-                    {/* <i class="fas fa-chevron-circle-down"></i> */}
+                    <i className="icons fas fa-plus" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
                     <span>{song.name}</span>
+
                     <span
                         className="fromalbum font-thin">
                         &nbsp;from the album&nbsp;
-                    </span> <span>
-                        {song?.album_name}
                     </span>
-                    <span className="font-thin">
-                        {/* <button onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }} */}
-                        {/* className="fromalbum font-thin"> */}
-                        {/* &nbsp;-add to my vibes */}
-                        {/* </button> */}
+
+                    <span>
+                        {song?.album_name}
                     </span>
                 </li>
             ))
             }
+
             {!openAdder &&
                 <i onClick={() => { return (setArtistIdCtxt(null)) }} className="icons fas fa-window-close"></i>
-
             }
         </div >
-
-
     )
 }
 
-export default ArtistSongsPage

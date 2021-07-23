@@ -6,7 +6,7 @@ import { usePlay } from '../../context/PlayContext'
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
 const width = window.innerWidth;
 const height = window.innerHeight;
-const bars = 555;
+const bars = 450;
 const bar_width = 1;
 radius = 0;
 center_x = width / 2;
@@ -65,12 +65,12 @@ export default function CanvasF() {
 
     const drawBar = (x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) => {
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        gradient.addColorStop(0, "rgba(161, 184, 166, 1)");
-        gradient.addColorStop(1, "rgba(161, 198, 167, 1)");
+        gradient.addColorStop(0, "rgba(161, 14, 166, 1)");
+        gradient.addColorStop(1, "rgba(11, 198, 167, 1)");
         ctx.fillStyle = gradient;
 
         const lineColor = "rgb(" + frequency / 2 + ", " + 184 + ", " + 161 + ")";
-        ctx.strokeStyle = lineColor;
+        ctx.strokeStyle = gradient;
         ctx.lineWidth = bar_width;
         ctx.beginPath();
         ctx.moveTo(x1, y1);

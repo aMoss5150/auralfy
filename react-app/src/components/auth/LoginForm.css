@@ -18,3 +18,13 @@
     border-radius: 3px;
     background: rgba(0, 0, 0, 0.2);
 }
+
+.login-button {
+    text-align: center;
+    margin: 6px;
+}
+
+.signup-button {
+    text-align: center;
+    margin: 6px;
+}

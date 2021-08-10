@@ -55,8 +55,6 @@ export default function Player2() {
         }
     }
 
-
-
     if (!playCtxt) return null
     // if (STOPPED) return null
     return (
@@ -92,29 +90,6 @@ export default function Player2() {
                 <i onClick={() => state.volume + 10 <= 100 && setState({ ...state, volume: state.volume += 10 })} className="volicons fas fa-plus"></i>
 
 
-
-                {/* <Slider className="volslider"
-                    min={0}
-                    max={100}
-                    step={1}
-                    value={state.volume}
-                    orientation="horizontal"
-                /> */}
-                {/* <Slider
-                    min={0}
-                    max={100}
-                    step={1}
-                    value={Number}
-                    orientation={String}
-                    reverse={Boolean}
-                    tooltip={Boolean}
-                    labels={Object}
-                    handleLabel={String}
-                    format={Function}
-                    onChangeStart={Function}
-                    onChange={Function}
-                    onChangeComplete={Function} /> */}
-
             </div>
             <div className="player2details">
                 <span>{playCtxt.name}</span>
@@ -133,15 +108,6 @@ export default function Player2() {
                 <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: size === "134px" ? "0.6" : "1", position: "fixed", left: "224px", width: '100%', height: size, bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />
             </div>
             <span className="pointer githublinks"><a href="https://github.com/aMoss5150/auralfy/wiki">Go to Github Link</a></span>
-        </div >
+        </div>
     );
 };
-            // <BasicControls
-            //     onPlay={() => setState({ ...state, status: Sound.status.PLAYING })}
-            //     onPause={() => setState({ ...state, status: Sound.status.PAUSED })}
-            //     onStop={() => setState({ ...state, status: Sound.status.STOPPED })}
-            //     duration={state.duration}
-            //     position={state.position}
-            //     onTimeChange={evt => setState({ ...state, position: Number(evt.target.value) })}
-            // />
-

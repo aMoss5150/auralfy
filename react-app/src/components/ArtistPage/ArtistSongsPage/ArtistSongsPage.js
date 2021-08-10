@@ -23,7 +23,7 @@ export default function ArtistSongsPage() {
         song.artist === artistIdCtxt
     ))
 
-    // *using this to isolate and grab a song
+    // *using this to isolate and grab a single song
     let song1 = songs[0]
     const handleAddSongToVibe = (songId, vibeId) => {
         dispatch(createARelation(songId, vibeId))
@@ -35,34 +35,46 @@ export default function ArtistSongsPage() {
             <div className="artist__name font-thin">
                 {artistIdCtxt}
             </div>
-            {openAdder && songToAdd && vibes.map((vibe) => (
-                <div key={vibe.id} className="artistsong fromalbum font-thin adder" onClick={() => handleAddSongToVibe(vibe.id, songToAdd.id)}>
-                    add <span className="font-bold">{songToAdd.name}</span> to #<span className="f">{vibe.name}</span>
-                </div>
-            ))}
-            {openAdder &&
+
+            {
+                openAdder && songToAdd && vibes.map((vibe) => (
+                    <div key={vibe.id} className="artistsong fromalbum font-thin adder" onClick={() => handleAddSongToVibe(vibe.id, songToAdd.id)}>
+                        add <span className="font-bold">{songToAdd.name}</span> to #<span className="f">{vibe.name}</span>
+                    </div>
+                ))
+            }
+
+
+            {
+                openAdder &&
                 <i onClick={() => { return (setOpenAdder(false), setSongToAdd(null)) }} className="fas fa-window-close"></i>
             }
-            {!openAdder && songs.map((song) => (
-                <li key={song.id} className="artistsong">
-                    <i className="icons fas fa-plus" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
-                    <span>{song.name}</span>
 
-                    <span
-                        className="fromalbum font-thin">
-                        &nbsp;from the album&nbsp;
-                    </span>
 
-                    <span>
-                        {song?.album_name}
-                    </span>
-                </li>
-            ))
+            {
+                !openAdder && songs.map((song) => (
+                    <li key={song.id} className="artistsong">
+                        <i className="icons fas fa-plus" onClick={() => { return (setOpenAdder(true), setSongToAdd(song)) }}></i>
+                        <span>{song.name}</span>
+
+                        <span
+                            className="fromalbum font-thin">
+                            &nbsp;from the album&nbsp;
+                        </span>
+
+                        <span>
+                            {song?.album_name}
+                        </span>
+                    </li>
+                ))
             }
 
-            {!openAdder &&
+
+            {
+                !openAdder &&
                 <i onClick={() => { return (setArtistIdCtxt(null)) }} className="icons fas fa-window-close"></i>
             }
+
         </div >
     )
 }

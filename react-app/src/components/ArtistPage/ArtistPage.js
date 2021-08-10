@@ -23,7 +23,9 @@ function ArtistPage() {
 
     return (
         <div className="artistpage__container">
+
             {artistIdCtxt !== null && <ArtistSongsPage />}
+
             {
                 artistIdCtxt === null && songs.map((song) => {
                     {
@@ -37,6 +39,7 @@ function ArtistPage() {
                     }
                 })
             }
+
             <Field />
         </div >
     )

@@ -42,33 +42,15 @@ function App() {
 
   return (
     <BrowserRouter>
-
       <Switch>
 
-
-        <Route path="/splash" exact={true}>
+        <Route path="/splash" exact>
           <Splash />
         </Route>
 
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-
-        <Route path="/fullvis">
+        <Route path="/test" exact>
           <FullVis />
         </Route>
-
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
 
         <ProtectedRoute path="/" exact>
           <NavBar />
@@ -76,9 +58,8 @@ function App() {
         </ProtectedRoute>
 
         <Route >
-          return <h1>404</h1>
+          <h1>404</h1>
         </Route>
-
 
       </Switch>
     </BrowserRouter>

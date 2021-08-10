@@ -96,7 +96,10 @@ const SignUpForm = () => {
       <div className="text-center font-bold">
         {match ? "" : "passwords do not match"}
       </div>
-      <button type="submit">Sign Up</button>
+
+      <div className="signup-button">
+        <button type="submit">Sign Up</button>
+      </div>
     </form>
   );
 };

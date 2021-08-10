@@ -12,11 +12,9 @@ function SidebarList({ vibes }) {
     const { vibeIdCtxt, setVibeIdCtxt } = useVibeId()
     const { colorCtxt } = useColor()
     const { artistPageCtxt, setArtistPageCtxt } = useArtistPage()
-    const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
-    let check = null
 
-    function handleDeleteVibe(vibeId) {
-        dispatch(deleteAVibe(vibeId))
+    async function handleDeleteVibe(vibeId) {
+        await dispatch(deleteAVibe(vibeId))
         if (vibeId === vibeIdCtxt) {
             setVibeIdCtxt(null)
         }

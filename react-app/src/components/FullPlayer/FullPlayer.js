@@ -84,47 +84,9 @@ export default function FullPlayer() {
         }
     }
 
-    // animationLooper(canvas) {
-    //     if (!canvas) return null
-    //     canvas.width = width;
-    //     canvas.height = height;
-
-    //     ctx = canvas.getContext("2d");
-
-    //     for (var i = 0; i < bars; i++) {
-    //         //divide a circle into equal part
-    //         const rads = Math.PI * 2 / bars * 2;
-
-    //         // Math is magical
-    //         bar_height = this.frequency_array[i] * 2;
-
-    //         const x = center_x + Math.cos(rads * i) * (radius);
-    //         const y = center_y + Math.sin(rads * i) * (radius);
-    //         x_end = center_x + Math.cos(rads * i) * (radius + bar_height);
-    //         y_end = center_y + Math.sin(rads * i) * (radius + bar_height);
-
-    //         //draw a bar
-    //         this.drawBar(x, y, x_end, y_end, this.frequency_array[i], ctx, canvas);
-    //     }
-    //     drawBar(x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) {
-    //         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    //         gradient.addColorStop(0, "rgba(161, 184, 166, 1)");
-    //         gradient.addColorStop(1, "rgba(161, 198, 167, 1)");
-    //         ctx.fillStyle = gradient;
-
-    //         const lineColor = "rgb(" + frequency / 2 + ", " + 184 + ", " + 161 + ")";
-    //         ctx.strokeStyle = lineColor;
-    //         ctx.lineWidth = bar_width;
-    //         ctx.beginPath();
-    //         ctx.moveTo(x1, y1);
-    //         ctx.lineTo(x2, y2);
-    //         ctx.stroke();
-    //     }
-
 
 
     if (!playCtxt) return null
-    // if (STOPPED) return null
     return (
         <div className="headers__colors2">
             <Sound
@@ -142,12 +104,8 @@ export default function FullPlayer() {
                     height={canvasElement.current && canvasElement.current.height}
                     width={canvasElement.current && canvasElement.current.width}
                 />
-                {/* <button onClick={() => setState({ ...state, position: 0 })}>RESTART</button> */}
-                {/* <span>{playCtxt?.name}</span> */}
-                {/* <button onClick={() => setSTOPPED(true)}> STOP</button> */}
             </Sound>
             <div className="player2controls fromalbum">
-                {/* <button onClick={() => setStatus("PLAYING")}>PLAY</button> */}
                 <i onClick={() => state.position - 5 > 0 && setState({ ...state, position: state.position -= 5 })} className="icons fas fa-step-backward"></i>
                 <i onClick={() => setStatus("PLAYING")} className={`${status === "PAUSED" || status === "STOPPED" ? "" : "hidden"} icons fas fa-play`}></i>
                 <i onClick={(e) => setStatus("PAUSED")} className={`${status === "PLAYING" ? "" : "hidden"} icons fas fa-pause`}></i>

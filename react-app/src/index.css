@@ -34,3 +34,15 @@ a {
 a.visited {
     /* color: aqua */
 }
+
+.icons {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    transition-property: font-size;
+    transition-duration: .3s;
+}
+
+.icons:hover {
+    font-size: 27px;
+}

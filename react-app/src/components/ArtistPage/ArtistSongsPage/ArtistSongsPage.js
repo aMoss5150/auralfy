@@ -47,7 +47,7 @@ export default function ArtistSongsPage() {
 
             {
                 openAdder &&
-                <i onClick={() => { return (setOpenAdder(false), setSongToAdd(null)) }} className="fas fa-window-close"></i>
+                <i onClick={() => { return (setOpenAdder(false), setSongToAdd(null)) }} className="icons fas fa-angle-double-left"></i>
             }
 
 
@@ -72,7 +72,7 @@ export default function ArtistSongsPage() {
 
             {
                 !openAdder &&
-                <i onClick={() => { return (setArtistIdCtxt(null)) }} className="icons fas fa-window-close"></i>
+                <i onClick={() => { return (setArtistIdCtxt(null)) }} className="icons fas fa-angle-double-left"></i>
             }
 
         </div >

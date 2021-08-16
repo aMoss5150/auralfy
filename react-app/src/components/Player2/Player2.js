@@ -102,7 +102,15 @@ export default function Player2() {
                 <span
                     className="font-thin">
                     &nbsp;by&nbsp;
-                </span><span>{playCtxt.artist}</span></div>
+                </span><span>{playCtxt.artist}</span>
+
+                <span
+                    className="font-thin italic">
+                    <span>&nbsp;&nbsp;-{playCtxt.tempo}</span>
+                    &nbsp;BPM&nbsp;
+                </span>
+            </div>
+
 
             <div>
                 <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: size === "134px" ? "0.6" : "1", position: "fixed", left: "224px", width: '100%', height: size, bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />

@@ -22,7 +22,7 @@ const NavBar = () => {
           </li>
         </ul>
       }
-      <span className='m-2 ml-12 fromalbum font-thin logo__span'>Auralfy</span>
+      <span className={`m-2 ml-12 fromalbum font-thin logo__span ${open ? "hidden" : ""}`}>Auralfy</span>
       {/* <img src={logo1} className="mainlogo" alt="" /> */}
       <span className={`hidden ml-6 ${open ? "hidden" : ""}`}>
         <button onClick={() => setColorCtxt(false)} >green</button>

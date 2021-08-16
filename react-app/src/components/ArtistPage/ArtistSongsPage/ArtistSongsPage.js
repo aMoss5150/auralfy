@@ -65,6 +65,11 @@ export default function ArtistSongsPage() {
                         <span>
                             {song?.album_name}
                         </span>
+
+                        <span
+                            className="fromalbum font-thin">
+                            &nbsp;Tempo at:&nbsp;{song.tempo}
+                        </span>
                     </li>
                 ))
             }

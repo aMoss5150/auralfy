@@ -27,7 +27,7 @@ function SidebarList({ vibes }) {
                     <div onClick={() => { return (setVibeIdCtxt(vibe.id), setArtistPageCtxt(false)) }} >
                         #{vibe.name} <br />
                     </div>
-                    <i className="icons fas fa-window-close py-1 px-14 rounded" onClick={() => handleDeleteVibe(vibe.id)}></i>
+                    <i className="icons fas fa-trash py-1 px-14 rounded" onClick={() => handleDeleteVibe(vibe.id)}></i>
                     {/* <button className={`${colorCtxt === false ? 'headers__colors2' : 'headers__colors3'} bg-transparent font-bold py-1 px-14 rounded`} >-del</button> */}
                 </li>
             ))

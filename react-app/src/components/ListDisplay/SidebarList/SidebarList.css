@@ -5,6 +5,15 @@
     /* box-shadow: 1px 1px 3px 4px rgba(151, 238, 155, 0.5); */
     padding: 10px;
     margin: 10px;
+    border-top: 0.1px solid rgba(151, 238, 155, 0.1);
+    /* border-bottom: .5px solid rgba(151, 238, 155, 0.2); */
+    /* border-right: .5px solid rgba(151, 238, 155, 0.2); */
+    transition-property: font-size;
+    transition-duration: 0.7s;
+}
+
+.vibe__li:hover {
+    font-size: 27px;
 }
 
 .headers__colors2 {
@@ -19,4 +28,10 @@
 .headers__colors3 {
     /* color: rgb(235, 172, 203); */
     color: rgb(250, 102, 102);
+}
+
+.trash {
+    font-size: 20px;
+    position: relative;
+    right: 50px;
 }

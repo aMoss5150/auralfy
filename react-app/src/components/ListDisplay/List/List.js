@@ -7,9 +7,12 @@ import { getAllRelations } from '../../../store/relations'
 import Particles from 'react-particles-js'
 import "./List.css"
 
+
+import { deleteAVibe } from '../../../store/vibes'
+
 function List({ vibeId, vibeName }) {
     const dispatch = useDispatch()
-    const { vibeIdCtxt } = useVibeId()
+    const { vibeIdCtxt, setVibeIdCtxt } = useVibeId()
     const { changeCtxt } = useChange()
     const songs = Object.values(useSelector(state => state.songs))
     const relations = useSelector(state => state.relations)[0]
@@ -26,6 +29,14 @@ function List({ vibeId, vibeName }) {
     })
     const songsSet = songsOnList ? new Set(songsOnList2) : null
 
+    async function handleDeleteVibe(vibeId) {
+
+        await dispatch(deleteAVibe(vibeId))
+        if (vibeId === vibeIdCtxt) {
+            setVibeIdCtxt(null)
+        }
+    }
+
     useEffect(async () => {
         await dispatch(getAllRelations())
     }, [changeCtxt])
@@ -36,6 +47,7 @@ function List({ vibeId, vibeName }) {
         <div className="list__container">
             <div className="vibe__name__list font-thin font-serif">
                 #{vibeIdCtxt ? vibeName : "all vibe songs"}
+                <i className=" trash icons fas fa-trash py-1 px-14 rounded" onClick={() => handleDeleteVibe(vibeIdCtxt)}></i>
             </div>
             {!vibeIdCtxt && Array.from(songsSet).map((song) => (
                 <Song key={song.id} song={song} title={false} />
@@ -44,11 +56,6 @@ function List({ vibeId, vibeName }) {
             {vibeIdCtxt && vibeId && songsOnList && songsOnList.map((song) => (
                 <Song key={song.id} song={song} title={true} />
             ))}
-
-
-
-
-
 
         </div>
     )

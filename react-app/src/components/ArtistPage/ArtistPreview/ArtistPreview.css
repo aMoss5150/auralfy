@@ -6,9 +6,12 @@
     /* justify-content: center; */
     /* margin: 20px; */
     /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(19, 121, 9, 1) 35%, rgba(0, 212, 255, 1) 100%); */
+    /* margin-right: 300px; */
 }
 
 #artist__image {
     /* margin: 20px;
     height: 10px */
 }
+
+.artist__card {}

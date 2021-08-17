@@ -28,6 +28,20 @@
     cursor: pointer;
 }
 
+.artistsong {
+    transition-property: font-size;
+    transition-duration: 0.5s
+}
+
 .artistsong:hover {
     color: rgba(94, 122, 94, 0.827);
+}
+
+.artistsong:active {
+    color: rgba(94, 122, 94, 0.827);
+    font-size: 25px;
+}
+
+.icons:active {
+    font-size: 20px;
 }

@@ -16,6 +16,10 @@
     font-size: 27px;
 }
 
+.vibe__li:active {
+    font-size: 19px;
+}
+
 .headers__colors2 {
     color: rgb(161, 184, 161);
 }

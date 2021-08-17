@@ -30,7 +30,7 @@
 
 .artistsong {
     transition-property: font-size;
-    transition-duration: 0.5s
+    transition-duration: 0.7s
 }
 
 .artistsong:hover {
@@ -39,7 +39,7 @@
 
 .artistsong:active {
     color: rgba(94, 122, 94, 0.827);
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .icons:active {

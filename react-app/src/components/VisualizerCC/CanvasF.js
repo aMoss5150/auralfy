@@ -23,7 +23,8 @@ export default function CanvasF() {
     const link = song?.link
     const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
     const [state, setState] = useState({
-        audio: new Audio("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"),
+        // audio: new Audio("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"),
+        audio: playCtxt ? new Audio(playCtxt.link) : null,
         canvas: React.createRef(),
         loading: false,
         position: 0,
@@ -33,20 +34,23 @@ export default function CanvasF() {
     // let rafId = requestAnimationFrame(tick);
     useEffect(() => {
         context = new (window.AudioContext || window.webkitAudioContext)()
-        source = context.createMediaElementSource(state.audio)
-        analyser = context.createAnalyser()
-        source.connect(analyser);
-        analyser.connect(context.destination);
-        frequency_array = new Uint8Array(analyser.frequencyBinCount);
-        state.audio.crossOrigin = "anonymous"
-    }, [])
+        if (state.audio) {
+            source = context.createMediaElementSource(state.audio)
+            analyser = context.createAnalyser()
+            source.connect(analyser);
+            analyser.connect(context.destination);
+            frequency_array = new Uint8Array(analyser.frequencyBinCount);
+            state.audio.crossOrigin = "anonymous"
+        }
+    }, [playCtxt])
 
     const animationLooper = (canvas) => {
-        if (!canvas) return null
+        if (!canvas || !state.audio) return null
         canvas.width = width;
         canvas.height = height;
         ctx = canvas.getContext("2d");
         for (let i = 0; i < bars; i++) {
+
             //divide a circle into equal part
             const rads = Math.PI * 2 / bars * 2;
 
@@ -79,7 +83,6 @@ export default function CanvasF() {
     }
 
     const tick = () => {
-
         state.audio.volume = 1
         state.audio.play()
         // context.resume()
@@ -105,9 +108,10 @@ export default function CanvasF() {
     //         source.disconnect();
     //     })
     // }, [])
+
     return (
         <div>
-            <button onClick={tick}>start</button>
+            <button onClick={() => state.audio ? tick() : null}>start</button>
             <canvas className="canvas__skin" ref={state.canvas} />
         </div>
     )

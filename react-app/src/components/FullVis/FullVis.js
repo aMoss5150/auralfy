@@ -17,7 +17,6 @@ function FullVis() {
     return (
         <div className="player__parent">
             <button onClick={() => setPlayCtxt(songs[1])}>LOAD</button>
-            {/* <FullPlayer /> */}
             <CanvasF />
         </div>
     )

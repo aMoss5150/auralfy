@@ -52,6 +52,23 @@
     z-index: 2;
 }
 
+.fullvis__image {
+    /* position: absolute; */
+    opacity: 0.01;
+    width: 100vw;
+    height: 100vh;
+    /* margin: 0 auto; */
+    /* top: 100vh/2; */
+    /* left: 100vw/2; */
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* margin-top: -50px; */
+    /* margin-left: -50px; */
+    /* width: 100px; */
+    /* height: 100px; */
+}
+
 #canvas__field2 {
     background-color: rgb(23, 20, 20);
     position: absolute;

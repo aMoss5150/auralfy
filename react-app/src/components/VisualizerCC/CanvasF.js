@@ -9,7 +9,7 @@ import './CanvasCC.css'
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
 const width = window.innerWidth;
 const height = window.innerHeight;
-const bars = 670;
+const bars = 707;
 const bar_width = .2;
 radius = 0;
 center_x = width / 2;
@@ -42,7 +42,7 @@ export default function CanvasF() {
             analyser = context.createAnalyser()
             source.connect(analyser);
             analyser.connect(context.destination);
-            frequency_array = new Uint8Array(analyser.frequencyBinCount);
+            frequency_array = new Uint8Array(analyser.frequencyBinCount * 2);
             state.audio.crossOrigin = "anonymous"
         }
     }, [playCtxt])
@@ -55,15 +55,30 @@ export default function CanvasF() {
         for (let i = 0; i < bars; i++) {
 
             //divide a circle into equal part
-            const rads = Math.PI * 2 / bars * 2;
+            // const rads = Math.PI * 2 / bars * 2;
 
             // Math is magical
             // console.log(frequency_array, analyser);
-            bar_height = frequency_array[i] * 2.7;
-            const x = center_x + Math.cos(rads * i) * (radius);
-            const y = center_y + Math.sin(rads * i) * (radius);
+            // bar_height = frequency_array[i] * 2;
+            // const x = center_x + Math.cos(rads * i) * (radius);
+            // const y = center_y + Math.sin(rads * i) * (radius);
+            // x_end = center_x + Math.cos(rads * i) * (radius + bar_height);
+            // y_end = center_y + Math.sin(rads * i) * (radius + bar_height);
+
+
+
+            //* practice
+            const rads = Math.PI * 2 / bars * 2;
+            bar_height = frequency_array[i] * 3;
+            // center_x = center_x * Math.random()
+            // center_y = center_y * Math.random()
+            const x = center_x + Math.cos(rads * i);
+            const y = center_y + Math.sin(rads * i);
+            // const x = center_x + Math.cos(rads * i) * (radius);
+            // const y = center_y + Math.sin(rads * i) * (radius);
             x_end = center_x + Math.cos(rads * i) * (radius + bar_height);
-            y_end = center_y + Math.sin(rads * i) * (radius + bar_height);
+            y_end = center_x + Math.sin(rads * i) * (radius + bar_height);
+
 
             //draw a bar
             drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas);
@@ -71,16 +86,17 @@ export default function CanvasF() {
     }
 
     const drawBar = (x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) => {
-        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        const lineColor = "rgb(" + frequency / 2 + ", " + 184 + ", " + 161 + ")";
+        const gradient = ctx.createLinearGradient(20, 0, 200, canvas.height);
+        const lineColor = "rgb(" + frequency / 1.2 + ", " + Math.random() * 44 + ", " + Math.random() * 54 + ")";
+        // const lineColor = "rgb(" + frequency / 2 + ", " + Math.random() * 10 + ", " + Math.random() * 8 + ")";
         gradient.addColorStop(0, "rgba(220, 54, 54, 1)");
-        gradient.addColorStop(1, "rgba(223, 54, 54, 1)");
-        // ctx.fillStyle = lineColor;
+        gradient.addColorStop(1, "rgba(223, 44, 54, 1)");
+        ctx.fillStyle = lineColor;
 
 
 
-        ctx.strokeStyle = gradient;
-        // ctx.strokeStyle = lineColor;
+        // ctx.strokeStyle = gradient;
+        ctx.strokeStyle = lineColor;
         ctx.lineWidth = bar_width;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
@@ -94,8 +110,8 @@ export default function CanvasF() {
         // context.resume()
 
         animationLooper(state.canvas.current);
-        analyser.getByteTimeDomainData(frequency_array)
-        // analyser.getByteFrequencyData(frequency_array)
+        // analyser.getByteTimeDomainData(frequency_array)
+        analyser.getByteFrequencyData(frequency_array)
         rafId = requestAnimationFrame(tick);
     }
 
@@ -103,7 +119,10 @@ export default function CanvasF() {
     return (
         <div id="canvas__field2">
             <button className="fullvis__button1" onClick={() => state.audio ? tick() : null}>start</button>
-
+            {
+                playCtxt &&
+                <img className="fullvis__image" src={playCtxt.image} alt="artist image" />
+            }
             <button className="fullvis__button2" onClick={() => (
                 setStatus("STOPPED")
             )}>stop</button>

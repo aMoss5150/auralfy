@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { usePlay } from '../../context/PlayContext'
+import Field, { config } from './ParticleConfig2'
 
 
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
@@ -18,9 +20,9 @@ let analyser
 let frequency_array
 
 export default function CanvasF() {
-    const songs = useSelector(state => state.songs)
-    const song = songs ? songs[1] : null
-    const link = song?.link
+    // const songs = useSelector(state => state.songs)
+    // const song = songs ? songs[1] : null
+    // const link = song?.link
     const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
     const [state, setState] = useState({
         // audio: new Audio("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"),
@@ -93,25 +95,11 @@ export default function CanvasF() {
     }
 
 
-    // useEffect(() => {
-    //     context = new (window.AudioContext || window.webkitAudioContext)();
-    //     source = context.createMediaElementSource(audio);
-    //     analyser = context.createAnalyser();
-    //     source.connect(analyser);
-    //     analyser.connect(context.destination);
-    //     frequency_array = new Uint8Array(analyser.frequencyBinCount);
-    //     rafId = requestAnimationFrame(tick);
-
-    //     return (() => {
-    //         cancelAnimationFrame(rafId);
-    //         analyser.disconnect();
-    //         source.disconnect();
-    //     })
-    // }, [])
-
     return (
-        <div>
+        <div id="canvas__field2">
             <button onClick={() => state.audio ? tick() : null}>start</button>
+            <Link id="go-back" to="/">{`<<`}</Link>
+            <Field config={config} />
             <canvas className="canvas__skin" ref={state.canvas} />
         </div>
     )

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from "react-router-dom"
 import Sound, {
     Osciloscope,
     Volume,
@@ -109,6 +110,8 @@ export default function Player2() {
                     <span>&nbsp;&nbsp;-{playCtxt.tempo}</span>
                     &nbsp;BPM&nbsp;
                 </span>
+
+                <Link to="/test">test</Link>
             </div>
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { usePlay } from '../../context/PlayContext'
-import Field, { config } from './ParticleConfig2'
+import Field from './ParticleConfig2'
 import './CanvasCC.css'
 
 
@@ -42,7 +42,7 @@ export default function CanvasF() {
             analyser = context.createAnalyser()
             source.connect(analyser);
             analyser.connect(context.destination);
-            frequency_array = new Uint8Array(analyser.frequencyBinCount * 2);
+            frequency_array = new Uint8Array(analyser.frequencyBinCount);
             state.audio.crossOrigin = "anonymous"
         }
     }, [playCtxt])
@@ -69,11 +69,11 @@ export default function CanvasF() {
 
             //* practice
             const rads = Math.PI * 2 / bars * 2;
-            bar_height = frequency_array[i] * 3;
+            bar_height = frequency_array[i] * 2;
             // center_x = center_x * Math.random()
             // center_y = center_y * Math.random()
-            const x = center_x + Math.cos(rads * i);
-            const y = center_y + Math.sin(rads * i);
+            const x = center_x + Math.cos(rads * i) * (radius);
+            const y = center_y + Math.sin(rads * i) * (radius);
             // const x = center_x + Math.cos(rads * i) * (radius);
             // const y = center_y + Math.sin(rads * i) * (radius);
             x_end = center_x + Math.cos(rads * i) * (radius + bar_height);
@@ -128,7 +128,7 @@ export default function CanvasF() {
             )}>stop</button>
 
             <Link id="go-back" to="/">{`<<`}</Link>
-            <Field config={config} />
+            <Field />
             <canvas className="canvas__skin" ref={state.canvas} />
         </div>
     )

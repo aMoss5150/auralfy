@@ -36,6 +36,22 @@
     opacity: 1;
 }
 
+.fullvis__button1 {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    color: white;
+    z-index: 2;
+}
+
+.fullvis__button2 {
+    position: fixed;
+    top: 35px;
+    left: 20px;
+    color: white;
+    z-index: 2;
+}
+
 #canvas__field2 {
     background-color: rgb(23, 20, 20);
     position: absolute;
@@ -45,7 +61,7 @@
 
 #go-back {
     position: fixed;
-    top: 20px;
+    top: 24px;
     left: 20px;
     color: white;
     z-index: 2;

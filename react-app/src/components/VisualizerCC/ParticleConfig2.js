@@ -33,16 +33,16 @@ export const config = {
     },
     lines: {
         // 'rainbow' or 'solid' color of lines
-        colorMode: 'rainbow',
+        colorMode: 'solid',
         // Color of lines if colorMode: 'solid', must be hex color
-        color: '#4dff4d',
+        color: '#fc030b',
         // Transparency of lines
-        transparency: 0.1,
+        transparency: 0.3,
         // true/false limit the maximum number of line connections per particle
         limitConnections: true,
-        maxConnections: 300,
+        maxConnections: 450,
         // Minimum distance needed to draw line between to particles
-        minDistance: 300,
+        minDistance: 400,
         // true/false render lines
         visible: true,
     },
@@ -56,11 +56,11 @@ export const config = {
         // 'square' or 'circle' shape of particles
         shape: 'circle',
         // The exact number of particles to render
-        count: 285,
+        count: 385,
         // The minimum particle size
         minSize: 6,
         // The maximum particle size
-        maxSize: 28,
+        maxSize: 45,
         // true/false render particles
         visible: true
     },
@@ -72,7 +72,7 @@ export const config = {
      */
     cameraControls: {
         // Enable or disable all camera interaction (click, drag, touch etc)
-        enabled: false,
+        enabled: true,
         // Enable or disable smooth dampening of camera movement
         enableDamping: true,
         dampingFactor: 0.9,
@@ -81,7 +81,7 @@ export const config = {
         // Enable or disable constant rotation of camera around scene
         autoRotate: true,
         // Rotation speed -- higher is faster
-        autoRotateSpeed: 1.2,
+        autoRotateSpeed: 3,
         // If true, camera position will be reset whenever any option changes (including this one)
         // Useful when turning off autoRotate, the camera will return to FOV where scene fits to canvas
         resetCameraFlag: false
@@ -89,7 +89,7 @@ export const config = {
 };
 
 export default () => (
-    <div style={{ position: "absolute", width: "100vw", height: "100vh" }}>
+    <div style={{ position: "absolute", width: "100%", height: "100%", overflow: "hidden" }}>
         <ParticleField config={config} />
     </div>
 );

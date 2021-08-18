@@ -9,8 +9,8 @@ import './CanvasCC.css'
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
 const width = window.innerWidth;
 const height = window.innerHeight;
-const bars = 450;
-const bar_width = 1;
+const bars = 670;
+const bar_width = .2;
 radius = 0;
 center_x = width / 2;
 center_y = height / 2;
@@ -59,7 +59,7 @@ export default function CanvasF() {
 
             // Math is magical
             // console.log(frequency_array, analyser);
-            bar_height = frequency_array[i] * 2;
+            bar_height = frequency_array[i] * 2.7;
             const x = center_x + Math.cos(rads * i) * (radius);
             const y = center_y + Math.sin(rads * i) * (radius);
             x_end = center_x + Math.cos(rads * i) * (radius + bar_height);
@@ -72,12 +72,15 @@ export default function CanvasF() {
 
     const drawBar = (x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) => {
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        gradient.addColorStop(0, "rgba(120, 54, 54, 1)");
-        gradient.addColorStop(1, "rgba(64, 41, 41, 1)");
-        ctx.fillStyle = gradient;
-
         const lineColor = "rgb(" + frequency / 2 + ", " + 184 + ", " + 161 + ")";
+        gradient.addColorStop(0, "rgba(220, 54, 54, 1)");
+        gradient.addColorStop(1, "rgba(223, 54, 54, 1)");
+        // ctx.fillStyle = lineColor;
+
+
+
         ctx.strokeStyle = gradient;
+        // ctx.strokeStyle = lineColor;
         ctx.lineWidth = bar_width;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
@@ -91,16 +94,17 @@ export default function CanvasF() {
         // context.resume()
 
         animationLooper(state.canvas.current);
-        analyser.getByteTimeDomainData(frequency_array);
+        analyser.getByteTimeDomainData(frequency_array)
+        // analyser.getByteFrequencyData(frequency_array)
         rafId = requestAnimationFrame(tick);
     }
 
 
     return (
         <div id="canvas__field2">
-            <button onClick={() => state.audio ? tick() : null}>start</button>
+            <button className="fullvis__button1" onClick={() => state.audio ? tick() : null}>start</button>
 
-            <button onClick={() => (
+            <button className="fullvis__button2" onClick={() => (
                 setStatus("STOPPED")
             )}>stop</button>
 

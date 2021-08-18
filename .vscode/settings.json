@@ -2,5 +2,9 @@
     "python.pythonPath": "/Users/andrewmoss/.pyenv/versions/3.9.4/bin/python",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
-    "python.linting.pycodestyleEnabled": true
+    "python.linting.pycodestyleEnabled": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.quickSuggestions": null
 }

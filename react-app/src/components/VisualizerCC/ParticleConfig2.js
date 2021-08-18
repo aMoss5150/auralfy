@@ -25,8 +25,8 @@ export const config = {
     // See the "Snowfall" preset for an example of how to use these values
     direction: {
         xMin: 1,
-        xMax: 1,
-        yMin: 1,
+        xMax: -1,
+        yMin: -1,
         yMax: -1,
         zMin: 1,
         zMax: -1
@@ -37,20 +37,20 @@ export const config = {
         // Color of lines if colorMode: 'solid', must be hex color
         color: '#4dff4d',
         // Transparency of lines
-        transparency: 0.3,
+        transparency: 0.1,
         // true/false limit the maximum number of line connections per particle
         limitConnections: true,
-        maxConnections: 90,
+        maxConnections: 300,
         // Minimum distance needed to draw line between to particles
-        minDistance: 140,
+        minDistance: 300,
         // true/false render lines
         visible: true,
     },
     particles: {
         // 'rainbow' or 'solid' color of particles
-        colorMode: 'rainbow',
+        colorMode: 'solid',
         // Color of lines if colorMode: 'solid', must be hex color
-        color: '#4dff4d',
+        color: '#fc030b',
         // Transparency of particles
         transparency: 0.4,
         // 'square' or 'circle' shape of particles
@@ -81,7 +81,7 @@ export const config = {
         // Enable or disable constant rotation of camera around scene
         autoRotate: true,
         // Rotation speed -- higher is faster
-        autoRotateSpeed: 0.3,
+        autoRotateSpeed: 1.2,
         // If true, camera position will be reset whenever any option changes (including this one)
         // Useful when turning off autoRotate, the camera will return to FOV where scene fits to canvas
         resetCameraFlag: false

@@ -72,8 +72,8 @@ export default function CanvasF() {
 
     const drawBar = (x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) => {
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        gradient.addColorStop(0, "rgba(161, 14, 166, 1)");
-        gradient.addColorStop(1, "rgba(11, 198, 167, 1)");
+        gradient.addColorStop(0, "rgba(120, 54, 54, 1)");
+        gradient.addColorStop(1, "rgba(64, 41, 41, 1)");
         ctx.fillStyle = gradient;
 
         const lineColor = "rgb(" + frequency / 2 + ", " + 184 + ", " + 161 + ")";
@@ -101,8 +101,7 @@ export default function CanvasF() {
             <button onClick={() => state.audio ? tick() : null}>start</button>
 
             <button onClick={() => (
-                state.audio ? state.audio.status = "STOPPED" : null,
-                state.audio ? state.audio.position = 0 : null
+                setStatus("STOPPED")
             )}>stop</button>
 
             <Link id="go-back" to="/">{`<<`}</Link>

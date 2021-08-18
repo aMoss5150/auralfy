@@ -81,11 +81,11 @@ export default function Player2() {
             </Sound>
             <div className="player2controls fromalbum">
                 {/* <button onClick={() => setStatus("PLAYING")}>PLAY</button> */}
-                <i onClick={() => state.position - 5 > 0 && setState({ ...state, position: state.position -= 5 })} className="icons fas fa-step-backward"></i>
-                <i onClick={() => setStatus("PLAYING")} className={`${status === "PAUSED" || status === "STOPPED" ? "" : "hidden"} icons fas fa-play`}></i>
-                <i onClick={(e) => setStatus("PAUSED")} className={`${status === "PLAYING" ? "" : "hidden"} icons fas fa-pause`}></i>
-                <i onClick={(e) => setStatus("STOPPED")} className={`icons fas fa-stop`}></i>
-                <i onClick={() => setState({ ...state, position: state.position += 5 })} className="icons fas fa-step-forward"></i>
+                <i onClick={() => state.position - 5 > 0 && setState({ ...state, position: state.position -= 5 })} className="volicons fas fa-step-backward"></i>
+                <i onClick={() => setStatus("PLAYING")} className={`${status === "PAUSED" || status === "STOPPED" ? "" : "hidden"} volicons fas fa-play`}></i>
+                <i onClick={(e) => setStatus("PAUSED")} className={`${status === "PLAYING" ? "" : "hidden"} volicons fas fa-pause`}></i>
+                <i onClick={(e) => setStatus("STOPPED")} className={`volicons fas fa-stop`}></i>
+                <i onClick={() => setState({ ...state, position: state.position += 5 })} className="volicons fas fa-step-forward"></i>
                 <button className="fromalbum font-thin" onClick={() => handleChangeSize()}>{size === "134px" ? "XL" : "SM"}</button>
                 <i onClick={() => state.volume - 10 >= 0 && setState({ ...state, volume: state.volume -= 10 })} className="volicons fas fa-minus"></i>
                 <i onClick={() => state.volume + 10 <= 100 && setState({ ...state, volume: state.volume += 10 })} className="volicons fas fa-plus"></i>
@@ -97,13 +97,20 @@ export default function Player2() {
                 <span
                     className="font-thin">
                     &nbsp;from the album&nbsp;
-                </span> <span>
+                </span>
+
+                <span>
                     {playCtxt.album_name}
                 </span>
+
                 <span
                     className="font-thin">
                     &nbsp;by&nbsp;
-                </span><span>{playCtxt.artist}</span>
+                </span>
+
+                <span>
+                    {playCtxt.artist}
+                </span>
 
                 <span
                     className="font-thin italic">

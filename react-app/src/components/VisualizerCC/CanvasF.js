@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { usePlay } from '../../context/PlayContext'
 import Field, { config } from './ParticleConfig2'
+import './CanvasCC.css'
 
 
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
@@ -98,6 +99,12 @@ export default function CanvasF() {
     return (
         <div id="canvas__field2">
             <button onClick={() => state.audio ? tick() : null}>start</button>
+
+            <button onClick={() => (
+                state.audio ? state.audio.status = "STOPPED" : null,
+                state.audio ? state.audio.position = 0 : null
+            )}>stop</button>
+
             <Link id="go-back" to="/">{`<<`}</Link>
             <Field config={config} />
             <canvas className="canvas__skin" ref={state.canvas} />

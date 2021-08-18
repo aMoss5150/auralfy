@@ -4,6 +4,7 @@ import CanvasF from '../VisualizerCC/CanvasF'
 import { usePlay } from '../../context/PlayContext'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllSongs } from '../../store/songs'
+import "./FullVis.css"
 
 function FullVis() {
     const dispatch = useDispatch()
@@ -15,7 +16,7 @@ function FullVis() {
     }, [])
 
     return (
-        <div className="player__parent">
+        <div className="fullplayer__parent">
             <CanvasF />
         </div>
     )

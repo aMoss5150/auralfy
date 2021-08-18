@@ -20,6 +20,7 @@ let source
 let analyser
 let frequency_array
 
+
 export default function CanvasF() {
     const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
     bar_width = playCtxt ? playCtxt.energy * 2 : .2
@@ -58,7 +59,7 @@ export default function CanvasF() {
             //divide a circle into equal part
             // const rads = Math.PI * 2 / bars * 2;
 
-            // Math is magical
+            //* orig
             // console.log(frequency_array, analyser);
             // bar_height = frequency_array[i] * 2;
             // const x = center_x + Math.cos(rads * i) * (radius);
@@ -99,7 +100,27 @@ export default function CanvasF() {
         if (valence > 0.75) {
             return "#30b5ba"
         }
+    }
 
+    const shadowHelper = (valence) => {
+        if (valence <= 0.25) {
+            return "blue"
+        }
+        if (valence > 0.25 && valence <= 0.35) {
+            return "orange"
+        }
+        if (valence > 0.35 && valence <= 0.5) {
+            return "pink"
+        }
+        if (valence > 0.5 && valence <= 0.65) {
+            return "purple"
+        }
+        if (valence > 0.65 && valence <= 0.8) {
+            return "lightgrey"
+        }
+        if (valence > 0.8) {
+            return "red"
+        }
     }
 
     const drawBar = (x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) => {
@@ -111,7 +132,7 @@ export default function CanvasF() {
         gradient.addColorStop(1, "rgba(223, 44, 54, 1)");
         ctx.fillStyle = lineColor;
 
-        ctx.shadowColor = 'purple';
+        ctx.shadowColor = playCtxt ? shadowHelper(playCtxt.valence) : 'red';
         // ctx.shadowColor = 'red';
         ctx.shadowBlur = 14;
         // ctx.quadraticCurveTo(230, 150, 250, 20)
@@ -121,11 +142,15 @@ export default function CanvasF() {
         // ctx.lineWidth = bar_width;
         ctx.lineWidth = playCtxt ? playCtxt.valence : bar_width;
         ctx.beginPath();
+        // ctx.rotate(2 * Math.PI / 23)
+        // ctx.setTransform(1, .2, .8, 1, 0, 0);
+        // ctx.fillRect(0, 0, 100, 100);
+        // ctx.setLineDash([5, 15,])
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         // ctx.lineJoin = "bevel" || "round" || "miter";
-        ctx.lineJoin = "round";
+        // ctx.lineJoin = "round";
         // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke();
     }
@@ -147,7 +172,7 @@ export default function CanvasF() {
             <button className="fullvis__button1" onClick={() => state.audio ? tick() : null}>start</button>
             {
                 playCtxt &&
-                <img className="fullvis__image" src={playCtxt.image} alt="artist image" />
+                <img id="artist__image" className="fullvis__image" src={playCtxt.image} alt="artist image" />
             }
             <button className="fullvis__button2" onClick={() => (
                 setStatus("STOPPED")

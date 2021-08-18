@@ -111,7 +111,8 @@ export default function CanvasF() {
         gradient.addColorStop(1, "rgba(223, 44, 54, 1)");
         ctx.fillStyle = lineColor;
 
-        ctx.shadowColor = 'red';
+        ctx.shadowColor = 'purple';
+        // ctx.shadowColor = 'red';
         ctx.shadowBlur = 14;
         // ctx.quadraticCurveTo(230, 150, 250, 20)
 
@@ -123,6 +124,8 @@ export default function CanvasF() {
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
+        // ctx.lineJoin = "bevel" || "round" || "miter";
+        ctx.lineJoin = "round";
         // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke();
     }
@@ -133,8 +136,8 @@ export default function CanvasF() {
         // context.resume()
 
         animationLooper(state.canvas.current);
-        analyser.getByteTimeDomainData(frequency_array)
-        // analyser.getByteFrequencyData(frequency_array)
+        // analyser.getByteTimeDomainData(frequency_array)
+        analyser.getByteFrequencyData(frequency_array)
         rafId = requestAnimationFrame(tick);
     }
 

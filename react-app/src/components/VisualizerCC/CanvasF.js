@@ -9,11 +9,11 @@ import './CanvasCC.css'
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
 const width = window.innerWidth;
 const height = window.innerHeight;
-const bars = 707;
-const bar_width = .2;
+const bars = 100;
+let bar_width = .2;
 radius = 0;
 center_x = width / 2;
-center_y = height / 2;
+center_y = height;
 let rafId
 let context
 let source
@@ -21,10 +21,11 @@ let analyser
 let frequency_array
 
 export default function CanvasF() {
+    const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
+    bar_width = playCtxt ? playCtxt.energy * 2 : .2
     // const songs = useSelector(state => state.songs)
     // const song = songs ? songs[1] : null
     // const link = song?.link
-    const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
     const [state, setState] = useState({
         // audio: new Audio("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"),
         audio: playCtxt ? new Audio(playCtxt.link) : null,
@@ -69,7 +70,7 @@ export default function CanvasF() {
 
             //* practice
             const rads = Math.PI * 2 / bars * 2;
-            bar_height = frequency_array[i] * 2;
+            bar_height = frequency_array[i] * 3;
             // center_x = center_x * Math.random()
             // center_y = center_y * Math.random()
             const x = center_x + Math.cos(rads * i) * (radius);
@@ -85,22 +86,44 @@ export default function CanvasF() {
         }
     }
 
+    const colorHelper = (valence) => {
+        if (valence <= 0.25) {
+            return "#fc030b"
+        }
+        if (valence > 0.25 && valence <= 0.5) {
+            return "#5632a8"
+        }
+        if (valence > 0.5 && valence <= 0.75) {
+            return "#ba8330"
+        }
+        if (valence > 0.75) {
+            return "#30b5ba"
+        }
+
+    }
+
     const drawBar = (x1 = 0, y1 = 0, x2 = 0, y2 = 0, frequency, ctx, canvas) => {
         const gradient = ctx.createLinearGradient(20, 0, 200, canvas.height);
-        const lineColor = "rgb(" + frequency / 1.2 + ", " + Math.random() * 44 + ", " + Math.random() * 54 + ")";
+        const lineColor = playCtxt ? colorHelper(playCtxt.valence) : "rgb(0,105,255)";
+        // const lineColor = "rgb(" + frequency / 1.2 + ", " + Math.random() * 44 + ", " + Math.random() * 54 + ")";
         // const lineColor = "rgb(" + frequency / 2 + ", " + Math.random() * 10 + ", " + Math.random() * 8 + ")";
         gradient.addColorStop(0, "rgba(220, 54, 54, 1)");
         gradient.addColorStop(1, "rgba(223, 44, 54, 1)");
         ctx.fillStyle = lineColor;
 
-
+        ctx.shadowColor = 'red';
+        ctx.shadowBlur = 14;
+        // ctx.quadraticCurveTo(230, 150, 250, 20)
 
         // ctx.strokeStyle = gradient;
         ctx.strokeStyle = lineColor;
-        ctx.lineWidth = bar_width;
+        // ctx.lineWidth = bar_width;
+        ctx.lineWidth = playCtxt ? playCtxt.valence : bar_width;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
+        ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
+        // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke();
     }
 
@@ -110,8 +133,8 @@ export default function CanvasF() {
         // context.resume()
 
         animationLooper(state.canvas.current);
-        // analyser.getByteTimeDomainData(frequency_array)
-        analyser.getByteFrequencyData(frequency_array)
+        analyser.getByteTimeDomainData(frequency_array)
+        // analyser.getByteFrequencyData(frequency_array)
         rafId = requestAnimationFrame(tick);
     }
 

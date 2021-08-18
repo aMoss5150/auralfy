@@ -128,7 +128,7 @@ export default () => {
         // 'passthru' particles will disappear after hitting canvas boundaries and be added back into the scene elsewhere
         boundaryType: 'passthru',
         // Maximum velocity of particles
-        velocity: playCtxt ? playCtxt.energy : 0.2,
+        velocity: playCtxt ? playCtxt.energy * 2 : 0.2,
         // Toggles antialiasing -- must be set during construction, cannot be changed after initial render
         // Slight performance optimization to set false, although lines will appear more jagged
         antialias: false,
@@ -170,9 +170,9 @@ export default () => {
             // The exact number of particles to render
             count: playCtxt ? playCtxt.energy * 400 : 385,
             // The minimum particle size
-            minSize: 6,
+            minSize: playCtxt ? playCtxt.valence * 10 : 6,
             // The maximum particle size
-            maxSize: 45,
+            maxSize: playCtxt ? playCtxt.valence * 50 : 45,
             // true/false render particles
             visible: true
         },
@@ -184,7 +184,7 @@ export default () => {
          */
         cameraControls: {
             // Enable or disable all camera interaction (click, drag, touch etc)
-            enabled: true,
+            enabled: false,
             // Enable or disable smooth dampening of camera movement
             enableDamping: true,
             dampingFactor: 0.9,
@@ -193,7 +193,7 @@ export default () => {
             // Enable or disable constant rotation of camera around scene
             autoRotate: true,
             // Rotation speed -- higher is faster
-            autoRotateSpeed: playCtxt ? playCtxt.tempo / 100 : 1,
+            autoRotateSpeed: playCtxt ? playCtxt.tempo / 77 : 1,
             // If true, camera position will be reset whenever any option changes (including this one)
             // Useful when turning off autoRotate, the camera will return to FOV where scene fits to canvas
             resetCameraFlag: false

@@ -140,7 +140,8 @@ export default function CanvasF() {
         // ctx.strokeStyle = gradient;
         ctx.strokeStyle = lineColor;
         // ctx.lineWidth = bar_width;
-        ctx.lineWidth = playCtxt ? playCtxt.valence : bar_width;
+        // ctx.lineWidth = bar_width;
+        ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
         ctx.beginPath();
         // ctx.rotate(2 * Math.PI / 23)
         // ctx.setTransform(1, .2, .8, 1, 0, 0);
@@ -149,8 +150,6 @@ export default function CanvasF() {
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
-        // ctx.lineJoin = "bevel" || "round" || "miter";
-        // ctx.lineJoin = "round";
         // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke();
     }

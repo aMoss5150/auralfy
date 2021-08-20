@@ -15,8 +15,8 @@ radius = 0;
 center_x = width / 2;
 
 //* height  || height / 2 for placement at bottom of page
-center_y = height
-    ;
+center_y = height;
+
 let rafId
 let context
 let source
@@ -98,9 +98,11 @@ export default function CanvasF() {
             y_end = center_x + Math.sin(rads * i) * (radius + bar_height);
 
             //* experimental kick
-            // if (i === 3 && frequency_array[i] > 200) {
-            //draw a bar
-            // drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas, true);
+            // if (i === 2 && frequency_array[i] > 150 || i === 40 && frequency_array[i] > 100 ||
+            //     i === 68 && frequency_array[i] > 190) {
+            // if (frequency_array[i] > 175) {
+            //     //draw a bar
+            //     drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas, true);
             // } else {
 
             //draw a bar
@@ -154,10 +156,8 @@ export default function CanvasF() {
         // gradient.addColorStop(1, "rgba(223, 44, 54, 1)");
         ctx.fillStyle = lineColor;
 
-        ctx.shadowColor = playCtxt ? shadowHelper(playCtxt.valence) : 'red';
         // ctx.shadowColor = 'red';
 
-        ctx.shadowBlur = 14;
 
         // ctx.quadraticCurveTo(230, 150, 250, 20)
 
@@ -166,11 +166,19 @@ export default function CanvasF() {
         // ctx.lineWidth = bar_width;
         // ctx.lineWidth = bar_width;
         //* experimental kick section adding blur when 80 hz exceeds 200
-        // if (kick) {
-        // ctx.lineWidth = 10;
-        // } else {
-        ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
-        // }
+        if (frequency > 200) {
+            ctx.shadowColor = "rgb(" + frequency + ", " + frequency + ", " + 255 + ")";
+            // ctx.shadowColor = 'red';
+            ctx.shadowBlur = 14;
+            // ctx.lineWidth = 10
+
+        } else {
+            ctx.shadowColor = playCtxt ? shadowHelper(playCtxt.valence) : 'red';
+            ctx.shadowBlur = 14;
+            // ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
+            // ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
+        }
+        ctx.lineWidth = frequency / 50;
         ctx.beginPath();
         // ctx.rotate(2 * Math.PI / 23)
         // ctx.setTransform(1, .2, .8, 1, 0, 0);

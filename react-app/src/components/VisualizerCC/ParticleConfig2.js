@@ -1,6 +1,3 @@
-import React from 'react';
-import ParticleField from 'react-particles-webgl';
-import { usePlay } from '../../context/PlayContext'
 
 
 /**
@@ -94,6 +91,9 @@ import { usePlay } from '../../context/PlayContext'
 //         // Useful when turning off autoRotate, the camera will return to FOV where scene fits to canvas
 //         resetCameraFlag: false
 //     }
+import React from 'react';
+import ParticleField from 'react-particles-webgl';
+import { usePlay } from '../../context/PlayContext'
 // };
 
 let colorHelper = (valence) => {
@@ -164,7 +164,7 @@ export default () => {
             // Color of lines if colorMode: 'solid', must be hex color
             color: playCtxt ? colorHelper(playCtxt.valence) : '#fc030b',
             // Transparency of particles
-            transparency: 0.4,
+            transparency: 0.3,
             // 'square' or 'circle' shape of particles
             shape: playCtxt ? playCtxt.key === 0 ? 'square' : 'circle' : "circle",
             // The exact number of particles to render

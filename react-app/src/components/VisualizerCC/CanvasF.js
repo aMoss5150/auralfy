@@ -9,16 +9,22 @@ import './CanvasCC.css'
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
 const width = window.innerWidth;
 const height = window.innerHeight;
-const bars = 100;
+const bars = 150;
 let bar_width = .2;
 radius = 0;
 center_x = width / 2;
-center_y = height;
+
+//* height  || height / 2 for placement at bottom of page
+center_y = height / 2;
 let rafId
 let context
 let source
 let analyser
 let frequency_array
+
+//* how to determine frequency based on sample rate and fftSize
+//* sample rate should be 48000 and fft 2048
+// N * samplerate / fftSize
 
 
 export default function CanvasF() {
@@ -46,6 +52,7 @@ export default function CanvasF() {
             analyser.connect(context.destination);
             frequency_array = new Uint8Array(analyser.frequencyBinCount);
             state.audio.crossOrigin = "anonymous"
+            // console.log(context, analyser)
         }
     }, [playCtxt])
 
@@ -54,7 +61,10 @@ export default function CanvasF() {
         canvas.width = width;
         canvas.height = height;
         ctx = canvas.getContext("2d");
+        //* what if I just counted every other bin would this help with optimization?
         for (let i = 0; i < bars; i++) {
+            console.log(i, frequency_array[i])
+            // console.log(frequency_array)
 
             //divide a circle into equal part
             // const rads = Math.PI * 2 / bars * 2;
@@ -71,7 +81,8 @@ export default function CanvasF() {
 
             //* practice
             const rads = Math.PI * 2 / bars * 2;
-            bar_height = frequency_array[i] * 3;
+            //* control height here
+            bar_height = frequency_array[i] * 4.5;
             // center_x = center_x * Math.random()
             // center_y = center_y * Math.random()
             const x = center_x + Math.cos(rads * i) * (radius);
@@ -149,7 +160,10 @@ export default function CanvasF() {
         // ctx.setLineDash([5, 15,])
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
+        // ctx.arc(width / 2, height / 2, 50, 0, 2 * Math.PI)
+        //* main control for shape
         ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
+
         // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke();
     }
@@ -168,18 +182,24 @@ export default function CanvasF() {
 
     return (
         <div id="canvas__field2">
+
             <button className="fullvis__button1" onClick={() => state.audio ? tick() : null}>start</button>
+
             {
                 playCtxt &&
                 <img id="artist__image" className="fullvis__image" src={playCtxt.image} alt="artist image" />
             }
+
             <button className="fullvis__button2" onClick={() => (
                 setStatus("STOPPED")
             )}>stop</button>
 
             <Link id="go-back" to="/">{`<<`}</Link>
+
             <Field />
+
             <canvas className="canvas__skin" ref={state.canvas} />
+
         </div>
     )
 }

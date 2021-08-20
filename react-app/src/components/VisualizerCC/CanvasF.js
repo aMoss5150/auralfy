@@ -9,13 +9,13 @@ import './CanvasCC.css'
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
 const width = window.innerWidth;
 const height = window.innerHeight;
-const bars = 150;
+const bars = 75;
 let bar_width = .2;
 radius = 0;
 center_x = width / 2;
 
 //* height  || height / 2 for placement at bottom of page
-center_y = height;
+center_y = height / 2;
 
 let rafId
 let context
@@ -52,10 +52,11 @@ export default function CanvasF() {
             analyser = context.createAnalyser()
             source.connect(analyser);
             analyser.connect(context.destination);
-            frequency_array = new Uint8Array(analyser.frequencyBinCount);
+            frequency_array = new Uint8Array(analyser.frequencyBinCount / 4);
             state.audio.crossOrigin = "anonymous"
             // console.log(context, analyser)
             // console.log(frequency_array, analyser.frequencyBinCount,);
+            console.log(state.audio, context)
         }
     }, [playCtxt])
 
@@ -167,18 +168,19 @@ export default function CanvasF() {
         // ctx.lineWidth = bar_width;
         //* experimental kick section adding blur when 80 hz exceeds 200
         if (frequency > 200) {
-            ctx.shadowColor = "rgb(" + frequency + ", " + frequency + ", " + 255 + ")";
+            // ctx.shadowColor = "rgb(" + frequency + ", " + frequency + ", " + 255 + ")";
             // ctx.shadowColor = 'red';
-            ctx.shadowBlur = 14;
-            // ctx.lineWidth = 10
+            ctx.shadowColor = playCtxt ? shadowHelper(playCtxt.valence) : 'red';
+            ctx.shadowBlur = 24;
+            ctx.lineWidth = 2
 
         } else {
             ctx.shadowColor = playCtxt ? shadowHelper(playCtxt.valence) : 'red';
             ctx.shadowBlur = 14;
             // ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
-            // ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
+            ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
         }
-        ctx.lineWidth = frequency / 50;
+        // ctx.lineWidth = frequency / 50;
         ctx.beginPath();
         // ctx.rotate(2 * Math.PI / 23)
         // ctx.setTransform(1, .2, .8, 1, 0, 0);
@@ -188,7 +190,8 @@ export default function CanvasF() {
         ctx.lineTo(x2, y2);
         // ctx.arc(width / 2, height / 2, 50, 0, 2 * Math.PI)
         //* main control for shape drawing back into itself to create the 3d effect
-        ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
+        // ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
+        ctx.ellipse(x1, y2, 2, 2, Math.PI / 8, 0, 2 * Math.PI)
 
         // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke();

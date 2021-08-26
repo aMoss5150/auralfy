@@ -223,26 +223,30 @@ export default function CanvasF() {
 
     return (
         <div id="canvas__field2">
+            <div className="fullvis__controller">
+                <button className="fullvis__button3 full__buttons" onClick={() => setVisualizerCtxt(0)}>
+                    Fountain
+                </button>
+                <button className="fullvis__button4 full__buttons" onClick={() => setVisualizerCtxt(1)}>
+                    Projector
+                </button>
 
-            <button className="fullvis__button1" onClick={() => state.audio ? tick() : null}>start</button>
+                <button className="fullvis__button1" onClick={() => state.audio ? tick() : null}>start</button>
 
-            {
-                playCtxt &&
-                <img id="artist__image" className="fullvis__image" src={playCtxt.image} alt="artist image" />
-            }
+                {
+                    playCtxt &&
+                    <img id="artist__image" className="fullvis__image full__buttons" src={playCtxt.image} alt="artist image" />
+                }
 
-            <button className="fullvis__button2" onClick={() => (
-                setStatus("STOPPED")
-            )}>stop</button>
+                <button className="fullvis__button2 full__buttons" onClick={() => (
+                    setStatus("STOPPED")
+                )}>stop</button>
 
-            <button className="fullvis__button3" onClick={() => setVisualizerCtxt(0)}>
-                Fountain
-            </button>
-            <button className="fullvis__button4" onClick={() => setVisualizerCtxt(1)}>
-                Projector
-            </button>
 
-            <Link id="go-back" to="/">{`<<`}</Link>
+            </div>
+
+
+            {/* <Link id="go-back" to="/">{`<<`}</Link> */}
 
             <Field />
 

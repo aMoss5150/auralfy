@@ -12,7 +12,7 @@ const Visualizer = ({ songFile }) => {
 
     useEffect(() => {
         setLoaded(false)
-        console.log(playCtxt);
+        console.log(playCtxt, "visualizer index.js");
         setSongToPlay(songFile)
         setLoaded(true)
     }, [playCtxt])

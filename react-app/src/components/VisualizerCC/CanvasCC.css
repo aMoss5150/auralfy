@@ -47,7 +47,8 @@
 .fullvis__button1 {
     color: grey;
     z-index: 2;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
+    border: 1px solid rgba(37, 33, 33, 0.9);
     opacity: 0.4;
     padding: 10px;
 }
@@ -55,7 +56,7 @@
 .fullvis__button2 {
     color: grey;
     z-index: 2;
-    border: 1px solid grey;
+    border: 1px solid rgba(37, 33, 33, 0.9);
     opacity: 0.4;
     padding: 10px;
 }
@@ -63,7 +64,7 @@
 .fullvis__button3 {
     color: grey;
     z-index: 2;
-    border: 1px solid grey;
+    border: 1px solid rgba(37, 33, 33, 0.9);
     opacity: 0.4;
     padding: 10px;
 }
@@ -71,7 +72,7 @@
 .fullvis__button4 {
     color: grey;
     z-index: 2;
-    border: 1px solid grey;
+    border: 1px solid rgba(37, 33, 33, 0.9);
     opacity: 0.4;
     padding: 10px;
 }
@@ -79,7 +80,7 @@
 .fullvis__button5 {
     color: grey;
     z-index: 2;
-    border: 1px solid grey;
+    border: 1px solid rgba(37, 33, 33, 0.9);
     opacity: 0.4;
     padding: 10px;
 }
@@ -87,7 +88,7 @@
 .fullvis__button6 {
     color: grey;
     z-index: 2;
-    border: 1px solid grey;
+    border: 1px solid rgba(37, 33, 33, 0.9);
     opacity: 0.4;
     padding: 10px;
 }
@@ -118,8 +119,8 @@
 
 #go-back {
     position: fixed;
-    top: 24px;
-    left: 20px;
-    color: white;
+    top: 0px;
+    left: 0px;
+    /* color: white; */
     z-index: 2;
 }

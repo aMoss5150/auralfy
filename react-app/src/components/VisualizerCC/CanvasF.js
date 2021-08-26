@@ -224,6 +224,7 @@ export default function CanvasF() {
     return (
         <div id="canvas__field2">
             <div className="fullvis__controller">
+                <Link onClick={() => context.close()} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
                 <button className="fullvis__button3 full__buttons" onClick={() => setVisualizerCtxt(0)}>
                     Fountain
                 </button>
@@ -238,17 +239,16 @@ export default function CanvasF() {
                     <img id="artist__image" className="fullvis__image full__buttons" src={playCtxt.image} alt="artist image" />
                 }
 
-                <button className="fullvis__button2 full__buttons" onClick={() => (
+                {/* <button className="fullvis__button2 full__buttons" onClick={() => (
                     context.suspend()
                     // context.currentTime = 0
-                )}>stop</button>
+                )}>stop</button> */}
+
                 <button className="fullvis__button5 full__buttons" onClick={() => (
                     context.suspend(),
                     console.log(state.audio, context)
-
                 )}>pause</button>
 
-                <Link onClick={() => context.close()} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
 
             </div>
 

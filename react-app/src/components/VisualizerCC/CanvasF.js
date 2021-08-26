@@ -243,15 +243,16 @@ export default function CanvasF() {
                     // context.currentTime = 0
                 )}>stop</button>
                 <button className="fullvis__button5 full__buttons" onClick={() => (
-                    context.suspend()
+                    context.suspend(),
+                    console.log(state.audio, context)
 
                 )}>pause</button>
 
+                <Link onClick={() => context.close()} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
 
             </div>
 
 
-            {/* <Link id="go-back" to="/">{`<<`}</Link> */}
 
             <Field />
 

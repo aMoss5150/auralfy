@@ -84,6 +84,14 @@
     padding: 10px;
 }
 
+.fullvis__button6 {
+    color: grey;
+    z-index: 2;
+    border: 1px solid grey;
+    opacity: 0.4;
+    padding: 10px;
+}
+
 .fullvis__image {
     /* position: absolute; */
     opacity: 0.01;

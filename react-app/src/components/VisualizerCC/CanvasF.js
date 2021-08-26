@@ -223,6 +223,10 @@ export default function CanvasF() {
 
     return (
         <div id="canvas__field2">
+            {
+                playCtxt &&
+                <img id="artist__image" className="fullvis__image full__buttons" src={playCtxt.image} alt="artist image" />
+            }
             <div className="fullvis__controller">
                 <Link onClick={() => context.close()} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
                 <button className="fullvis__button3 full__buttons" onClick={() => setVisualizerCtxt(0)}>
@@ -232,12 +236,8 @@ export default function CanvasF() {
                     Projector
                 </button>
 
-                <button className="fullvis__button1" onClick={() => context.state === "suspended" ? context.resume() : state.audio ? tick() : null}>start</button>
+                <button className="fullvis__button1 full__buttons" onClick={() => context.state === "suspended" ? context.resume() : state.audio ? tick() : null}>start</button>
 
-                {
-                    playCtxt &&
-                    <img id="artist__image" className="fullvis__image full__buttons" src={playCtxt.image} alt="artist image" />
-                }
 
                 {/* <button className="fullvis__button2 full__buttons" onClick={() => (
                     context.suspend()
@@ -249,6 +249,13 @@ export default function CanvasF() {
                     console.log(state.audio, context)
                 )}>pause</button>
 
+
+            </div>
+
+            <div className="visualizer__info">
+
+                <div className="mode__box full__buttons">{playCtxt ? playCtxt.mode === 0 ? 'Mode: Minor' : "Mode: Major" : ""}</div>
+                <div className="tempo__box full__buttons">{playCtxt ? `Tempo: ${playCtxt.tempo}` : ""}</div>
 
             </div>
 

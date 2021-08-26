@@ -44,6 +44,10 @@
     bottom: 0px;
 }
 
+.full__buttons:hover {
+    opacity: 0.8;
+}
+
 .fullvis__button1 {
     color: grey;
     z-index: 2;
@@ -108,6 +112,30 @@
     /* margin-left: -50px; */
     /* width: 100px; */
     /* height: 100px; */
+}
+
+.visualizer__info {
+    position: fixed;
+    flex-direction: column;
+    bottom: 0;
+    right: 0;
+    display: flex;
+}
+
+.tempo__box {
+    color: grey;
+    z-index: 2;
+    border: 1px solid rgba(37, 33, 33, 0.9);
+    opacity: 0.4;
+    padding: 10px;
+}
+
+.mode__box {
+    color: grey;
+    z-index: 2;
+    border: 1px solid rgba(37, 33, 33, 0.9);
+    opacity: 0.4;
+    padding: 10px;
 }
 
 #canvas__field2 {

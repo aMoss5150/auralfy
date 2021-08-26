@@ -48,7 +48,6 @@
     color: grey;
     z-index: 2;
     border: 1px solid grey;
-    /* background: rgb(23, 20, 20); */
     opacity: 0.4;
     padding: 10px;
 }
@@ -57,7 +56,6 @@
     color: grey;
     z-index: 2;
     border: 1px solid grey;
-    /* background: rgb(23, 20, 20); */
     opacity: 0.4;
     padding: 10px;
 }
@@ -66,7 +64,6 @@
     color: grey;
     z-index: 2;
     border: 1px solid grey;
-    /* background: rgb(23, 20, 20); */
     opacity: 0.4;
     padding: 10px;
 }
@@ -75,7 +72,14 @@
     color: grey;
     z-index: 2;
     border: 1px solid grey;
-    /* background: rgb(23, 20, 20); */
+    opacity: 0.4;
+    padding: 10px;
+}
+
+.fullvis__button5 {
+    color: grey;
+    z-index: 2;
+    border: 1px solid grey;
     opacity: 0.4;
     padding: 10px;
 }

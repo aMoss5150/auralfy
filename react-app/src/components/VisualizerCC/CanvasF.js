@@ -231,7 +231,7 @@ export default function CanvasF() {
                     Projector
                 </button>
 
-                <button className="fullvis__button1" onClick={() => state.audio ? tick() : null}>start</button>
+                <button className="fullvis__button1" onClick={() => context.state === "suspended" ? context.resume() : state.audio ? tick() : null}>start</button>
 
                 {
                     playCtxt &&
@@ -239,8 +239,13 @@ export default function CanvasF() {
                 }
 
                 <button className="fullvis__button2 full__buttons" onClick={() => (
-                    setStatus("STOPPED")
+                    context.suspend()
+                    // context.currentTime = 0
                 )}>stop</button>
+                <button className="fullvis__button5 full__buttons" onClick={() => (
+                    context.suspend()
+
+                )}>pause</button>
 
 
             </div>

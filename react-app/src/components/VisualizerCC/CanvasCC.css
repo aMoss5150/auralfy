@@ -52,6 +52,22 @@
     z-index: 2;
 }
 
+.fullvis__button3 {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    color: white;
+    z-index: 2;
+}
+
+.fullvis__button4 {
+    position: fixed;
+    top: 65px;
+    left: 20px;
+    color: white;
+    z-index: 2;
+}
+
 .fullvis__image {
     /* position: absolute; */
     opacity: 0.01;

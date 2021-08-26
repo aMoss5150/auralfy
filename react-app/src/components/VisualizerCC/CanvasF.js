@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { usePlay } from '../../context/PlayContext'
+import { useVisualizer } from '../../context/VisualizerContext'
 import Field from './ParticleConfig2'
 import './CanvasCC.css'
 
@@ -22,6 +23,7 @@ let context
 let source
 let analyser
 let frequency_array
+let ell = true
 
 
 //* how to determine frequency based on sample rate and fftSize
@@ -31,6 +33,10 @@ let frequency_array
 
 export default function CanvasF() {
     const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
+    const { visualizerCtxt, setVisualizerCtxt } = useVisualizer()
+
+    visualizerCtxt === 1 ? center_y = height / 2 : center_y = height
+
     bar_width = playCtxt ? playCtxt.energy * 2 : .2
     // const songs = useSelector(state => state.songs)
     // const song = songs ? songs[1] : null
@@ -52,11 +58,11 @@ export default function CanvasF() {
             analyser = context.createAnalyser()
             source.connect(analyser);
             analyser.connect(context.destination);
-            frequency_array = new Uint8Array(analyser.frequencyBinCount / 4);
+            frequency_array = new Uint8Array(analyser.frequencyBinCount / 2);
             state.audio.crossOrigin = "anonymous"
             // console.log(context, analyser)
             // console.log(frequency_array, analyser.frequencyBinCount,);
-            console.log(state.audio, context)
+            // console.log(state.audio, context)
         }
     }, [playCtxt])
 
@@ -88,7 +94,7 @@ export default function CanvasF() {
             const rads = Math.PI * 2 / bars * 2;
             //* control height here
             // bar_height = frequency_array[i] * 4.5;
-            bar_height = frequency_array[i] * 3.5;
+            bar_height = frequency_array[i] * 2.5;
             // center_x = center_x * Math.random()
             // center_y = center_y * Math.random()
             const x = center_x + Math.cos(rads * i) * (radius);
@@ -166,6 +172,8 @@ export default function CanvasF() {
         ctx.strokeStyle = lineColor;
         // ctx.lineWidth = bar_width;
         // ctx.lineWidth = bar_width;
+
+
         //* experimental kick section adding blur when 80 hz exceeds 200
         if (frequency > 200) {
             // ctx.shadowColor = "rgb(" + frequency + ", " + frequency + ", " + 255 + ")";
@@ -191,7 +199,9 @@ export default function CanvasF() {
         // ctx.arc(width / 2, height / 2, 50, 0, 2 * Math.PI)
         //* main control for shape drawing back into itself to create the 3d effect
         // ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
-        ctx.ellipse(x1, y2, 2, 2, Math.PI / 8, 0, 2 * Math.PI)
+
+
+        ell && ctx.ellipse(x1, y2, 2, 2, Math.PI / 8, 0, 2 * Math.PI)
 
         // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke();
@@ -206,6 +216,8 @@ export default function CanvasF() {
         // analyser.getByteTimeDomainData(frequency_array)
         analyser.getByteFrequencyData(frequency_array)
         rafId = requestAnimationFrame(tick);
+
+
     }
 
 
@@ -222,6 +234,13 @@ export default function CanvasF() {
             <button className="fullvis__button2" onClick={() => (
                 setStatus("STOPPED")
             )}>stop</button>
+
+            <button className="fullvis__button3" onClick={() => setVisualizerCtxt(0)}>
+                Fountain
+            </button>
+            <button className="fullvis__button4" onClick={() => setVisualizerCtxt(1)}>
+                Projector
+            </button>
 
             <Link id="go-back" to="/">{`<<`}</Link>
 

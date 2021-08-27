@@ -240,26 +240,26 @@ export default function CanvasF() {
 
                 <Link onClick={() => (context.close(), setPositionCtxt(state.audio.currentTime))} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
 
-                <button className="fullvis__button3 full__buttons" onClick={() => setVisualizerCtxt(0)}>
+                <button className="fullvis__button3 full__buttons italic" onClick={() => setVisualizerCtxt(0)}>
                     Fountain
                 </button>
 
-                <button className="fullvis__button4 full__buttons" onClick={() => setVisualizerCtxt(1)}>
+                <button className="fullvis__button4 full__buttons italic" onClick={() => setVisualizerCtxt(1)}>
                     Projector
                 </button>
 
-                <button className="fullvis__button1 full__buttons" onClick={() => context.state === "suspended" ? context.resume() : state.audio ? tick() : null}>start</button>
+                <button className="fullvis__button1 full__buttons" onClick={() => context.state === "suspended" ? context.resume() : state.audio ? tick() : null}>Start</button>
 
-                {/* <button className="fullvis__button2 full__buttons" onClick={() => (
-                    context.suspend()
-                    // context.currentTime = 0
-                )}>stop</button> */}
+                <button className="fullvis__button2 full__buttons" onClick={() => (
+                    context.suspend(),
+                    state.audio.currentTime = 0
+                )}>Stop</button>
 
                 <button className="fullvis__button5 full__buttons" onClick={() => (
-                    context.suspend(),
+                    context.suspend()
                     // state.audio.currentTime = 0,
-                    console.log(state.audio.currentTime)
-                )}>pause</button>
+                    // console.log(state.audio.currentTime)
+                )}>Pause</button>
 
 
             </div>

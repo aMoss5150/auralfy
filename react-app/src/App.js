@@ -48,7 +48,7 @@ function App() {
           <Splash />
         </Route>
 
-        <Route path="/test" exact>
+        <Route path="/vibe" exact>
           <FullVis />
         </Route>
 

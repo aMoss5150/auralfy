@@ -8,8 +8,8 @@ import './CanvasCC.css'
 
 
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
-const width = window.innerWidth;
-const height = window.innerHeight;
+let width = window.innerWidth;
+let height = window.innerHeight;
 const bars = 75;
 let bar_width = .2;
 radius = 0;
@@ -32,8 +32,10 @@ let ell = true
 
 
 export default function CanvasF() {
-    const { playCtxt, setPlayCtxt, status, setStatus } = usePlay()
+    const { playCtxt, setPlayCtxt, status, setStatus, positionCtxt, setPositionCtxt } = usePlay()
     const { visualizerCtxt, setVisualizerCtxt } = useVisualizer()
+
+
 
     visualizerCtxt === 1 ? center_y = height / 2 : center_y = height
 
@@ -60,6 +62,10 @@ export default function CanvasF() {
             analyser.connect(context.destination);
             frequency_array = new Uint8Array(analyser.frequencyBinCount / 2);
             state.audio.crossOrigin = "anonymous"
+
+            if (positionCtxt !== null) {
+                state.audio.currentTime = positionCtxt
+            }
             // console.log(context, analyser)
             // console.log(frequency_array, analyser.frequencyBinCount,);
             // console.log(state.audio, context)
@@ -68,6 +74,7 @@ export default function CanvasF() {
 
     const animationLooper = (canvas) => {
         if (!canvas || !state.audio) return null
+
         canvas.width = width;
         canvas.height = height;
         ctx = canvas.getContext("2d");
@@ -199,8 +206,6 @@ export default function CanvasF() {
         // ctx.arc(width / 2, height / 2, 50, 0, 2 * Math.PI)
         //* main control for shape drawing back into itself to create the 3d effect
         // ctx.ellipse(x1, y2, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
-
-
         ell && ctx.ellipse(x1, y2, 2, 2, Math.PI / 8, 0, 2 * Math.PI)
 
         // ctx.ellipse(1100, 100, 1, 1, Math.PI / 4, 0, 2 * Math.PI)
@@ -210,6 +215,7 @@ export default function CanvasF() {
     const tick = () => {
         state.audio.volume = 1
         state.audio.play()
+
         // context.resume()
 
         animationLooper(state.canvas.current);
@@ -222,22 +228,27 @@ export default function CanvasF() {
 
 
     return (
+
         <div id="canvas__field2">
+
             {
                 playCtxt &&
                 <img id="artist__image" className="fullvis__image full__buttons" src={playCtxt.image} alt="artist image" />
             }
+
             <div className="fullvis__controller">
-                <Link onClick={() => context.close()} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
+
+                <Link onClick={() => (context.close(), setPositionCtxt(state.audio.currentTime))} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
+
                 <button className="fullvis__button3 full__buttons" onClick={() => setVisualizerCtxt(0)}>
                     Fountain
                 </button>
+
                 <button className="fullvis__button4 full__buttons" onClick={() => setVisualizerCtxt(1)}>
                     Projector
                 </button>
 
                 <button className="fullvis__button1 full__buttons" onClick={() => context.state === "suspended" ? context.resume() : state.audio ? tick() : null}>start</button>
-
 
                 {/* <button className="fullvis__button2 full__buttons" onClick={() => (
                     context.suspend()
@@ -246,7 +257,8 @@ export default function CanvasF() {
 
                 <button className="fullvis__button5 full__buttons" onClick={() => (
                     context.suspend(),
-                    console.log(state.audio, context)
+                    // state.audio.currentTime = 0,
+                    console.log(state.audio.currentTime)
                 )}>pause</button>
 
 
@@ -255,11 +267,10 @@ export default function CanvasF() {
             <div className="visualizer__info">
 
                 <div className="mode__box full__buttons">{playCtxt ? playCtxt.mode === 0 ? 'Mode: Minor' : "Mode: Major" : ""}</div>
+
                 <div className="tempo__box full__buttons">{playCtxt ? `Tempo: ${playCtxt.tempo}` : ""}</div>
 
             </div>
-
-
 
             <Field />
 

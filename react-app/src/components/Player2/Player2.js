@@ -10,7 +10,7 @@ import { usePlay } from '../../context/PlayContext'
 
 
 export default function Player2() {
-    const { playCtxt, status, setStatus } = usePlay()
+    const { playCtxt, status, setStatus, positionCtxt, setPositionCtxt } = usePlay()
     const [STOPPED, setSTOPPED] = useState(false)
     const [size, setSize] = useState("134px")
 
@@ -55,6 +55,12 @@ export default function Player2() {
             setSize('134px')
         }
     }
+
+    useEffect(() => {
+        if (positionCtxt !== null) {
+            setState({ ...state, position: positionCtxt })
+        }
+    }, [])
 
     if (!playCtxt) return null
     // if (STOPPED) return null
@@ -118,7 +124,7 @@ export default function Player2() {
                     &nbsp;BPM&nbsp;
                 </span>
 
-                <Link to="/test">test</Link>
+                <Link onClick={() => setPositionCtxt(state.position)} to="/vibe">VIBE</Link>
             </div>
 
 

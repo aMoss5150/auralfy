@@ -142,7 +142,7 @@ export default function CanvasF() {
 
     const shadowHelper = (valence) => {
         if (valence <= 0.25) {
-            return "blue"
+            return "green"
         }
         if (valence > 0.25 && valence <= 0.35) {
             return "orange"

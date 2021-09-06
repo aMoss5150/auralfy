@@ -101,7 +101,7 @@ export default function CanvasF() {
             const rads = Math.PI * 2 / bars * 2;
             //* control height here
             // bar_height = frequency_array[i] * 4.5;
-            bar_height = frequency_array[i] * 2.5;
+            bar_height = frequency_array[i] * 3.5;
             // center_x = center_x * Math.random()
             // center_y = center_y * Math.random()
             const x = center_x + Math.cos(rads * i) * (radius);

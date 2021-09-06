@@ -1,10 +1,12 @@
-# spaceXchange
+# Auralfy
 
 _By [Andrew Moss](https://github.com/aMoss5150)
 
-See ya space cowboy...on [spaceXchange](https://spacexchange.herokuapp.com/)
+Enjoy the player at... [Auralfy](https://auralfy.herokuapp.com/)
 
-The galactic empire is being developed as we speak, quickly transforming uninhabitable wastelands into industrial giants, and making a ton of money along the way. spaceXchange is your one stop shop for trading your USD into any other planet's currency, allowing you to take part in the universal stock market.
+Auralfy is a Spotify  player and visualizer. With a retro-futuristic jukebox theme and an aim to explore the “color” of music, and how one might translate/quantify feelings and emotions evoked by music into the visual realm.
+
+
 
 ## Index
 
@@ -18,21 +20,22 @@ The galactic empire is being developed as we speak, quickly transforming uninhab
 
 - JavaScript
 - React/Redux
-- Recharts
+- WebAudio API
+- Canvas API
 - CSS
 - Python
 - Flask/SQLAlchemy
-- Beautiful Soup
-- Coingecko API
-- Raspberry Pi
+- Tailwind CSS (first usage)
+
+
 
 ## Overview
 
-spaceXchange is a Robinhood clone, created to allow a space-faring civilization to participate in the universal stock market. When a user first accesses the site, they are brought to the splash page, greeting the user and prompting them to signup. Attempting to access any page on the site without login/signup will redirect them to login.
+The splash page is where users will be directed if not logged in. The theme is meant to simulate an older computer with a minimal and clean interface, it also imparts a feel as if you are starting up an old jukebox or arcade game to the user. It will hold simple forms for login and sign-up that will be rendered based on state as well as a demo login button for easy access.
 
 ![](assets/sXc1.jpg)
 
-When logging into the site, the user is greeted with their portfolio, allowing them to quickly see the value of all their assets on a graph. They can watch their money move as the market fluctuates and updates in real time. The planet assets are displayed on the right, with the stock chart, the number of shares they own, and the price per share (which also updates in real time). Below the chart the user's buying power is displayed, and further below are recent news stories. These stories are gathered using a python web scraper - Beautiful Soup.
+Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for user created vibes/playlists, from here you can select the currently selected vibe. On the right hand side, the currently selected screen is displayed in the jukebox's 
 
 ![](assets/sXc2.jpg)
 

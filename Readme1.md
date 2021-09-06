@@ -43,7 +43,7 @@ Upon login you are presented with the main/index page of the app, on the left-ha
 
 ## Standard Player
 
-Building a rock solid audio player was probably the most time consuming part of the process, going into the project with a goal of achieving an understanding of how the web audio API functions, communicates with the canvas API and to build from scratch when possible, made it the most intensive. This player is a result of probably 10 or so iterations to achieve the level of function that I desired. The player is only mounted when there is a play context.
+Building a rock solid audio player was probably the most time consuming part of the process, going into the project with a goal of achieving an understanding of how the web audio API functions, communicates with the canvas API and to build from scratch when possible, made it the most intensive. This player is a result of probably 10 or so iterations to achieve the level of function that I desired. The player is only mounted when there is a play context. The controls are all functions that control the state of the audio's props within the component.
 
 ![](assets/sXc3.jpg)
 
@@ -59,13 +59,12 @@ The mini visualizer is in the style of an oscilloscope and during playback is di
 
 ![](assets/sXc5.jpg)
 
-## React Hifi npm package
+## React-hifi npm package
+The react-hifi package is, "A composable Abstraction for AudioContext API with a easy to use react API." This allowed for me to manage and control the audio context with the included props and methods. The Sound component and Osciloscope are heavily utilized. The Sound component was helpful in aiding with creating an audio graph based off a simple URL for the audio source. The Sound component is then routed into the Osciloscope component, hence, the composability. All that was necessary for the Osciloscope was a useRef hook to target the created canvas element and a function that will be called by the Osciloscope component, "onVisualizationData" which is really an abstraction of a web audio analyser node and an animation looper to draw the lines on the canvas based off data gathered from the audio source. 
 
-This package was used due to it not being strongly opinionated about how you use it, but also having convenient features that allow you to achieve your build goals. The Sound component and Osciloscope are heavily ustilized.
+## Particle effects
 
-
-
-All user transactions are kept track of and displayed on the transactions page. The most recent transactions are displayed first and buy/sell are color coordinated for easy viewing and organization. Each transaction will take the user to the related planet page when clicked
+The particles utilized for background mood setting are from react-particles-webgl npm package. The package is, "A 2D/3D particle library built with React, Three.js and WebGL." The abstraction afforded by this package was incredibly helpful in adding another level of immersion to the app. The controls are also what allowed me to be able to create custom build particle "scenes"
 
 ![](assets/sXc6.jpg)
 

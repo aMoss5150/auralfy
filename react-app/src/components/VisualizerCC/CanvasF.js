@@ -215,15 +215,11 @@ export default function CanvasF() {
     const tick = () => {
         state.audio.volume = 1
         state.audio.play()
-
         // context.resume()
-
         animationLooper(state.canvas.current);
         // analyser.getByteTimeDomainData(frequency_array)
         analyser.getByteFrequencyData(frequency_array)
         rafId = requestAnimationFrame(tick);
-
-
     }
 
 

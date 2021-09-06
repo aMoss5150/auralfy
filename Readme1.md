@@ -20,12 +20,15 @@ Auralfy is a Spotify  player and visualizer. With a retro-futuristic jukebox the
 
 - JavaScript
 - React/Redux
+- HTML
+- Python
 - WebAudio API
 - Canvas API
 - CSS
-- Python
 - Flask/SQLAlchemy
-- Tailwind CSS (first usage)
+- Tailwind CSS
+- react-hifi
+- react-particles-webgl
 
 
 
@@ -34,6 +37,10 @@ Auralfy is a Spotify  player and visualizer. With a retro-futuristic jukebox the
 The splash page is where users will be directed if not logged in. The theme is meant to simulate an older computer with a minimal and clean interface, it also imparts a feel as if you are starting up an old jukebox or arcade game to the user. It will hold simple forms for login and sign-up that will be rendered based on state as well as a demo login button for easy access.
 
 ![](assets/sXc1.jpg)
+
+## Unique (for me) Approach
+
+At the start of this project I wanted to take a unique approach as all my previous projects have a standard web page feel. I wanted to utilize more context to create an app/jukebox feel that renders components based off context rather than existing on a seperate route. This lead to having to plan a little bit more about how everything is going to work together due to mutual exclusivity of many separate conditions. It was an overall enjoyable experience and gives a really clean and pure feel to the user experience simulating the user is interacting with a jukebox screen and all the action so to speak, happens in one place. However, it did take me more time due to unfamiliarity of this approach and required me to think a few steps ahead and to be dynamic in my implementation. Through this project, the most important thing I learned was that planning is very important, but having an understanding of the fundamentals/system that you are using allows you the leniency required to be dynamic and approach problems without worry that you will hit a brick wall.
 
 ## Home Page and Navigation
 
@@ -55,18 +62,24 @@ A song is selected by a user from a user's vibe by clicking on the CD-ROM icon, 
 
 ## Mini Visualizer
 
-The mini visualizer is in the style of an oscilloscope and during playback is displayed directly above the player controls section. There is an XL option which will smoothly transition to filling the whole display section of the page rather than just a small slice.
+The mini visualizer is in the style of an oscilloscope and during playback is displayed directly above the player controls section. There is an XL option which will smoothly transition to filling the whole display section of the page rather than just a small slice. This was built off the Osciloscope component in the react-hifi package. It was as a great intro into beginning to understand how the requestAnimationFrame function can be utilized to draw onto a canvas element, this layed the foundation for me to tackle the full screen visualizer/VIBE player to create a more bespoke audio visualizer.
 
 ![](assets/sXc5.jpg)
 
 ## React-hifi npm package
-The react-hifi package is, "A composable Abstraction for AudioContext API with a easy to use react API." This allowed for me to manage and control the audio context with the included props and methods. The Sound component and Osciloscope are heavily utilized. The Sound component was helpful in aiding with creating an audio graph based off a simple URL for the audio source. The Sound component is then routed into the Osciloscope component, hence, the composability. All that was necessary for the Osciloscope was a useRef hook to target the created canvas element and a function that will be called by the Osciloscope component, "onVisualizationData" which is really an abstraction of a web audio analyser node and an animation looper to draw the lines on the canvas based off data gathered from the audio source. 
+The react-hifi package is, "A composable Abstraction for AudioContext API with a easy to use react API." This allowed for me to manage and control the audio context with the included props and methods. The Sound component and Osciloscope are heavily utilized. The Sound component was helpful in aiding with creating an audio graph based off a simple URL for the audio source. The Sound component is then routed into the Osciloscope component, hence, the composability. All that was necessary for the Osciloscope was a useRef hook to target the created canvas element and a function that will be called by the Osciloscope component, "onVisualizationData" which is really an abstraction of a web audio analyser node and an animation looper to draw the lines on the canvas based off data gathered from the audio source. The decision to use react-hifi was vital in increasing my understanding of the WebAudio API as it was my first implmentation.
 
 ## Particle effects
 
-The particles utilized for background mood setting are from react-particles-webgl npm package. The package is, "A 2D/3D particle library built with React, Three.js and WebGL." The abstraction afforded by this package was incredibly helpful in adding another level of immersion to the app. The controls are also what allowed me to be able to create custom built particle "scenes" for the app. For the full screen visualizer, particle controls are tied to the "audio features" of the song in the play context. Color, size, line connectivity, rotation, movement are all parameters that are adjusted dynamically by audio features values to create a unique landscape for each song.
+The particles utilized for background mood setting are from react-particles-webgl npm package. The package is, "A 2D/3D particle library built with React, Three.js and WebGL." The abstraction afforded by this package was incredibly helpful in adding another level of immersion to the app. The controls are also what allowed me to be able to create custom built particle "scenes" for the app. For the full screen visualizer, particle controls are tied to the "audio features" of the song in the play context. Color, size, shape, line connectivity, rotation, movement are all parameters that are adjusted dynamically by audio features values to create a unique landscape for each song.
 
 ![](assets/sXc6.jpg)
+
+## VIBE player/Full Screen Visualizer
+
+
+
+
 
 ## HODL Through The Bad Times
 

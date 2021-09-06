@@ -35,17 +35,25 @@ The splash page is where users will be directed if not logged in. The theme is m
 
 ![](assets/sXc1.jpg)
 
+## Home Page and Navigation
+
 Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for user created vibes/playlists, from here you can choose the currently selected vibe. On the right hand side, if there is no currently selected vibe, the user is shown the artist preview page. There are artist "cards" designed to look like touch screen buttons within the app to add to user-immersion, upon selection of an artist you will set the open artist context to the artist's id and an artist page is built and rendered. There cannot be an artist context and vibe context open at the same time as they are mutually exclusive, this gives the behavior of menus that are opened and closed dynamically based off context and state, rather than having a separate "page" that each component exists at. All menus exists at the "/" user facing route.
 
 ![](assets/sXc2.jpg)
 
-Building a rock solid audio player was probably the most time consuming part of the process, going into the project with a goal of achieving an understanding of how the web audio API functions, communicates with the canvas API and to build from scratch when possible, made it the most intensive. This player is a result of probably 10 or so iterations to achieve the level of function that I desired. 
+## Standard Player
+
+Building a rock solid audio player was probably the most time consuming part of the process, going into the project with a goal of achieving an understanding of how the web audio API functions, communicates with the canvas API and to build from scratch when possible, made it the most intensive. This player is a result of probably 10 or so iterations to achieve the level of function that I desired. The player is only mounted when there is a play context.
 
 ![](assets/sXc3.jpg)
 
-While on an individual assets page, a stock chart for the planet's value is displayed with a timeline legend on the right side. Clicking each of these buttons will display the assets historical data based on a call to the CoinGecko API. Beneath the chart is information about the planet, some key metrics, as well as news stories once again. From this page the user can buy and sell shares, and the price being displayed at the exact moment on-click of either button will be the price that the transaction is made at. This allows users to become master intergalactic day-traders.
+## Play Context
+
+A song is selected by a user from a user's vibe by clicking on the CD-ROM icon, this passes a song object to the play context. The play context contains, the whole song object from the database, the status of whethere the song is playing, paused, or stopped and the position of where the song is at in time. These are useful values that will enable me to pass values between the standard audio player and the visualizer player during transition, these are also going to be used and called to control a song's playback for the standard audio player.  
 
 ![](assets/sXc4.jpg)
+
+## Mini Visualizer
 
 The tradable planets page displays every planet currently being tracked by the website. Here, you can see the simulated stock market in full effect. Every price on this page is being fed through a stock algorithm and increasing/decreasing at a randomly chosen percentage value. This percentage value is directly tied to real volatility data for the cryptocurrency that each planet is linked to. A mini stock chart is displayed next to each planet's price, and each planet row is clickable and takes the user to that planet's page.
 

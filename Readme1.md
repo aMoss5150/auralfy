@@ -35,11 +35,11 @@ The splash page is where users will be directed if not logged in. The theme is m
 
 ![](assets/sXc1.jpg)
 
-Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for user created vibes/playlists, from here you can select the currently selected vibe. On the right hand side, the currently selected screen is displayed in the jukebox's 
+Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for user created vibes/playlists, from here you can choose the currently selected vibe. On the right hand side, if there is no currently selected vibe, the user is shown the artist preview page. There are artist "cards" designed to look like touch screen buttons within the app to add to user-immersion, upon selection of an artist you will set the open artist context to the artist's id and an artist page is built and rendered. There cannot be an artist context and vibe context open at the same time as they are mutually exclusive, this gives the behavior of menus that are opened and closed dynamically based off context and state, rather than having a separate "page" that each component exists at. All menus exists at the "/" user facing route.
 
 ![](assets/sXc2.jpg)
 
-In the navbar we have links to the user's dashboard, a list of all tradeable planets on the site, a list of every transaction made by the user, and a logout button. In the center of the navbar is a search bar, which can search for planets through either their name or stock ticker.
+Building a rock solid audio player was probably the most time consuming part of the process, going into the project with a goal of achieving an understanding of how the web audio API functions, communicates with the canvas API and to build from scratch when possible, made it the most intensive. This player is a result of probably 10 or so iterations to achieve the level of function that I desired. 
 
 ![](assets/sXc3.jpg)
 

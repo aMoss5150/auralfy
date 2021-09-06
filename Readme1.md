@@ -55,9 +55,15 @@ A song is selected by a user from a user's vibe by clicking on the CD-ROM icon, 
 
 ## Mini Visualizer
 
-The tradable planets page displays every planet currently being tracked by the website. Here, you can see the simulated stock market in full effect. Every price on this page is being fed through a stock algorithm and increasing/decreasing at a randomly chosen percentage value. This percentage value is directly tied to real volatility data for the cryptocurrency that each planet is linked to. A mini stock chart is displayed next to each planet's price, and each planet row is clickable and takes the user to that planet's page.
+The mini visualizer is in the style of an oscilloscope and during playback is displayed directly above the player controls section. There is an XL option which will smoothly transition to filling the whole display section of the page rather than just a small slice.
 
 ![](assets/sXc5.jpg)
+
+## React Hifi npm package
+
+This package was used due to it not being strongly opinionated about how you use it, but also having convenient features that allow you to achieve your build goals. The Sound component and Osciloscope are heavily ustilized.
+
+
 
 All user transactions are kept track of and displayed on the transactions page. The most recent transactions are displayed first and buy/sell are color coordinated for easy viewing and organization. Each transaction will take the user to the related planet page when clicked
 

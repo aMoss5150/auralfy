@@ -34,7 +34,7 @@ Auralfy is a Spotify  player and visualizer. With a retro-futuristic jukebox the
 
 ## Overview
 
-The splash page is where users will be directed if not logged in. The theme is meant to simulate an older computer with a minimal and clean interface, it also imparts a feel as if you are starting up an old jukebox or arcade game to the user. It will hold simple forms for login and sign-up that will be rendered based on state as well as a demo login button for easy access.
+The splash page is where users will be directed if not logged in. The theme is meant to simulate an older computer with a minimal and clean interface, it also imparts a feel as if you are booting up a jukebox or arcade game to the user. It will hold simple forms for login and sign-up that will be rendered based on state as well as a demo login button for easy access.
 
 ![](assets/sXc1.jpg)
 
@@ -44,7 +44,7 @@ At the start of this project I wanted to take a unique approach as all my previo
 
 ## Home Page and Navigation
 
-Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for user created vibes/playlists, from here you can choose the currently selected vibe. On the right hand side, if there is no currently selected vibe, the user is shown the artist preview page. There are artist "cards" designed to look like touch screen buttons within the app to add to user-immersion, upon selection of an artist you will set the open artist context to the artist's id and an artist page is built and rendered. There cannot be an artist context and vibe context open at the same time as they are mutually exclusive, this gives the behavior of menus that are opened and closed dynamically based off context and state, rather than having a separate "page" that each component exists at. All menus exists at the "/" user facing route.
+Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for user created vibes/playlists, from here you can choose the currently selected vibe. On the right hand side, if there is no currently selected vibe, the user is shown the artist preview page. There are artist "cards" designed to look like touch screen buttons within the app to add to user immersion. Upon selection of an artist you will set the open artist context to the artist's id and an artist page is built and rendered. There cannot be an artist context and vibe context open at the same time as they are mutually exclusive, this gives the behavior of menus that are opened and closed dynamically based off context and state, rather than having a separate "page" that each component exists at. All menus exists at the "/" user facing route.
 
 ![](assets/sXc2.jpg)
 
@@ -56,7 +56,7 @@ Building a rock solid audio player was probably the most time consuming part of 
 
 ## Play Context
 
-A song is selected by a user from a user's vibe by clicking on the CD-ROM icon, this passes a song object to the play context. The play context hold the song object from the database, the status of whether the song is playing, paused, or stopped and the position of where the song is at in time in seconds. These are useful values that will enable me to pass values between the standard audio player and the visualizer player during transition, these are also going to be used and called to control a song's playback for the standard audio player.  
+A song is selected by a user from a user's vibe by clicking on the CD-ROM icon, this passes a song object to the play context. The play context holds the song object from the database, the status of whether the song is playing, paused, or stopped and the position of where the song is at in time in seconds. These are useful values that will enable me to pass values between the standard audio player and the visualizer player during transition, these are also going to be used and called to control a song's playback for the standard audio player.  
 
 ![](assets/sXc4.jpg)
 
@@ -71,13 +71,11 @@ The react-hifi package is, "A composable Abstraction for AudioContext API with a
 
 ## Particle effects
 
-The particles utilized for background mood setting are from react-particles-webgl npm package. The package is, "A 2D/3D particle library built with React, Three.js and WebGL." The abstraction afforded by this package was incredibly helpful in adding another level of immersion to the app. The controls are also what allowed me to be able to create custom built particle "scenes" for the app. For the full screen visualizer, particle controls are tied to the "audio features" of the song in the play context. Color, size, shape, line connectivity, rotation, movement are all parameters that are adjusted dynamically by audio features values to create a unique landscape for each song.
+The particles utilized for background mood setting are from react-particles-webgl npm package. The package is, "A 2D/3D particle library built with React, Three.js and WebGL." The abstraction afforded by this package was incredibly helpful in adding another level of immersion to the app, without having to go too far down the Three.js/WebGL rabbit hole. The controls are also what allowed me to be able to create custom built particle "scenes" for the app. For the full screen visualizer, particle controls are tied to the "audio features" of the song in the play context. Color, size, shape, line connectivity, rotation, movement are all parameters that are adjusted dynamically by the audio features values to create a unique landscape for each song.
 
 ![](assets/sXc6.jpg)
 
 ## VIBE player/Full Screen Visualizer
-
-
 
 
 

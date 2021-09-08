@@ -83,7 +83,7 @@ The VIBE player is a full screen visualizer that is built based off the selected
 
 ## VIBE Visualizer
 
-The Canvas API is utilized to draw in real time to the screen based on the audio context's analyser node. I decided to use the frequency domain data 
+A cooperation of the WebAudio API and the Canvas API is utilized to draw the lines of the visualizer in real time. Lines are drawn based on data taken from the source audio's analyser node, this data is then fed to the Canvas and the requestAnimationFrame is called and the lines are updated, this all happens up to 60 times a second, creating the illusion of a moving picture. I decided to use the frequency domain data as each line is actually representative of a specific frequency, the line height is controlled by the amplitude of each frequency and certain parameters will change based off that amplitude. The colors and line width are controlled by the audio features of the song and they work in conjunction with the overall color scheme including the particles. The shadow and highlighting of lines is controlled by the amplitude, shadows become more prevalent as amplitude is increased and lines are highlighted when a certain amplitude threshold is hit, acting to add a bit of emphasis that correlates with frequency. 
 
 ## HODL Through The Bad Times
 

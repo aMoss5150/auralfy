@@ -4,7 +4,7 @@ _By [Andrew Moss](https://github.com/aMoss5150)
 
 Enjoy the player at... [Auralfy](https://auralfy.herokuapp.com/)
 
-Auralfy is a Spotify  player and visualizer. With a retro-futuristic jukebox theme and an aim to explore the “color” of music, and how one might translate/quantify feelings and emotions evoked by music into the visual realm.
+Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic jukebox theme and an aim to explore the “color” of music, and how one might translate/quantify feelings and emotions evoked by music into the visual realm.
 
 
 
@@ -25,7 +25,8 @@ Auralfy is a Spotify  player and visualizer. With a retro-futuristic jukebox the
 - WebAudio API
 - Canvas API
 - CSS
-- Flask/SQLAlchemy
+- Flask
+- SQLAlchemy
 - Tailwind CSS
 - react-hifi
 - react-particles-webgl
@@ -40,11 +41,11 @@ The splash page is where users will be directed if not logged in. The theme is m
 
 ## Unique (for me) Approach
 
-At the start of this project I wanted to take a unique approach as all my previous projects have a standard web page feel. I wanted to utilize more context to create an app/jukebox feel that renders components based off context rather than existing on a seperate route. This lead to having to plan a little bit more about how everything is going to work together due to mutual exclusivity of many separate conditions. It was an overall enjoyable experience and gives a really clean and pure feel to the user experience simulating the user is interacting with a jukebox screen and all the action so to speak, happens in one place. However, it did take me more time due to unfamiliarity of this approach and required me to think a few steps ahead and to be dynamic in my implementation. Through this project, the most important thing I learned was that planning is very important, but having an understanding of the fundamentals/system that you are using allows you the leniency required to be dynamic and approach problems without worry that you will hit a brick wall.
+At the start of this project I wanted to take a unique approach as my previous projects have a standard web page feel. I wanted to utilize more context to create an app/jukebox feel that renders components based off contexts that act like switches, rather than existing on a seperate route. This lead to having to plan a little bit more about how everything is going to work together due to mutual exclusivity of many separate conditions. It was an overall enjoyable experience and gives a really clean and pure feel to the user experience simulating the user is interacting with a jukebox screen and all the action so to speak, happens in one place. However, it did take me more time due to unfamiliarity of this approach and required me to think a few steps ahead and to be dynamic in my implementation. Through this project, the most important thing I learned was that planning is very important, but having an understanding of the fundamentals/system that you are using allows you the leniency required to be dynamic and approach new problems without worrying about hitting a brick wall.
 
 ## Home Page and Navigation
 
-Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for user created vibes/playlists, from here you can choose the currently selected vibe. On the right hand side, if there is no currently selected vibe, the user is shown the artist preview page. There are artist "cards" designed to look like touch screen buttons within the app to add to user immersion. Upon selection of an artist you will set the open artist context to the artist's id and an artist page is built and rendered. There cannot be an artist context and vibe context open at the same time as they are mutually exclusive, this gives the behavior of menus that are opened and closed dynamically based off context and state, rather than having a separate "page" that each component exists at. All menus exists at the "/" user facing route.
+Upon login you are presented with the main/index page of the app, on the left-hand side exists the navigation for the user created vibes/playlists, here you can select a vibe. On the right/display side, if there is no currently selected vibe, the user is shown the artist preview page. There are artist "cards" designed to look like touch screen buttons within the app to add to user immersion. Upon selection of an artist you will set the open artist context to the artist's id and an artist page is built and rendered. There cannot be an artist context and vibe context open at the same time as they are mutually exclusive, this gives the behavior of menus that are opened and closed dynamically based off context and state, rather than having a separate "page" that each component exists at. All menus exists at the "/" user facing route.
 
 ![](assets/sXc2.jpg)
 
@@ -75,9 +76,14 @@ The particles utilized for background mood setting are from react-particles-webg
 
 ![](assets/sXc6.jpg)
 
-## VIBE player/Full Screen Visualizer
+## VIBE player/Full Screen Visualizer page
+
+The VIBE player is a full screen visualizer that is built based off the selected song. The user is taken to another route that consists of a particles background that is modulated based off a song's audio features. The size, shape, color, connectivity, speed and camera rotation are all variables that are dynamically adjusted and will be unique to each song. In the background, the artist's image is barely visible along with minimalistic controls, including two visualizer modes, one being more similar to a "Fountain" as it blooms upwards, and another to a "Projector", as it projects towards you as if it is coming from a distance. 
 
 
+## VIBE Visualizer
+
+The Canvas API is utilized to draw in real time to the screen based on the audio context's analyser node. I decided to use the frequency domain data 
 
 ## HODL Through The Bad Times
 

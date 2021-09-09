@@ -115,14 +115,14 @@ export default function Player2() {
                 </span>
 
                 <span>
-                    {playCtxt.artist}
+                    {playCtxt.artist}&nbsp;
                 </span>
-
+                {/* 
                 <span
                     className="font-thin italic">
                     <span>&nbsp;&nbsp;-{playCtxt.tempo}</span>
                     &nbsp;BPM&nbsp;
-                </span>
+                </span> */}
 
                 <Link onClick={() => setPositionCtxt(state.position)} to="/vibe">VIBE</Link>
             </div>

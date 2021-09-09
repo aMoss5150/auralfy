@@ -234,7 +234,7 @@ export default function CanvasF() {
 
             <div className="fullvis__controller">
 
-                <Link onClick={() => (context.close(), setPositionCtxt(state.audio.currentTime))} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
+                <Link onClick={() => (context.close(), state.audio ? setPositionCtxt(state.audio.currentTime) : null)} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
 
                 <button className="fullvis__button3 full__buttons italic" onClick={() => setVisualizerCtxt(0)}>
                     Fountain
@@ -248,7 +248,7 @@ export default function CanvasF() {
 
                 <button className="fullvis__button2 full__buttons" onClick={() => (
                     context.suspend(),
-                    state.audio.currentTime = 0
+                    state.audio ? state.audio.currentTime = 0 : null
                 )}>Stop</button>
 
                 <button className="fullvis__button5 full__buttons" onClick={() => (

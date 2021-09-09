@@ -21,8 +21,9 @@ Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic juk
 - JavaScript
 - React/Redux
 - HTML
+- Node
 - Python
-- WebAudio API
+- Web Audio API
 - Canvas API
 - CSS
 - Flask
@@ -30,7 +31,7 @@ Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic juk
 - Tailwind CSS
 - react-hifi
 - react-particles-webgl
-
+- Amazon AWS for simple storage
 
 
 ## Overview
@@ -68,7 +69,7 @@ The mini visualizer is in the style of an oscilloscope and during playback is di
 ![](assets/sXc5.jpg)
 
 ## React-hifi npm package
-The react-hifi package is, "A composable Abstraction for AudioContext API with a easy to use react API." This allowed for me to manage and control the audio context with the included props and methods. The Sound component and Osciloscope are heavily utilized. The Sound component was helpful in aiding with creating an audio graph based off a simple URL for the audio source. The Sound component is then routed into the Osciloscope component, hence, the composability. All that was necessary for the Osciloscope was a useRef hook to target the created canvas element and a function that will be called by the Osciloscope component, "onVisualizationData" which is really an abstraction of a web audio analyser node and an animation looper to draw the lines on the canvas based off data gathered from the audio source. The decision to use react-hifi was vital in increasing my understanding of the WebAudio API as it was my first implmentation.
+The react-hifi package is, "A composable Abstraction for AudioContext API with a easy to use react API." This allowed for me to manage and control the audio context with the included props and methods. The Sound component and Osciloscope are heavily utilized. The Sound component was helpful in aiding with creating an audio graph based off a simple URL for the audio source. The Sound component is then routed into the Osciloscope component, hence, the composability. All that was necessary for the Osciloscope was a useRef hook to target the created canvas element and a function that will be called by the Osciloscope component, "onVisualizationData" which is really an abstraction of a web audio analyser node and an animation looper to draw the lines on the canvas based off data gathered from the audio source. The decision to use react-hifi was vital in increasing my understanding of the Web Audio API as it was my first implmentation.
 
 ## Particle effects
 
@@ -83,59 +84,14 @@ The VIBE player is a full screen visualizer that is built based off the selected
 
 ## VIBE Visualizer
 
-A cooperation of the WebAudio API and the Canvas API is utilized to draw the lines of the visualizer in real time. Lines are drawn based on data taken from the source audio's analyser node, this data is then fed to the Canvas and the requestAnimationFrame is called and the lines are updated, this all happens up to 60 times a second, creating the illusion of a moving picture. I decided to use the frequency domain data as each line is actually representative of a specific frequency, the line height is controlled by the amplitude of each frequency and certain parameters will change based off that amplitude. The colors and line width are controlled by the audio features of the song and they work in conjunction with the overall color scheme including the particles. The shadow and highlighting of lines is controlled by the amplitude, shadows become more prevalent as amplitude is increased and lines are highlighted when a certain amplitude threshold is hit, acting to add a bit of emphasis that correlates with frequency. 
+A cooperation of the WebAudio API and the Canvas API is utilized to draw the lines of the visualizer in real time. Lines are drawn based on data taken from the source audio's analyser node, this data is then fed to the Canvas and the requestAnimationFrame function is called and the lines are updated, this all happens up to 60 times a second, creating the illusion of a moving picture. I decided to use the frequency domain data obtained from the audio analyser node as each line is representative of a specific frequency, the line height is controlled by the amplitude of each frequency and certain parameters will change based off that amplitude. The colors and line width are controlled by the audio features of the song and they work in conjunction with the overall color scheme including the particles. The shadow and highlighting of lines is controlled by the amplitude, shadows become more prevalent as amplitude is increased and lines are highlighted when a certain amplitude threshold is hit, acting to add a bit of emphasis that correlates with frequency. 
 
-## HODL Through The Bad Times
-
-Dealing with asynchronous JS proved to be the most difficult part of this project. We found that when chaining .then()'s, if we didn't pass in a callback we were running into occasional errors where the next function to be run in .then() would be undefined. This was happening at random on virtually every .then() chain, so when we finally figured this out it took our site from mostly functioning correctly to always functioning perfectly.
-
-![](assets/sXc7.jpg)
-
-An interesting problem we had to solve was giving our user historical data to render their portfolio stock chart. The issue is the chart is drawn using the data that the simulated stock market generates. However on initial load, the user shouldn't have any data ready to be displayed. To get around this we've given the user fake historical data and saved that to localStorage. This localStorage was built as a queue, so that when the stock market creates a new portfolio value, we can remove the oldest local value and append the new market-provided value.
-
-![](assets/sXc8.jpg)
-
-The only other issue we run into is when either the CoinGecko API or our very own Raspberry Pi API (more on that later) will fail on us. This usually occurs during brute force error testing, spamming the API's and hitting every route we can as fast as possible.
-
-## The Future Is Now
-
-We started off this project with mile-high aspirations, and a week-long build time made us question whether or not we'd be able to implement all of the features we wanted. Which is why we're so happy to have been able to implement everything we had originally planned for.
-
-### Raspberry Pi API
-
-Although a Robinhood clone could be made with one, our entire project hinges on the existence of our Raspberry Pi API. We wanted a way to simulate live fluctuation of stock prices in real time for the user to be able to see, and we also had a Raspberry Pi laying around, so naturally we dedicated a large chunk of the first five days getting it to work. The strange part for us was that every time we've work with an API thus far, it's been with static values. But since we wanted these values to constantly change, we had a lot of new ground to cover.
-The API is viewable at 71.172.19.94, and will display the updated prices on every refresh.
-
-![](assets/sXc9.jpg)
-
-### Stock Algorithm
-
-Although the logic in the algorithm is fairly simple, it allowed us to add great complexity to our site's data. Using CoinGecko's API, we tied the price of every planet to an actual real-life cryptocurrency. We multiplied the crypto's average daily volatility by a random number and had our algorithm flip a coin to determine if the planet's price would increase or decrease based on the value output by the algorithm.
-
-![](assets/sXc10.jpg)
-
-### Search Bar
-
-We touched on search bar earlier, but this was a feature we weren't convinced we were going to have time to implement and it ended up working out really well.
-
-### Beautiful Soup Web Scraping
-
-This feature proved to be more arduous than we had initially realized. Beautiful Soup was a great piece of tech and allowed us to get setup scraping the web fairly quickly. However navigating a news site's HMTL in order to find all of the necessary information to display to our site ended up being quite tricky. An issue we commonly ran into was that you couldn't trust that every page would be built in exactly the same way, even from within the same news outlet. For example, if there was a top level div that held the time at which the article was published, there was no guarantee that the data would be in the same spot and in the same format for a difficult article that was published a few days ago.
-
-![](assets/sXc11.jpg)
-
-### Recharts and Handling API Data
-
-The data we received from the CoinGecko API needed to be fed into our Recharts, however the data was formatted incredibly differently than was Recharts required, so a lot of work had to be done to ensure the data would be passed to Recharts without any issues. There's a lot more to the data handling than just this code block, but the gist of it is covered here. timeInterval is tied to the buttons on the graph's legend and will determine how much data is displayed. Then, we just format the data into an object that Rechart can accept.
-
-![](assets/sXc12.jpg)
-
-Working with Recharts itself is relatively intuitive and we ended up being able to implement our Raspberry Pi API data seamlessly alongside the CoinGecko API data.
-
-![](assets/sXc13.jpg)
 
 ## What now? More bonuses!
 
-- Dark Mode Toggle
-- Filter options for the transaction page.
-- Real payment processor integration
+- Color themes in the works!
+- Search function
+- Actual Spotify integration
+- Analysis of key, mode and tempo
+- Different algorithms for viewing different frequency spectrums
+- Frequency indicator around the full screen visualizer to frequencies

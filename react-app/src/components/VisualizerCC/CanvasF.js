@@ -144,8 +144,11 @@ export default function CanvasF() {
     }
 
     const shadowHelper = (valence) => {
-        if (valence <= 0.25) {
+        if (valence <= 0.15) {
             return "green"
+        }
+        if (valence > 0.15 && valence <= 0.25) {
+            return "blue"
         }
         if (valence > 0.25 && valence <= 0.35) {
             return "orange"
@@ -196,7 +199,7 @@ export default function CanvasF() {
             ctx.shadowColor = playCtxt ? shadowHelper(playCtxt.valence) : 'red';
             ctx.shadowBlur = 14;
             // ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
-            ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
+            ctx.lineWidth = shadowHelper(playCtxt.valence) === "green" ? .7 : playCtxt ? playCtxt.valence : bar_width;
         }
         // ctx.lineWidth = frequency / 50;
         ctx.beginPath();

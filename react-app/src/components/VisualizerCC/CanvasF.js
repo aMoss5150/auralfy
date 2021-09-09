@@ -66,6 +66,9 @@ export default function CanvasF() {
             if (positionCtxt !== null) {
                 state.audio.currentTime = positionCtxt
             }
+            if (status === "PLAYING") {
+                tick()
+            }
             // console.log(context, analyser)
             // console.log(frequency_array, analyser.frequencyBinCount,);
             // console.log(state.audio, context)

@@ -8,15 +8,18 @@ import './CanvasCC.css'
 
 
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
-let width = window.innerWidth;
-let height = window.innerHeight;
 const bars = 75;
 let bar_width = .2;
 radius = 0;
-center_x = width / 2;
+//* likely have to keep these vars dynamic assigned within a function instead
+let width
+let height
+// width = window.innerWidth;
+// height = window.innerHeight;
 
-//* height  || height / 2 for placement at bottom of page
-center_y = height / 2;
+// center_x = width / 2;
+// //* height  || height / 2 for placement at bottom of page
+// center_y = height / 2;
 
 let rafId
 let context
@@ -37,7 +40,7 @@ export default function CanvasF() {
 
 
 
-    visualizerCtxt === 1 ? center_y = height / 2 : center_y = height
+    // visualizerCtxt === 1 ? center_y = height / 2 : center_y = height
 
     bar_width = playCtxt ? playCtxt.energy * 2 : .2
     // const songs = useSelector(state => state.songs)
@@ -77,6 +80,16 @@ export default function CanvasF() {
 
     const animationLooper = (canvas) => {
         if (!canvas || !state.audio) return null
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        center_x = width / 2;
+        // //* height  || height / 2 for placement at bottom of page
+        // center_y = height / 2;
+        // if (visualizerCtxt === 1) {
+        //     center_y = height / 2
+        // } else center_y = height
+        center_y = visualizerCtxt === 1 ? height / 2 : height
 
         canvas.width = width;
         canvas.height = height;
@@ -188,7 +201,7 @@ export default function CanvasF() {
 
 
         //* experimental kick section adding blur when 80 hz exceeds 200
-        if (frequency > 200) {
+        if (frequency > 189) {
             // ctx.shadowColor = "rgb(" + frequency + ", " + frequency + ", " + 255 + ")";
             // ctx.shadowColor = 'red';
             ctx.shadowColor = playCtxt ? shadowHelper(playCtxt.valence) : 'red';

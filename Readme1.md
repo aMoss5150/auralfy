@@ -19,18 +19,21 @@ Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic juk
 ## Technologies Used
 
 - JavaScript
-- React/Redux
-- HTML
-- Node
 - Python
+- CSS
+- HTML
+- React/Redux
+- Node
 - Web Audio API
 - Canvas API
-- CSS
 - Flask
+- Alembic
+- Psycopg2
 - SQLAlchemy
 - Tailwind CSS
 - react-hifi
 - react-particles-webgl
+- react-particles-js
 - Amazon AWS for simple storage
 
 

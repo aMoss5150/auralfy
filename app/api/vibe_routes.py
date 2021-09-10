@@ -34,7 +34,7 @@ def delete_vibe():
     vibe = Vibe.query.filter(Vibe.id == id and Vibe.user_id == current_user.id).first()
     db.session.delete(vibe)
     db.session.commit()
-    return "success"
+    return {"success": "success"}
 
 
 @vibe_routes.route("/", methods=["PATCH"])
@@ -44,4 +44,4 @@ def add_song_to_vibe():
     vibe = VibeMember(vibe_id=vibeId, song_id=songId)
     db.session.add(vibe)
     db.session.commit()
-    return "success"
+    return {"success": "success"}

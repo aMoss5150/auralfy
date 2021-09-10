@@ -27,6 +27,7 @@ Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic juk
 - Web Audio API
 - Canvas API
 - Flask
+- Docker
 - Alembic
 - Psycopg2
 - SQLAlchemy
@@ -45,7 +46,7 @@ The splash page is where users will be directed if not logged in. The theme is m
 
 ## Unique (for me) Approach
 
-At the start of this project I wanted to take a unique approach as my previous projects have a standard web page feel. I wanted to utilize more context to create an app/jukebox feel that renders components based off contexts that act like switches, rather than existing on a seperate route. This lead to having to plan a little bit more about how everything is going to work together due to mutual exclusivity of many separate conditions. It was an overall enjoyable experience and gives a really clean and pure feel to the user experience simulating the user is interacting with a jukebox screen and all the action so to speak, happens in one place. However, it did take me more time due to unfamiliarity of this approach and required me to think a few steps ahead and to be dynamic in my implementation. Through this project, the most important thing I learned was that planning is very important, but having an understanding of the fundamentals/system that you are using allows you the leniency required to be dynamic and approach new problems without worrying about hitting a brick wall.
+At the start of this project I wanted to take a unique approach as my previous projects have a standard web page feel. I wanted to utilize more context to create an app/jukebox feel that renders components based off contexts that act like switches, rather than existing on a seperate route. This lead to having to plan a little bit more about how everything is going to work together due to mutual exclusivity of conditions. It was an overall enjoyable experience and gives a really clean and pure feel to the user experience simulating the user is interacting with a jukebox screen and all the action so to speak, happens in one place. However, it did take me more time due to unfamiliarity of this approach and required me to think a few steps ahead and to be dynamic in my implementation. Through this project, the most important thing I learned was that planning is very important, but having an understanding of the fundamentals/system that you are using allows you the leniency required to be dynamic and approach new problems without worrying about hitting a brick wall.
 
 ## Home Page and Navigation
 

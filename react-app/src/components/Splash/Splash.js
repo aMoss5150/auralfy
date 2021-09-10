@@ -41,7 +41,7 @@ function Splash() {
 
             {<Particles id='particles' style={{ position: "absolute", width: "100%", top: "189px", height: "100%", left: "44px", zIndex: "0" }}
             />}
-            {/* <Particles id="particles" style={{ position: "absolute", width: "100%", top: "189px", height: "100%", left: "44px", zIndex: "0" }}
+            {/* <Particles
                 params={{
                     polygon: {
                         enable: true,
@@ -49,7 +49,8 @@ function Splash() {
                         move: {
                             radius: 10
                         },
-                        url: 'https://i.pinimg.com/236x/ae/cd/df/aecddfc5e17fad72d4fc5dfcc24ad60c.jpg'
+                        url: 'drake.svg',
+                        draw: "enable"
                     }
                 }} /> */}
         </ div>

@@ -10,11 +10,10 @@ Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic juk
 
 ## Index
 
-- [API Documentation](https://github.com/ZaviarBrown/spaceXchange/wiki/API-Routes)
-- [Database Schema](https://github.com/ZaviarBrown/spaceXchange/wiki/Database-Schema)
-- [Frontend Routes](https://github.com/ZaviarBrown/spaceXchange/wiki/Frontend-Routes)
-- [MVP Feature List](https://github.com/ZaviarBrown/spaceXchange/wiki/MVP-List)
-- [User Stories](https://github.com/ZaviarBrown/spaceXchange/wiki/User-Stories)
+##  [Api Documentation](https://github.com/aMoss5150/auralfy/wiki/API-Routes)
+## [Database Schema](https://github.com/aMoss5150/auralfy/wiki/Database-Schema)
+##  [Front-end Routes](https://github.com/aMoss5150/auralfy/wiki/User-Facing-Routes)
+## [MVP List](https://github.com/aMoss5150/auralfy/wiki/MVP-List)
 
 ## Technologies Used
 

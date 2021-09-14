@@ -20,7 +20,6 @@ def get_all_vibes():
 @vibe_routes.route("/", methods=["POST"])
 def create_vibe():
     vibe_name = request.json
-    print(request.json)
     new_vibe = Vibe(name=vibe_name, user_id=current_user.id)
     db.session.add(new_vibe)
     db.session.commit()
@@ -29,7 +28,6 @@ def create_vibe():
 
 @vibe_routes.route("/", methods=["DELETE"])
 def delete_vibe():
-    print(request.json)
     id = request.json
     vibe = Vibe.query.filter(Vibe.id == id and Vibe.user_id == current_user.id).first()
     db.session.delete(vibe)

@@ -27,23 +27,20 @@ def delete_a_relation():
     vibeId = request.json["vibeId"]
     songId = request.json["songId"]
     # gives me all songs with a relation
-    print(vibeId, songId)
     member = VibeMember.query.filter(
         VibeMember.vibe_id == vibeId, VibeMember.song_id == songId
     ).first()
-    print(member)
     length = VibeMember.query.filter(VibeMember.vibe_id == vibeId).count()
-    print(length)
     if length == 1:
         vibe = Vibe.query.filter(Vibe.id == vibeId).first()
         db.session.delete(member)
         db.session.delete(vibe)
         db.session.commit()
-        return jsonify("success")
+        return {"success": "success"}
 
     db.session.delete(member)
     db.session.commit()
-    return jsonify("success")
+    return {"success": "success"}
 
 
 @relation_routes.route("/", methods=["POST"])
@@ -61,7 +58,7 @@ def create_a_relation():
         new_member = VibeMember(song_id=songId, vibe_id=vibeId)
         db.session.add(new_member)
         db.session.commit()
-    return jsonify("success")
+    return {"success": "success"}
 
 
 # example logic

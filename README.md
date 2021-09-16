@@ -6,8 +6,6 @@ Enjoy the player at... [Auralfy](https://auralfy.herokuapp.com/)
 
 Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic jukebox theme and an aim to explore the “color” of music, and how one might translate/quantify feelings and emotions evoked by music into the visual realm.
 
-
-
 ## Index
 
 ##  [Api Documentation](https://github.com/aMoss5150/auralfy/wiki/API-Routes)
@@ -36,16 +34,17 @@ Auralfy is a Spotify inspired player and visualizer. With a retro-futuristic juk
 - react-particles-js
 - Amazon AWS for simple storage
 
-
 ## Overview
 
 The splash page is where users will be directed if not logged in. The theme is meant to simulate an older computer with a minimal and clean interface, it also imparts a feel as if you are booting up a jukebox or arcade game to the user. It will hold simple forms for login and sign-up that will be rendered based on state as well as a demo login button for easy access.
 
-![](assets/splash-demo800.gif)
+![](assets/home-page.png)
 
 ## Unique (for me) Approach
 
 At the start of this project I wanted to take a unique approach as my previous projects have a multiple page rather than single page app feel. I wanted to utilize more context to create an app/jukebox feel over a web page. This lead to having to plan a little bit more about how everything is going to work together due to mutual exclusivity of conditions. It was an overall enjoyable experience and gives a really clean and pure feel to the user experience simulating the user is interacting with a jukebox screen and all the action so to speak, happens in one place. However, it did take me more time due to unfamiliarity of this approach and required me to think a few steps ahead and to be dynamic in my implementation. Through this project, the most important thing I learned was that planning is very important, but having an understanding of the fundamentals/system that you are using allows you the leniency required to be dynamic and approach new problems without worrying about hitting a brick wall.
+
+![](assets/splash-demo800.gif)
 
 ## Home Page and Navigation
 
@@ -58,7 +57,7 @@ Upon login you are presented with the main/index page of the app, on the left-ha
 
 Building a rock solid audio player was probably the most time consuming part of the process, going into the project with a goal of achieving an understanding of how the web audio API functions, communicates with the canvas API and to build from scratch when possible, made it the most intensive. This player is a result of probably 10 or so iterations to achieve the level of function that I desired. The player is only mounted when there is a play context. The controls are all functions that control the state of the audio's props within the component.
 
-
+![](assets/player.png)
 
 ## Play Context
 
@@ -73,13 +72,12 @@ The mini visualizer is in the style of an oscilloscope and during playback is di
 ![](assets/oscResize800.gif)
 
 ## React-hifi npm package
+
 The react-hifi package is, "A composable Abstraction for AudioContext API with a easy to use react API." This allowed for me to manage and control the audio context with the included props and methods. The Sound component and Osciloscope are heavily utilized. The Sound component was helpful in aiding with creating an audio graph based off a simple URL for the audio source. The Sound component is then routed into the Osciloscope component, hence, the composability. All that was necessary for the Osciloscope was a useRef hook to target the created canvas element and a function that will be called by the Osciloscope component, "onVisualizationData" which is really an abstraction of a web audio analyser node and an animation looper to draw the lines on the canvas based off data gathered from the audio source. The decision to use react-hifi was vital in increasing my understanding of the Web Audio API as it was my first implmentation.
 
 ## Particle effects
 
 The particles utilized for background mood setting are from react-particles-webgl npm package. The package is, "A 2D/3D particle library built with React, Three.js and WebGL." The abstraction afforded by this package was incredibly helpful in adding another level of immersion to the app, without having to go too far down the Three.js/WebGL rabbit hole. The controls are also what allowed me to be able to create custom built particle "scenes" for the app. For the full screen visualizer, particle controls are tied to the "audio features" of the song in the play context. Color, size, shape, line connectivity, rotation, movement are all parameters that are adjusted dynamically by the audio features values to create a unique landscape for each song.
-
-![](assets/prettyClrsrBacknforth800.gif)
 
 ## VIBE player/Full Screen Visualizer page
 
@@ -94,6 +92,8 @@ The VIBE player is a full screen visualizer that is built based off the selected
 A cooperation of the WebAudio API and the Canvas API is utilized to draw the lines of the visualizer in real time. Lines are drawn based on data taken from the source audio's analyser node, this data is then fed to the Canvas and the requestAnimationFrame function is called and the lines are updated, this all happens up to 60 times a second, creating the illusion of a moving picture. I decided to use the frequency domain data obtained from the audio analyser node as each line is representative of a specific frequency, the line height is controlled by the amplitude of each frequency and certain parameters will change based off that amplitude. The colors and line width are controlled by the audio features of the song and they work in conjunction with the overall color scheme including the particles. The shadow and highlighting of lines is controlled by the amplitude, shadows become more prevalent as amplitude is increased and lines are highlighted when a certain amplitude threshold is hit, acting to add a bit of emphasis that correlates with frequency. 
 
 ![](assets/fountain800.gif)
+
+![](assets/prettyClrsrBacknforth800.gif)
 
 ## What now? More bonuses!
 

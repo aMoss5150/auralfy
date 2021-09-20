@@ -37,9 +37,6 @@ let ell = true
 export default function CanvasF() {
     const { playCtxt, setPlayCtxt, status, setStatus, positionCtxt, setPositionCtxt } = usePlay()
     const { visualizerCtxt, setVisualizerCtxt } = useVisualizer()
-
-
-
     // visualizerCtxt === 1 ? center_y = height / 2 : center_y = height
 
     bar_width = playCtxt ? playCtxt.energy * 2 : .2
@@ -47,7 +44,6 @@ export default function CanvasF() {
     // const song = songs ? songs[1] : null
     // const link = song?.link
     const [state, setState] = useState({
-        // audio: new Audio("https://song-storage-5150.s3.amazonaws.com/auralfy-music/01+-+I+Got+The....mp3"),
         audio: playCtxt ? new Audio(playCtxt.link) : null,
         canvas: React.createRef(),
         loading: false,
@@ -80,6 +76,7 @@ export default function CanvasF() {
 
     const animationLooper = (canvas) => {
         if (!canvas || !state.audio) return null
+        // console.log("animation looper called")
         width = window.innerWidth;
         height = window.innerHeight;
 
@@ -89,7 +86,14 @@ export default function CanvasF() {
         // if (visualizerCtxt === 1) {
         //     center_y = height / 2
         // } else center_y = height
-        center_y = visualizerCtxt === 1 ? height / 2 : height
+        if (visualizerCtxt === 1) {
+            center_y = height / 2
+        }
+        if (visualizerCtxt === 0) {
+            center_y = height
+        }
+        // center_y = visualizerCtxt === 1 ? height / 2 : height
+        // console.log(center_y, "center y")
 
         canvas.width = width;
         canvas.height = height;
@@ -110,8 +114,6 @@ export default function CanvasF() {
             // const y = center_y + Math.sin(rads * i) * (radius);
             // x_end = center_x + Math.cos(rads * i) * (radius + bar_height);
             // y_end = center_y + Math.sin(rads * i) * (radius + bar_height);
-
-
 
             //* practice
             const rads = Math.PI * 2 / bars * 2;
@@ -134,7 +136,6 @@ export default function CanvasF() {
             //     //draw a bar
             //     drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas, true);
             // } else {
-
             //draw a bar
             drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas);
             // }

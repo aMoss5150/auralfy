@@ -131,7 +131,7 @@ export default function Player2() {
             <div>
                 <canvas className={`${status === "PLAYING" ? "osccanvas" : "hidden"}`} style={{ opacity: size === "134px" ? "0.6" : "1", position: "fixed", left: "224px", width: '100%', height: size, bottom: "70px", cursorEvents: "none", zIndex: "-1" }} ref={canvasElement} />
             </div>
-            <span className="pointer githublinks"><a href="https://github.com/aMoss5150/auralfy/wiki">Go to Github Link</a></span>
+            <span className="pointer githublinks"><a href="https://github.com/aMoss5150/auralfy/">Go to Github</a></span>
         </div>
     );
 };

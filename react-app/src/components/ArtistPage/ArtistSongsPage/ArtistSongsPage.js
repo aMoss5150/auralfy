@@ -13,7 +13,7 @@ export default function ArtistSongsPage() {
     // *context
     const { artistIdCtxt, setArtistIdCtxt } = useArtistId()
 
-    // *state
+    // *state 
     const [songToAdd, setSongToAdd] = useState(null)
     const [openAdder, setOpenAdder] = useState(false)
 
@@ -66,10 +66,10 @@ export default function ArtistSongsPage() {
                             {song?.album_name}
                         </span>
 
-                        <span
+                        {/* <span
                             className="fromalbum font-thin">
-                            &nbsp;Tempo at:&nbsp;{song.tempo}
-                        </span>
+                            &nbsp;Tempo at:&nbsp;{song.tempo} BPM
+                        </span> */}
                     </li>
                 ))
             }

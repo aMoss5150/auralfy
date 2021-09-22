@@ -13,6 +13,7 @@ html {
     /* background: rgb(36, 35, 35); */
     /* color: white; */
     overflow-x: hidden;
+    overscroll-behavior-y: none;
 }
 
 .background__green {

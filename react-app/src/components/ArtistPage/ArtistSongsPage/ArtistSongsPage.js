@@ -6,6 +6,7 @@ import { createARelation } from '../../../store/relations'
 
 export default function ArtistSongsPage() {
     const dispatch = useDispatch()
+
     // *access reducers
     let songs = Object.values(useSelector(state => state.songs))
     const vibes = Object.values(useSelector(state => state.vibes))
@@ -35,7 +36,6 @@ export default function ArtistSongsPage() {
             <div className="artist__name font-thin">
                 {artistIdCtxt}
             </div>
-
             {
                 openAdder && songToAdd && vibes.map((vibe) => (
                     <div key={vibe.id} className="artistsong fromalbum font-thin adder" onClick={() => handleAddSongToVibe(vibe.id, songToAdd.id)}>

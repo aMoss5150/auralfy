@@ -23,3 +23,9 @@
     height: 115px;
     margin-top: 10px;
 }
+
+.logoutB {
+    position: relative;
+    left: 38px;
+    top: 7px;
+}

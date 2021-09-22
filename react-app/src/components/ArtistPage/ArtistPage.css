@@ -19,6 +19,7 @@
     box-shadow: 1px 1px 5px 2px rgba(185, 238, 190, 0.2);
     box-sizing: border-box;
     margin: 18px;
+    margin-right: 150px;
     width: 278px;
     height: 278px;
     display: flex;

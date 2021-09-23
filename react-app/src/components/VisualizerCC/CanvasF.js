@@ -14,12 +14,13 @@ radius = 0;
 //* likely have to keep these vars dynamic assigned within a function instead
 let width
 let height
-// width = window.innerWidth;
-// height = window.innerHeight;
+width = window.innerWidth;
+height = window.innerHeight;
 
 // center_x = width / 2;
 // //* height  || height / 2 for placement at bottom of page
 // center_y = height / 2;
+// center_y = height * 10;
 
 let rafId
 let context
@@ -52,6 +53,16 @@ export default function CanvasF() {
     });
 
     // let rafId = requestAnimationFrame(tick);
+
+    useEffect(() => {
+        if (visualizerCtxt === 1) {
+            center_y = height / 2
+        } else if (visualizerCtxt === 0) {
+            center_y = height
+        } else center_y = height * 0
+    }, [visualizerCtxt])
+
+
     useEffect(() => {
         context = new (window.AudioContext || window.webkitAudioContext)()
         if (state.audio) {
@@ -86,14 +97,15 @@ export default function CanvasF() {
         // if (visualizerCtxt === 1) {
         //     center_y = height / 2
         // } else center_y = height
-        if (visualizerCtxt === 1) {
-            center_y = height / 2
-        }
-        if (visualizerCtxt === 0) {
-            center_y = height
-        }
+
+
+        // if (visualizerCtxt === 1) {
+        //     center_y = height / 2
+        // } else center_y = height
+
+
         // center_y = visualizerCtxt === 1 ? height / 2 : height
-        // console.log(center_y, "center y")
+        console.log(center_y, "center y")
 
         canvas.width = width;
         canvas.height = height;

@@ -4,7 +4,7 @@ export const VisualizerContext = createContext()
 
 export const VisualizerProvider = (props) => {
 
-    const [visualizerCtxt, setVisualizerCtxt] = useState(3)
+    const [visualizerCtxt, setVisualizerCtxt] = useState(0)
 
     return (
         <VisualizerContext.Provider value={{ visualizerCtxt, setVisualizerCtxt }}>

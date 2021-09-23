@@ -59,7 +59,9 @@ export default function CanvasF() {
             center_y = height / 2
         } else if (visualizerCtxt === 0) {
             center_y = height
-        } else center_y = height * 0
+        } else if (visualizerCtxt === 3) {
+            center_y = height * 0
+        } else center_y = undefined
     }, [visualizerCtxt])
 
 
@@ -268,6 +270,9 @@ export default function CanvasF() {
 
                 <Link onClick={() => (context.close(), state.audio ? setPositionCtxt(state.audio.currentTime) : null)} className="fullvis__button6 full__buttons" id="go-back" to="/">{`<<`}</Link>
 
+                <button className="fullvis__button3 full__buttons italic" onClick={() => setVisualizerCtxt(4)}>
+                    Bars
+                </button>
                 <button className="fullvis__button3 full__buttons italic" onClick={() => setVisualizerCtxt(0)}>
                     Fountain
                 </button>

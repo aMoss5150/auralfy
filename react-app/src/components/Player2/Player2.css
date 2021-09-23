@@ -34,6 +34,12 @@
     font-style: italic; */
 }
 
+.vibe-link {
+    position: relative;
+    height: 10px;
+    top: 10px;
+}
+
 .volslider {
     width: 10px;
     height: 10px;

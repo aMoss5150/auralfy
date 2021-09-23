@@ -95,7 +95,7 @@ export default function Player2() {
                 <button className="fromalbum font-thin" onClick={() => handleChangeSize()}>{size === "134px" ? "XL" : "SM"}</button>
                 <i onClick={() => state.volume - 10 >= 0 && setState({ ...state, volume: state.volume -= 10 })} className="volicons fas fa-minus"></i>
                 <i onClick={() => state.volume + 10 <= 100 && setState({ ...state, volume: state.volume += 10 })} className="volicons fas fa-plus"></i>
-
+                <Link className="fas vibe-link" onClick={() => setPositionCtxt(state.position)} to="/vibe">VIBE</Link>
 
             </div>
             <div className="player2details">
@@ -124,7 +124,8 @@ export default function Player2() {
                     &nbsp;BPM&nbsp;
                 </span> */}
 
-                <Link onClick={() => setPositionCtxt(state.position)} to="/vibe">VIBE</Link>
+
+
             </div>
 
 

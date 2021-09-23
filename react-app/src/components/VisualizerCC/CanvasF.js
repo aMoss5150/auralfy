@@ -275,6 +275,9 @@ export default function CanvasF() {
                 <button className="fullvis__button4 full__buttons italic" onClick={() => setVisualizerCtxt(1)}>
                     Projector
                 </button>
+                <button className="fullvis__button4 full__buttons italic" onClick={() => setVisualizerCtxt(3)}>
+                    Astral
+                </button>
 
                 <button className="fullvis__button1 full__buttons" onClick={() => context.state === "suspended" ? context.resume() : state.audio ? tick() : null}>Start</button>
 

@@ -69,11 +69,11 @@ function Player({ song }) {
             // let ana = analyser.getByteTimeDomainData(dataArray);
         } if (PAUSE) {
             // audio.pause()
-            console.log("audio pause")
+            // console.log("audio pause")
         } if (STOP) {
             audio.pause()
             // audio.currentTime = 0
-            console.log("audio stop")
+            // console.log("audio stop")
         }
         // audio.play()
     }, [PLAY, STOP, PAUSE])
@@ -140,7 +140,7 @@ function Player({ song }) {
                         analyser.getByteFrequencyData(dataArray)
                         setDATA(dataArray)
                         return (
-                            console.log(DATA)
+                            // console.log(DATA)
                         )
                     }}>check</button>
                 </div>

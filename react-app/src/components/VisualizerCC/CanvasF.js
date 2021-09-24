@@ -108,7 +108,7 @@ export default function CanvasF() {
 
 
         // center_y = visualizerCtxt === 1 ? height / 2 : height
-        console.log(center_y, "center y")
+        // console.log(center_y, "center y")
 
         canvas.width = width;
         canvas.height = height;

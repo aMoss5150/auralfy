@@ -97,8 +97,11 @@ import { usePlay } from '../../context/PlayContext'
 // };
 
 let colorHelper = (valence) => {
-    if (valence <= 0.25) {
+    if (valence <= 0.15) {
         return "#fc030b"
+    }
+    if (valence > 0.15 && valence <= 0.25) {
+        return "#d100ca"
     }
     if (valence > 0.25 && valence <= 0.5) {
         return "#5632a8"

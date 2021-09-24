@@ -9,7 +9,7 @@ import './CanvasCC.css'
 
 let ctx, center_x, center_y, radius, x_end, y_end, bar_height;
 const bars = 75;
-let bar_width = .2;
+let bar_width
 radius = 0;
 //* likely have to keep these vars dynamic assigned within a function instead
 let width
@@ -39,7 +39,6 @@ export default function CanvasF() {
     const { playCtxt, setPlayCtxt, status, setStatus, positionCtxt, setPositionCtxt } = usePlay()
     const { visualizerCtxt, setVisualizerCtxt } = useVisualizer()
     // visualizerCtxt === 1 ? center_y = height / 2 : center_y = height
-
     bar_width = playCtxt ? playCtxt.energy * 2 : .2
     // const songs = useSelector(state => state.songs)
     // const song = songs ? songs[1] : null
@@ -61,7 +60,9 @@ export default function CanvasF() {
             center_y = height
         } else if (visualizerCtxt === 3) {
             center_y = height * 0
-        } else center_y = undefined
+        } else {
+            center_y = undefined
+        }
     }, [visualizerCtxt])
 
 
@@ -157,11 +158,18 @@ export default function CanvasF() {
     }
 
     const colorHelper = (valence) => {
-        if (valence <= 0.25) {
+        if (valence <= 0.15) {
             return "#fc030b"
         }
-        if (valence > 0.25 && valence <= 0.5) {
+
+        if (valence > 0.15 && valence <= 0.20) {
+            return "#1c00d1"
+        }
+        if (valence > 0.20 && valence <= 0.30) {
             return "#5632a8"
+        }
+        if (valence > 0.30 && valence <= 0.5) {
+            return "#d100ca"
         }
         if (valence > 0.5 && valence <= 0.75) {
             return "#ba8330"
@@ -176,7 +184,7 @@ export default function CanvasF() {
             return "green"
         }
         if (valence > 0.15 && valence <= 0.25) {
-            return "blue"
+            return '#d100ca'
         }
         if (valence > 0.25 && valence <= 0.35) {
             return "orange"
@@ -191,7 +199,7 @@ export default function CanvasF() {
             return "lightgrey"
         }
         if (valence > 0.8) {
-            return "red"
+            return "yellow"
         }
     }
 
@@ -214,7 +222,6 @@ export default function CanvasF() {
         // ctx.lineWidth = bar_width;
         // ctx.lineWidth = bar_width;
 
-
         //* experimental kick section adding blur when 80 hz exceeds 200
         if (frequency > 189) {
             // ctx.shadowColor = "rgb(" + frequency + ", " + frequency + ", " + 255 + ")";
@@ -229,6 +236,7 @@ export default function CanvasF() {
             // ctx.lineWidth = shadowHelper(playCtxt.valence) === "blue" ? .7 : playCtxt ? playCtxt.valence : bar_width;
             ctx.lineWidth = shadowHelper(playCtxt.valence) === "green" ? .7 : playCtxt ? playCtxt.valence : bar_width;
         }
+
         // ctx.lineWidth = frequency / 50;
         ctx.beginPath();
         // ctx.rotate(2 * Math.PI / 23)

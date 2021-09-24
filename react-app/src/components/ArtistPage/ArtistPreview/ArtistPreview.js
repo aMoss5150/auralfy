@@ -8,7 +8,7 @@ function ArtistPreview({ song }) {
     return (
         <div id="artist" className={`artist__card m-2 ${colorCtxt === false ? "headers__colors2" : 'headers__colors3'}`}>
             <div className="m-2">
-                <img id="artist__image" style={{ height: "200px", borderRadius: "2px" }} src={song.image} />
+                <img id="artist__image" style={{ height: "200px", borderRadius: "2px" }} src={song.image} alt="artist" />
             </div>
             <div>
                 {song?.artist.toUpperCase()}

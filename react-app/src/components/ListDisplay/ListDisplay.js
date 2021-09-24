@@ -16,9 +16,12 @@ function ListDisplay({ targetVibe }) {
     const { changeCtxt } = useChange()
     const vibes = Object.values(useSelector(state => state.vibes))
 
-    useEffect(async () => {
-        await dispatch(getAllRelations())
-        await dispatch(getAllVibes())
+    useEffect(() => {
+        async function getData() {
+            await dispatch(getAllRelations())
+            await dispatch(getAllVibes())
+        }
+        getData()
     }, [changeCtxt])
 
     if (!targetVibe) return null

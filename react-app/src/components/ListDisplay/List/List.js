@@ -21,11 +21,13 @@ function List({ vibeId, vibeName }) {
         if (relation?.includes(song.id)) {
             return song
         }
+        return null
     })
     const songsOnList2 = songs?.filter((song) => {
         if (Object.values(relations).flat()?.includes(song.id)) {
             return song
         }
+        return null
     })
     const songsSet = songsOnList ? new Set(songsOnList2) : null
 
@@ -37,8 +39,12 @@ function List({ vibeId, vibeName }) {
         }
     }
 
-    useEffect(async () => {
-        await dispatch(getAllRelations())
+    useEffect(() => {
+
+        async function getData() {
+            await dispatch(getAllRelations())
+        }
+        getData()
     }, [changeCtxt])
 
     if (!vibeId) return null

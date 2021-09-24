@@ -10,13 +10,13 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [errors, setErrors] = useState("")
+  // const [errors, setErrors] = useState("")
   const [match, setMatch] = useState(true)
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      await dispatch(signUp(username, email, password));
     }
   };
 

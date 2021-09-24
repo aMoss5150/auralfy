@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useVibeId } from '../../../context/VibeContext'
-import { deleteARelation, getAllRelations } from '../../../store/relations'
+import { deleteARelation } from '../../../store/relations'
 import { useChange } from '../../../context/ChangeContext'
 import { usePlay } from '../../../context/PlayContext'
 
@@ -11,12 +11,12 @@ import './Song.css'
 
 
 function Song({ song }) {
-    const [changed, setChanged] = useState(false)
+    // const [changed, setChanged] = useState(false)
     const { changeCtxt, setChangeCtxt } = useChange()
-    const { playCtxt, setPlayCtxt } = usePlay()
+    const { setPlayCtxt } = usePlay()
     const dispatch = useDispatch()
     const { vibeIdCtxt } = useVibeId()
-    const songs = useSelector(state => state.songs)
+    // const songs = useSelector(state => state.songs)
 
 
     const handleRemoveSong = async (e, songId) => {
@@ -35,7 +35,7 @@ function Song({ song }) {
 
     return (
         <div className="song__container">
-            <i class="icons fas fa-compact-disc" onClick={() => setPlayCtxt(song)}></i>
+            <i className="icons fas fa-compact-disc" onClick={() => setPlayCtxt(song)}></i>
             {vibeIdCtxt && <i className="icons fas fa-minus-square" onClick={(e) => { return (handleRemoveSong(e, song.id), setChangeCtxt(!changeCtxt)) }}></i>}
             {/* <i class="fas fa-trash"></i> */}
             {/* <i class="fas fa-minus-circle"></i> */}

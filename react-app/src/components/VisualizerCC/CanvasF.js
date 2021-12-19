@@ -161,7 +161,6 @@ export default function CanvasF() {
         if (valence <= 0.15) {
             return "#fc030b"
         }
-
         if (valence > 0.15 && valence <= 0.20) {
             return "#1c00d1"
         }

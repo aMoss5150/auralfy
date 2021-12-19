@@ -2,6 +2,17 @@
 
 This is the backend for the Flask React project.
 
+1.
+pipenv shell
+   to enter virtual environment in root
+   flask run 
+      - to run the back end
+
+2.
+cd create-react-app
+   npm start 
+      - to run front end
+
 ## Getting started
 
 1. Clone this repository (only this branch)

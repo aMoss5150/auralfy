@@ -81,7 +81,7 @@ The particles utilized for background mood setting are from react-particles-webg
 
 ## VIBE player/Full Screen Visualizer page
 
-The VIBE player is a full screen visualizer that is built based off the selected song. The user is taken to another route that consists of a particles background that is modulated based off a song's audio features. The size, shape, color, connectivity, speed and camera rotation are all variables that are dynamically adjusted and will be unique to each song. In the background, the artist's image is barely visible along with minimalistic controls, including two visualizer modes, one being more similar to a "Fountain" as it blooms upwards, and another to a "Projector", as it projects towards you as if it is coming from a distance. 
+The VIBE player is a full screen visualizer that is built based off the selected song. The user is taken to another route that consists of a particles background that is modulated based off a song's audio features. The size, shape, color, connectivity, speed and camera rotation are all variables that are dynamically adjusted and will be unique to each song. In the background, the artist's image is barely visible along with minimalistic controls, including four visualizer modes, one being more similar to a "Fountain" as it blooms upwards, another to a "Projector", as it projects towards you as if it is coming from a distance, one is "Bars" and is a simple movement of horizontal bars, and the last is "Astral" as it looks like it is projecting downward from the stars.
 
 ![](assets/to-vibe800.gif)
 

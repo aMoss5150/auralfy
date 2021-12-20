@@ -95,11 +95,22 @@ A cooperation of the WebAudio API and the Canvas API is utilized to draw the lin
 
 ![](assets/prettyClrsrBacknforth800.gif)
 
-## What now? More bonuses!
+## Future features!
 
-- Color themes in the works!
+- Tutorial upon first visit
+- Dark/light overall color themes
+- Completely different Visualizer algorithms
+- Dynamic and static sliders
 - Search function
-- Actual Spotify integration
-- Analysis of key, mode and tempo
+- Spotify personal playlist integration
+- Chart displaying 
+- Analysis/display of key, mode and tempo
 - Different algorithms for viewing different frequency spectrums
-- Frequency indicator around the full screen visualizer to frequencies
+- More parameters/controls for the full screen visualizer mode
+- EQ plugin/laptop booster mode
+- Frequency indicator around the full screen visualizer
+
+## Known Issues
+- AudioContext is created twice upon user clicking browser back button (not within app)
+- Volume needs to be shared
+- A react-particles package is deprecated and outputs warning when it uses deprecated syntax 
